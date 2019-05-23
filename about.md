@@ -2,17 +2,39 @@
 layout: page
 title: About
 permalink: /about/
+priority: 0.9
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+intro: |
+  Hi, I'm BP a..
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+  Before that I was reseracher...
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+  Prior to that I was working at Vaisala
+
+  I design and prototype multi-platform websites and apps, sometimes developing
+  branding and living styleguides if necessary. In the past I have also worked
+  in print and illustration, producing album artwork, brochures and books.
+
+  In 2017 I founded RiskSystemsScience Ltd
+
+profile_picture: /images/profile-pictures/profile.jpg
+
+Experience:
+  - company: X
+    position: PX
+    period: Date - Date
+
+Publications;
+  - ERL 2017
+  
+education:
+  - course: PhD
+    place: Loughborough
+
+skills:
+  - bayes
 
 
-[jekyll-organization]: https://github.com/jekyll
+tools:
+  - python
