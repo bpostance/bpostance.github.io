@@ -9,8 +9,8 @@ Research and data scientist in risk and natural hazards, machine learning and na
 Currently working as a consultant scientist at [Beazley](https://www.beazley.com/london_market.html).
 
 ### experience:
- - [Beazley](https://www.beazley.com/london_market.html) | Data Scientist | period: 2017 - Present
- - [Vaisala](https://www.vaisala.com/en) | Meteorology & Geospatial Analyst | period: 2012 - 2015
+ - Data Scientist, @[Beazley](https://www.beazley.com/london_market.html) 2017 - Present
+ - Meteorology & Geospatial Analyst, @[Vaisala](https://www.vaisala.com/en) 2012 - 2015
 	
 ### publications:
 - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
@@ -21,13 +21,13 @@ Currently working as a consultant scientist at [Beazley](https://www.beazley.com
 	Environmental Research Letters 12 (1)*
 - [**Indirect impact of landslide hazards on transportation infrastructure.**](https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.747889)
 	*2017. B Postance
-	Doctoral Thesis, Loughborough University, [isin](http://www.isni.org/isni/0000000472327336)
+	Doctoral Thesis, Loughborough University, [ISIN](http://www.isni.org/isni/0000000472327336)
 - [**Characterising regional landslide initiation thresholds in Scotland, UK using NIMROD c-band precipitation radar and the BGS National Landslide Database.**](http://adsabs.harvard.edu/abs/2016EGUGA..18.4480P)
 	*2016. Postance, Benjamin; Hillier, John; Dijkstra, Tom; Dixon, Neil
 	EGU General Assembly 2016, 17-22 April, Vienna Austria
 - [**Open source big data technologies in earth sytems research: prototype hazard early warning system in python and postgres **](https://rd-alliance.org/early-career-european-researchers-scientists-working-data-march-2016.html)
 	*2016. Postance, Benjamin
-	Early Career Researchers Award, [RDA Plenary 2016](https://rd-alliance.org/plenaries/rda-seventh-plenary-meeting-tokyo-japan), [Japan Science and Technology Agency (JST)](http://www.jst.go.jp/EN/), Tokyo, Japan
+	Early Career Researchers Award, [RDA](https://rd-alliance.org/plenaries/rda-seventh-plenary-meeting-tokyo-japan) Plenary 2016, [Japan Science and Technology Agency](http://www.jst.go.jp/EN/), Tokyo, Japan
 - [**Quantification of Road Network Vulnerability and Traffic Impacts to Regional Landslide Hazards.**](http://adsabs.harvard.edu/abs/2015EGUGA..17.3677P)
 	*2015. Postance, Benjamin; Hillier, John; Dijkstra, Tom; Dixon, Neil
 	EGU General Assembly 2015, 112-17 April, Vienna Austria
