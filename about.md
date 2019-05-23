@@ -6,8 +6,12 @@ priority: 0.9
 ---
 
 Research and data scientist in risk and natural hazards, machine learning and natural language processing. 
-Currently working as a consultant scientist at [Beazley](www.beazley.com).
+Currently working as a consultant scientist at [Beazley](https://www.beazley.com/london_market.html).
 
+### experience:
+ - [Beazley](https://www.beazley.com/london_market.html) | Data Scientist | period: 2017 - Present
+ - [Vaisala](https://www.vaisala.com/en) | Meteorology & Geospatial Analyst | period: 2012 - 2015
+	
 ### publications:
 - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
 	*2018. B Postance, J Hillier, T Dijkstra, N Dixon
@@ -27,10 +31,7 @@ Currently working as a consultant scientist at [Beazley](www.beazley.com).
 - [**Quantification of Road Network Vulnerability and Traffic Impacts to Regional Landslide Hazards.**](http://adsabs.harvard.edu/abs/2015EGUGA..17.3677P)
 	*2015. Postance, Benjamin; Hillier, John; Dijkstra, Tom; Dixon, Neil
 	EGU General Assembly 2015, 112-17 April, Vienna Austria
-### experience:
-  - company: X
-    position: PX
-    period: Date - Date
+
 	
 ### education:
   - course: PhD
