@@ -2,7 +2,8 @@
 layout: post
 title:  "Hello World!"
 date:   2019-05-23 20:56:21 +0100
-categories: update
+categories: [blog]
+tags: [general]
 ---
 Hello and welcome to my new Research and DataScience portfolio page. On this site i'll be posting links to projects, demo's and training material on machine learning and data science, in addition to research article reviews and any other interesting updates. 
 
