@@ -5,37 +5,24 @@ permalink: /about/
 priority: 0.9
 ---
 
-intro: |
+Research and data scientist in risk and natural hazards, machine learning and natural language processing. 
+Currently working as a consultant scientist at [Beazley](www.beazley.com).
 
-  Hi, I'm BP a..
 
-  Before that I was reseracher...
-
-  Prior to that I was working at Vaisala
-
-  I design and prototype multi-platform websites and apps, sometimes developing
-  branding and living styleguides if necessary. In the past I have also worked
-  in print and illustration, producing album artwork, brochures and books.
-
-  In 2017 I founded RiskSystemsScience Ltd
-
-profile_picture: /images/profile-pictures/profile.jpg
-
-Experience:
+### Experience:
   - company: X
     position: PX
     period: Date - Date
 
-Publications;
+### Publications;
   - ERL 2017
   
-education:
+### education:
   - course: PhD
     place: Loughborough
 
-skills:
+### skills:
   - bayes
 
-
-tools:
+### tools:
   - python
