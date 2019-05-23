@@ -16,7 +16,7 @@ Currently working as a consultant scientist at [Beazley](https://www.beazley.com
  - **Loughborough University 2014 - 2017**
 	*PhD. Geography
 	Department of Geography and the Department of Civil Engineering.
-	In assoc with [British Geological Survey](https://www.bgs.ac.uk/)
+	In assoc with [British Geological Survey](https://www.bgs.ac.uk/).
 	Funded by [NERC](https://nerc.ukri.org/)*
  - **University of Iceland 2011**
 	*BSc. Geophysics (non award sandwich year)*

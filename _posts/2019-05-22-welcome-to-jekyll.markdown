@@ -5,7 +5,7 @@ date:   2019-05-23 20:56:21 +0100
 categories: [blog]
 tags: [general]
 ---
-Hello and welcome to my new Research and DataScience portfolio page. On this site i'll be posting links to projects, demo's and training material on machine learning and data science, in addition to research article reviews and any other interesting updates. 
+Hello and welcome to my new Research and DataScience portfolio page. On this site I'll be posting links to projects, demo's and training material on machine learning and data science, in addition to research article reviews and any other interesting updates. 
 
 I have built this site using free hosting on [github.io](https://pages.github.com/) and the open source site generator [Jekyll][jekyll-gh] written in Ruby. 
 
