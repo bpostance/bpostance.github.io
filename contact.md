@@ -5,4 +5,7 @@ permalink: /contact/
 priority: 0.9
 ---
 
-get in touch...
+
+### Contact me
+
+[benpostance@gmail.com](mailto:benpostance@gmail.com)
