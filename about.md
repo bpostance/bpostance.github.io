@@ -11,7 +11,27 @@ Currently working as a consultant scientist at [Beazley](https://www.beazley.com
 #### experience:
  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - Present
  - Meteorology & Geospatial Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2015
-	
+
+#### education:
+ - **Loughborough University 2014 - 2017**
+	*PhD. Geography
+	Department of Geography and the Department of Civil Engineering.
+	In assoc with [British Geological Survey](https://www.bgs.ac.uk/)
+	Funded by [NERC](https://nerc.ukri.org/)*
+ - **University of Iceland 2011**
+	*BSc. Geophysics (non award sandwich year)*
+ - **Coventry University 2008 - 2012**
+	*1st Class BSc. Geography & Natural Hazards
+	Department of Geography*
+
+#### skills:
+  - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
+  - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory, 
+
+#### tools:
+  - Python: scikit-learn, numpy, pandas, PyTorch,...
+  - SQL, Elasticsearch (ELK), Keras, Tensorflow, Spark,...
+  
 #### publications:
 - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
 	*2018. B Postance, J Hillier, T Dijkstra, N Dixon
@@ -31,13 +51,3 @@ Currently working as a consultant scientist at [Beazley](https://www.beazley.com
 - [**Quantification of Road Network Vulnerability and Traffic Impacts to Regional Landslide Hazards.**](http://adsabs.harvard.edu/abs/2015EGUGA..17.3677P)
 	*2015. Postance, Benjamin; Hillier, John; Dijkstra, Tom; Dixon, Neil
 	EGU General Assembly 2015, 112-17 April, Vienna Austria*
-	
-#### education:
-  - course: PhD
-    place: Loughborough
-
-#### skills:
-  - bayes
-
-#### tools:
-  - python
