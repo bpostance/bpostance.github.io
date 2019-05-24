@@ -6,28 +6,30 @@ priority: 0.9
 ---
 
 Research and data scientist in risk and natural hazards, machine learning and natural language processing. 
-Currently working as a consultant scientist at [Beazley](https://www.beazley.com/london_market.html).
+Currently working as a consultant at [Beazley](https://www.beazley.com/london_market.html).
 
 #### Experience:
- - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - Present
- - Meteorology & Geospatial Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2015
+ - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - present
+ - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014 - 2016
+ - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2014
 
 #### Education:
- - **Loughborough University 2014 - 2017**
+ - **Loughborough University** 2014 - 2017
 	*PhD. Geography
 	Department of Geography and the Department of Civil Engineering.
 	In assoc with [British Geological Survey](https://www.bgs.ac.uk/).
 	Funded by [NERC](https://nerc.ukri.org/)*
- - **University of Iceland 2011**
+ - **University of Iceland** 2011
 	*BSc. Geophysics (non award sandwich year)*
- - **Coventry University 2008 - 2012**
+ - **Coventry University** 2008 - 2012
 	*1st Class BSc. Geography & Natural Hazards
 	Department of Geography*
 
-#### Skills:
+#### Skills & Training:
   - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
-  - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory, 
-  - [stack overflow](https://stackexchange.com/users/5244883/benp?tab=accounts), 
+  - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
+  - [Stack Overflow](https://stackexchange.com/users/5244883/benp?tab=accounts)
+  
 
 #### Tools:
   - Python: scikit-learn, numpy, pandas, PyTorch,...
