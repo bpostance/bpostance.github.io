@@ -27,6 +27,7 @@ Currently working as a consultant scientist at [Beazley](https://www.beazley.com
 #### Skills:
   - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
   - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory, 
+  - [stack overflow](https://stackexchange.com/users/5244883/benp?tab=accounts), 
 
 #### Tools:
   - Python: scikit-learn, numpy, pandas, PyTorch,...
