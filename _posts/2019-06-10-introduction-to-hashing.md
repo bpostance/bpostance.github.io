@@ -1,10 +1,12 @@
 ---
 layout: post
+mathjax: true
 title:  "Hash functions for data mining"
 date:   2019-06-10 20:00:01 +0000
 categories: [data mining,data cleaning,hashing]
 tags: [tutorial]
 ---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 # Zero2Basic - Hash Functions
 This post is intended to provide a quick introduction to hash functions and to discuss some practical applications of hashes in data mining and machine learning. As with my other Zero2Basic posts my aim is to provide a basic level of understanding of the concept and to demonstrate a real world use case.
@@ -305,6 +307,9 @@ axs.legend();
 
 
 As illustrated the likelihood of a hash collision increases significantly for shorter hash values. For instance, using A 10 hexadecimal hash digits is almost certain to collide with another hash on lists with 1 to 1.5 million values, that's equivalent to the annual [probability of a person being struck by lightning in the US](https://www.regulation.org.uk/library/2017-Spiegelhalter-Risk_and_Uncertainty_Communication.pdf).
+
+I hope that you enjoyed this post. We have covered: the principles of hash functions, discussed how they can be used in cryptography and to index data, and seen some of the pitfalls of using too short hash values.
+
 
 ### Public Service Announcement on the internal python **hash()**
 Whilst this worked in Python 2 this **does not work** in Python 3 as the hash() function is randomly [seeded](https://stackoverflow.com/a/42089311/4538066) on each invocation.
