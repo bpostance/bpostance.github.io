@@ -25,4 +25,8 @@ print_hi('Ben')
 #=> prints 'Hi, Ben' to STDOUT.
 {% endhighlight %}
 
+Jekyll also supports:
+ - [Displaying Jupyter notebooks](Display Jupyter Notebooks with Jekyll)
+ - Comments with [Just-comments](https://60devs.com/adding-comments-to-your-jekyll-blog.html) or [Discus](https://desiredpersona.com/disqus-comments-jekyll/).
+
 [jekyll-gh]:   https://github.com/jekyll/jekyll
