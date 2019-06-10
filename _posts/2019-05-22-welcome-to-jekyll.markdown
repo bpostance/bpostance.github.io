@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hello World!"
-date:   2019-05-23 20:56:21 +0100
+date:   2019-05-23 20:56:21 +0000
 categories: [blog]
 tags: [general]
 ---
