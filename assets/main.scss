@@ -7,6 +7,9 @@
 p, blockquote, ul, ol, dl, li, table, pre {
 margin: 15px 0; }
 
+p, blockquote, ul, ol, dl, li, table, pre {
+margin: 15px 0; }
+
 table {
   padding: 0; }
   table tr {
@@ -29,4 +32,5 @@ table {
       padding: 6px 13px; }
     table tr th :first-child, table tr td :first-child {
       margin-top: 0; }
-    table tr th :last-child,
+    table tr th :last-child, table tr td :last-child {
+margin-bottom: 0; }
