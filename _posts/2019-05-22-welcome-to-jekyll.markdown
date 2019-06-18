@@ -3,6 +3,7 @@ layout: post
 title:  "Hello World!"
 date:   2019-05-23 20:56:21 +0000
 comments: true
+categories: [blog]
 tags: [general]
 ---
 Hello and welcome to my new Research and DataScience portfolio page. 
