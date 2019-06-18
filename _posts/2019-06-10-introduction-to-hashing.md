@@ -235,7 +235,9 @@ We could improve our system by applying some typical text standardization steps 
  
 In addition, if this were a very large list we might look to split the strings to first and last name and hash those values too. This would allow us to efficiently locate all of the records with first name "bob" or with the last name "ross" etc. Then we would have a pretty good system to detect duplicates and to search a large number of records.
 
-But wait a minute, aren't we adding overhead and computation time by converting our raw strings to in many cases longer 160 bit / 40 character strings, why not just compare the raw strings? Well often we may need to obscure the data when sharing or storing for privacy reasons. But sure, many of our names are indeed less than 40 characters long so lets slice our hashes to the first 10 characters using the function we created earlier.
+But wait a minute, aren't we adding overhead and computation time by converting our raw strings to in many cases longer 160 bit / 40 character strings, why not just compare the raw strings? 
+Well often we may need to obscure the data when sharing or storing for privacy reasons. 
+But sure, many of our names are indeed less than 40 characters long so lets slice our hashes to the first 10 characters using the function we created earlier.
 
 
 ```python
@@ -250,7 +252,11 @@ hash_of_length(test,length=10)
 
 
 
-Not so fast though. Remember our hash function has a very large but finite number of outputs. In fact the probability of a hash collision follows an approximate exponential function and so shorter hash digests can quickly lead to hash collisions. The [Birthday Problem or Paradox](https://en.wikipedia.org/wiki/Birthday_problem) concerns "the probability of any two people in a room having the same birthday?" and for hashes this translates to "that probability of any two hashes sharing the same value given hashes of length $n$". There are stories of companies using hashes as unique ID's and falling foul of the birthday paradox such as [here](https://www.reddit.com/r/programming/comments/35uh62/dont_play_with_the_odds_how_the_birthday_paradox/) and [here](https://pthree.org/2014/03/06/the-reality-of-sha1/).
+Not so fast though. Remember our hash function has a very large but finite number of outputs. 
+In fact the probability of a hash collision follows an approximate exponential function and so shorter hash digests can quickly lead to hash collisions. 
+Also imagine that instead of hashing the names of people we are hasing website URL's, addresses, or even versions of scripts (Github uses sha-1 for commit id's). 
+The [Birthday Problem or Paradox](https://en.wikipedia.org/wiki/Birthday_problem) concerns "the probability of any two people in a room having the same birthday?" and for hashes this translates to "that probability of any two hashes sharing the same value given hashes of length $n$". 
+There are stories of companies using hashes as unique ID's and falling foul of the birthday paradox such as [here](https://www.reddit.com/r/programming/comments/35uh62/dont_play_with_the_odds_how_the_birthday_paradox/) and [here](https://pthree.org/2014/03/06/the-reality-of-sha1/).
 
 We can use the Birthday Paradox to approximate the probability of a hash collision in ${K}$ values given $n$-length hash values.
 
