@@ -2,6 +2,7 @@
 layout: post
 mathjax: true
 title:  "Hash functions for data mining"
+comments: true
 date:   2019-06-10 20:00:01 +0000
 categories: [data mining,data cleaning,hashing]
 tags: [tutorial]
