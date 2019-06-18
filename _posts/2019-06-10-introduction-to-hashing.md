@@ -318,25 +318,9 @@ As illustrated the likelihood of a hash collision increases significantly for sh
 I hope that you enjoyed this post. We have covered: the principles of hash functions, discussed how they can be used in cryptography and to index data, and seen some of the pitfalls of using too short hash values.
 
 
-# Related links
- - [SO - Chance of a duplicate hash when using first 8 characters of SHA1](https://stackoverflow.com/questions/30561096/chance-of-a-duplicate-hash-when-using-first-8-characters-of-sha1)
- - [SO - Obfuscating text](https://stackoverflow.com/questions/8554286/obfuscating-an-id)
+# Related topics
+ - [Chance of a duplicate hash when using first 8 characters of SHA1](https://stackoverflow.com/questions/30561096/chance-of-a-duplicate-hash-when-using-first-8-characters-of-sha1)
+ - [Obfuscating text](https://stackoverflow.com/questions/8554286/obfuscating-an-id)
  
-##### Public Service Announcement on the internal python **hash()**
+### Public Service Announcement on the internal python **hash()**
 Whilst this worked in Python 2 this **does not work** in Python 3 as the hash() function is randomly [seeded](https://stackoverflow.com/a/42089311/4538066) on each invocation.
-
-
-```python
-[hash(name) for name in some_people]
-```
-
-
-    [7773108651347944725,
-     8006110316508352370,
-     -4711472200811115197,
-     123284575197524578,
-     -8391844908185670689,
-     1405988622133364812,
-     282785915860111406,
-     -3606204635308506520,
-     1427013989549703842]
