@@ -7,10 +7,12 @@ priority: 0.9
 Research and data scientist in risk and natural hazards, machine learning and natural language processing. 
 Currently working as a consultant at Lloyd's of London specialty underwriter [Beazley Ltd](https://www.beazley.com/london_market.html).
 
+
 - #### Experience:
   - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - present
   - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014 - 2016
   - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2014
+
 
 - #### Education:
   - **Loughborough University** 2014 - 2017
@@ -24,6 +26,7 @@ Currently working as a consultant at Lloyd's of London specialty underwriter [Be
 	*1st Class BSc. Geography & Natural Hazards
 	Department of Geography*
 
+
 - #### Skills & [Training](https://github.com/bpostance/training.doctoral_training):
   - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
   - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
@@ -34,12 +37,13 @@ Currently working as a consultant at Lloyd's of London specialty underwriter [Be
   - **Cranfield University** [Understanding and Communicating Environmental Risk Assessment](https://www.cranfield.ac.uk/courses/short/environment/understanding-and-communicating-environmental-risk-assessment)
   - **Liverpool University** [Risk & Uncertainty]()
   - [**Stack Overflow**](https://stackexchange.com/users/5244883/benp?tab=accounts)
-  
+ 
 
 - #### Tools:
   - Python: scikit-learn, numpy, pandas, PyTorch,...
   - SQL, Elasticsearch (ELK), Keras, Tensorflow, Spark,...
-  
+
+
 - #### Publications:
   - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
 	*2018. B Postance, J Hillier, T Dijkstra, N Dixon
