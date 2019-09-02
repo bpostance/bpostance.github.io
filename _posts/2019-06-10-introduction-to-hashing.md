@@ -5,7 +5,7 @@ title:  "Hash functions for data mining"
 comments: true
 date:   2019-06-10 20:00:01 +0000
 categories: [tutorial]
-tags: [data mining,data cleaning,hashing]
+tags: [data-mining,data-cleaning,hash-functions]
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
