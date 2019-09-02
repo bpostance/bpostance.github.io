@@ -8,13 +8,13 @@ Research and data scientist in risk and natural hazards, machine learning and na
 Currently working as a consultant at Lloyd's of London specialty underwriter [Beazley Ltd](https://www.beazley.com/london_market.html).
 
 
-- #### Experience:
+#### Experience:
   - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - present
   - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014 - 2016
   - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2014
 
 
-- #### Education:
+#### Education:
   - **Loughborough University** 2014 - 2017
 	*PhD. Geography
 	Department of Geography and the Department of Civil Engineering.
@@ -27,7 +27,7 @@ Currently working as a consultant at Lloyd's of London specialty underwriter [Be
 	Department of Geography*
 
 
-- #### Skills & [Training](https://github.com/bpostance/training.doctoral_training):
+#### Skills & [Training](https://github.com/bpostance/training.doctoral_training):
   - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
   - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
   - **University of Leeds** [Software Carpentry for Environmental Scientists](https://andreww.github.io/2016-01-18-leeds/)
@@ -39,12 +39,12 @@ Currently working as a consultant at Lloyd's of London specialty underwriter [Be
   - [**Stack Overflow**](https://stackexchange.com/users/5244883/benp?tab=accounts)
  
 
-- #### Tools:
+#### Tools:
   - Python: scikit-learn, numpy, pandas, PyTorch,...
   - SQL, Elasticsearch (ELK), Keras, Tensorflow, Spark,...
 
 
-- #### Publications:
+#### Publications:
   - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
 	*2018. B Postance, J Hillier, T Dijkstra, N Dixon
 	Earth Surface Processes and Landforms 43 (2)*
