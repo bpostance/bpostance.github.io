@@ -8,19 +8,19 @@ Research and data scientist in risk and natural hazards, machine learning and na
 Currently working as a consultant at Lloyd's of London specialty underwriter [Beazley Ltd](https://www.beazley.com/london_market.html).
 
 - #### Experience:
-  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017  - present
-  - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014  - 2016
-  - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012  - 2014
+  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - present
+  - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014 - 2016
+  - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2014
 
 - #### Education:
-  - **Loughborough University** 2014  - 2017
+  - **Loughborough University** 2014 - 2017
 	*PhD. Geography
 	Department of Geography and the Department of Civil Engineering.
 	In assoc with [British Geological Survey](https://www.bgs.ac.uk/).
 	Funded by [NERC](https://nerc.ukri.org/)*
   - **University of Iceland** 2011
 	*BSc. Geophysics (non award sandwich year)*
-  - **Coventry University** 2008  - 2012
+  - **Coventry University** 2008 - 2012
 	*1st Class BSc. Geography & Natural Hazards
 	Department of Geography*
 
