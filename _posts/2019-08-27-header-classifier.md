@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Machine Learning model to classify column headers for data cleaning tasks"
+title:  "Machine Learning to classify column headers for data cleaning tasks"
 date:   2019-08-27 18:00:00 +0000
 comments: true
 categories: [tutorial]
