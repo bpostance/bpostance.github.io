@@ -29,5 +29,6 @@ print_hi('Ben')
 Jekyll also supports:
  - [Google Analytics](https://desiredpersona.com/google-analytics-jekyll/)
  - [User comments with Just-comments](https://60devs.com/adding-comments-to-your-jekyll-blog.html) or [Discus](https://desiredpersona.com/disqus-comments-jekyll/).
- - [Displaying Jupyter notebooks](Display Jupyter Notebooks with Jekyll)
+ - [Displaying Jupyter notebooks](https://www.linode.com/docs/applications/project-management/jupyter-notebook-on-jekyll/)
+
 [jekyll-gh]:   https://github.com/jekyll/jekyll
