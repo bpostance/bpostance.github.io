@@ -6,19 +6,14 @@ comments: true
 categories: [tutorial]
 tags: [data-cleaning,classification,machine-learning]
 ---
-
-###  Problem statement:
-When dealing with large volumes of inbound data from multiple different sources the data recieved can often come in a variety of formats, structures and to varying standards. 
-One particularly challenging isssue is data files that, although representing the same type of information, feature a variety of different label and data formats. 
+When dealing with large volumes of inbound data files and from multiple different sources, the data recieved can often come in a variety of formats, structures and to varying standards. 
+One particularly challenging issue is data files that, although representing the same type of information, feature a variety of different label and data formats. 
 For instance, addresses coded with "Zip" or "Postal Code", "Street" or "Line 1" and "£1000", "£1 K", "GBP 1000" or "one thousand pounds".
 
-###  Machine Learning solution:
-To build a model that can ingest messy labelled data (i.e. missing and with variable field names) and to make predctions for what the data fields are.
+The Machine Learning solution is to build a model that can ingest messy labelled data (i.e. missing and with variable field names) and to make predctions for what the data fields are. 
+These models can then be integrated within data transformation pipelines to automatically or to make suggestions of the correct data labels. 
 
-
-*The script to recreate the open source and synthetic dataset used to train and test the model is documented in this Jupyter notebook [here]().
-
-
+*Jupyter notebooks to recreate the synthetic dataset and to train and test the model are avaliable in this [Git repo](https://github.com/bpostance/table.header.classifier)
 ```python
 # load packages
 import pandas as pd
