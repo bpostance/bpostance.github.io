@@ -9,37 +9,37 @@ Research and data scientist in risk and natural hazards, machine learning and na
 Currently working as a consultant at [Beazley](https://www.beazley.com/london_market.html).
 
 #### Experience:
-  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017  - present
-  - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014  - 2016
-  - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012  - 2014
+   - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017   - present
+   - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014   - 2016
+   - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012   - 2014
 
 #### Education:
-  - **Loughborough University** 2014  - 2017
+   - **Loughborough University** 2014   - 2017
 	*PhD. Geography
 	Department of Geography and the Department of Civil Engineering.
 	In assoc with [British Geological Survey](https://www.bgs.ac.uk/).
 	Funded by [NERC](https://nerc.ukri.org/)*
-  - **University of Iceland** 2011
+   - **University of Iceland** 2011
 	*BSc. Geophysics (non award sandwich year)*
-  - **Coventry University** 2008  - 2012
+   - **Coventry University** 2008   - 2012
 	*1st Class BSc. Geography & Natural Hazards
 	Department of Geography*
 
 #### Skills & [Training](https://github.com/bpostance/training.doctoral_training):
-   - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
-   - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
-   - **University of Leeds** [Software Carpentry for Environmental Scientists](https://andreww.github.io/2016-01-18-leeds/)
-   - **Bournemouth University** [Agent Based Modelling](http://gotw.nerc.ac.uk/list_full.asp?pcode=NE%2FN000595%2F1&cookieConsent=A)
-   - **Strathclyde University** [Modelling structure and dynamics in complex networks](http://www.estradalab.org/wp-content/uploads/2015/10/BookChapter_11.pdf)
-   - **Durham University** [NESMO  - Numerical Modelling for Environmental Sciences](http://community.dur.ac.uk/nerc.modelling/)
-   - **Cranfield University** [Understanding and Communicating Environmental Risk Assessment](https://www.cranfield.ac.uk/courses/short/environment/understanding-and-communicating-environmental-risk-assessment)
-   - **Liverpool University** [Risk & Uncertainty]()
-   - [My stack overflow profile](https://stackexchange.com/users/5244883/benp?tab=accounts)
+    - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
+    - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
+    - **University of Leeds** [Software Carpentry for Environmental Scientists](https://andreww.github.io/2016-01-18-leeds/)
+    - **Bournemouth University** [Agent Based Modelling](http://gotw.nerc.ac.uk/list_full.asp?pcode=NE%2FN000595%2F1&cookieConsent=A)
+    - **Strathclyde University** [Modelling structure and dynamics in complex networks](http://www.estradalab.org/wp-content/uploads/2015/10/BookChapter_11.pdf)
+    - **Durham University** [NESMO   - Numerical Modelling for Environmental Sciences](http://community.dur.ac.uk/nerc.modelling/)
+    - **Cranfield University** [Understanding and Communicating Environmental Risk Assessment](https://www.cranfield.ac.uk/courses/short/environment/understanding-and-communicating-environmental-risk-assessment)
+    - **Liverpool University** [Risk & Uncertainty]()
+    - [**Stack Overflow**](https://stackexchange.com/users/5244883/benp?tab=accounts)
   
 
 #### Tools:
-   - Python: scikit-learn, numpy, pandas, PyTorch,...
-   - SQL, Elasticsearch (ELK), Keras, Tensorflow, Spark,...
+    - Python: scikit-learn, numpy, pandas, PyTorch,...
+    - SQL, Elasticsearch (ELK), Keras, Tensorflow, Spark,...
   
 #### Publications:
 - [**Comparing threshold definition techniques for rainfall‐induced landslides: A national assessment using radar rainfall.**](https://onlinelibrary.wiley.com/doi/pdf/10.1002/esp.4202)
