@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "Classifying Column Headers"
+title:  "Machine Learning model to classify column headers for data cleaning tasks"
 date:   2019-08-27 18:00:00 +0000
 comments: true
 categories: [tutorial]
 tags: [data-cleaning,classification,machine-learning]
 ---
-# Zero2Basic: Building a classification model to predict column headers for data cleaning tasks.
 
 ###  Problem statement:
 When dealing with large volumes of inbound data from multiple different sources the data recieved can often come in a variety of formats, structures and to varying standards. 

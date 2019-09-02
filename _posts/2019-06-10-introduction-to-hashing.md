@@ -7,10 +7,7 @@ date:   2019-06-10 20:00:01 +0000
 categories: [tutorial]
 tags: [data-mining,data-cleaning,hash-functions]
 ---
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-# Zero2Basic - Hash Functions
-This post is intended to provide a quick introduction to hash functions and to discuss some practical applications of hashes in data mining and machine learning. As with my other Zero2Basic posts my aim is to provide a basic level of understanding of the concept and to demonstrate a real world use case.
+This post is intended to provide a quick introduction to hash functions and to discuss some practical applications of hashes in data mining and machine learning. The aim of this post is to provide a basic level of understanding of the concept and to demonstrate a real world use case.
 
 Want to cut to the chase?<br>
 Heres how to implement a variety of common hash functions using [hashlib](https://docs.python.org/3/library/hashlib.html) in Python.
@@ -324,3 +321,5 @@ I hope that you enjoyed this post. We have covered: the principles of hash funct
  
 ### Public Service Announcement on the internal python **hash()**
 Whilst this worked in Python 2 this **does not work** in Python 3 as the hash() function is randomly [seeded](https://stackoverflow.com/a/42089311/4538066) on each invocation.
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
