@@ -318,10 +318,6 @@ vectorizer = TfidfVectorizer(analyzer='char',
 X_vect = vectorizer.fit_transform(Xy['X'].astype(str).str.encode('utf-8'))
 #print(X_vect.shape)
 
-## test on single string
-# test = vectorizer.transform(['ben@hotmail.com'])
-# pd.DataFrame(data = test.todense(), columns=vectorizer.get_feature_names())
-
 X_vect_df = pd.DataFrame(data = X_vect.todense(), columns=vectorizer.get_feature_names())
 Xy_vect = Xy.merge(X_vect_df,how='left',left_index=True,right_index=True).copy()
 #Xy_vect[['X','£']].loc[Xy_vect['X'].str.contains('£')==True]
