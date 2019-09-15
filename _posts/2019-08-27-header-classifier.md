@@ -899,7 +899,7 @@ plt.tight_layout()
 ![png]({{ "/assets/images/2019-08-27-header-classifier-fig2.png" }})
 
 
-Thats all folks.<BR>
+That's all folks.<BR>
 Thank you for reading.
 
 Ben Postance
