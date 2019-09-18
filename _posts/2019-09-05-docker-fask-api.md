@@ -4,7 +4,7 @@ title:  "Docker Containers: a simple Rest API using Python Flask"
 date:   2019-09-05 18:00:00 +0000
 comments: true
 categories: [tutorial]
-tags: [rest-api,docker,containers,gunicorn]
+tags: [rest-api,docker,containers,gunicorn,anaconda]
 ---
 You've conducted your research, analysed the data, built models, and packaged everything up in a user friendly application that is ready to be shared and published within your research community and beyond. 
 
