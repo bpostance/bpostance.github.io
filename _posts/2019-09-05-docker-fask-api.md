@@ -114,10 +114,13 @@ if __name__ == "__main__":
 
 You can run your app directly in several ways:
 1. directly in python. allows debugging. 
+
 ```
 $python flask-api.py
  * Serving Flask app "flask-api" (lazy loading)```
+ 
 2. or using Flask's builtin server.
+
 ```
 $ export FLASK_APP=flask-api.py
 $ flask run
