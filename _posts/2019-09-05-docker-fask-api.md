@@ -13,7 +13,7 @@ There's just one problem. Whilst your models and application run fine on your ow
 Containers solve this problem by packaging up all of the software, settings and code used to execute and application within a single and sharable [Docker Container](https://www.docker.com/resources/what-container). In addition, containerization enables a wide variety of different operating systems and environments to be used from a single underlying host's operating system and infrastructure.
 
 
-![png]({{ "assets/images/2019-09-05-docker-containers-fig1.png"}})
+![png]({{ "assets/images/2019-09-05-docker-containers-fig1.png" }})
 
 This post demonstrates how to setup a simple Docker container to host a Flask API application. The code is avaliable in this [repo](https://github.com/bpostance/training.docker).
 
