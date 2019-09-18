@@ -45,7 +45,7 @@ Our app has a simple structure.
 ```
 There are few new files and terms in here that are explained below. 
 
-## The Flask App
+## flask-api.py
 Flask is a lightweight framework for building web applications. If you're new check out the [quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/#quickstart).
 
 Lets define some requirements for our app:
@@ -127,7 +127,7 @@ $ flask run
  * Running on http://0.0.0.0:5000/
 ```
 
-### Application Server
+## serve.sh
 Our app runs fine locally for debugging but this wont fly in production. 
 Web applications generally require:
  - **A web server (like nginx).** The web server accepts requests, takes care of general domain logic and takes care of handling https connections. 
@@ -152,7 +152,7 @@ The arguments: change source directory to '/app', bind a server socket '5000', a
 exec gunicorn --chdir app  -b :5000 flask-api:app
 ```
 
-### Python environment.yml
+## environment.yml
 Nothing fancy here i'm using [Conda](https://docs.conda.io/en/latest/) but you could also use pip virtualenv.
 ```
 name: base
@@ -164,7 +164,7 @@ dependencies:
 - gunicorn
 ```
 
-### Dcokerfile
+## Dockerfile
 This is the file that we pass to Docker and lists the instructions used to build and execute our container.
 In a similar fashion to Git, Docker Hub hosts official and community developed Docker images for popular operating systems and deployments.
 Here we use a [debian/miniconda environment from contiuumio](https://hub.docker.com/r/continuumio/miniconda/). You can even check out the [Dockerfile](https://hub.docker.com/r/continuumio/miniconda/dockerfile) to see how this image itself is built.
@@ -210,7 +210,7 @@ EXPOSE 5000
 ENTRYPOINT ["./serve.sh"]
 ```
 
-### Build & Run docker 
+## Build & Run docker 
 This last file brings everything together in Docker. 
 
 To run this file you will need to be within the project root /conda-flask-api. 
