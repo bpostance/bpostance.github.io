@@ -135,10 +135,11 @@ Web applications generally require:
  - **The application.**
 
 Here we are only going to worry about our Application Server and our App. This post isn't intended to explain web servers and requests, however see [this SO answer](https://serverfault.com/a/331263) if you're interested and want to learn more.
-For the Application Server we will use [Gunicorn](https://gunicorn.org/) is more robust than Flasks internal debugging server we used above, it helps to:
+
+For the Application Server we will use [Gunicorn](https://gunicorn.org/). It is more robust than Flasks internal debugging server we used above in that it:
  - host files
- - handle conncetions
- - manage server errors and issues
+ - handles conncetions
+ - manages server errors and issues
  - improves scalability
 
 Here's the script that run's our flask-api app in gunicorn. 
