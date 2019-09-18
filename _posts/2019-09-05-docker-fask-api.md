@@ -35,7 +35,7 @@ $ docker ps -a
 ## Create a project directory
 Our app has a simple structure. 
 ```
-├── my_app
+├── conda-flask-api
 │   ├── start.ps1      		<- Windows powershell to build and run our docker
 │   ├── Dockerfile     		<- Instructions to build our container
 │   ├── environment.yml		<- Conda environment.yml
@@ -124,7 +124,6 @@ $ flask run
  * Running on http://0.0.0.0:5000/
 ```
 
-
 ### Application Server
 Our app runs fine locally for debugging but this wont fly in production. 
 Web applications generally require:
@@ -139,7 +138,8 @@ For the Application Server we will use [Gunicorn](https://gunicorn.org/) is more
  - manage server errors and issues
  - improves scalability
 
-Here's the code to run our app in gunicorn. Nice and simple we, change directory to /app, bind a server socket, and assign our "flask-api" as the generic "app".
+Here's the script that run's our flask-api app in gunicorn. 
+The arguments: change source directory to '/app', bind a server socket '5000', and assign our "flask-api" as the generic "app".
 
 ```
 # serve.sh
@@ -147,6 +147,101 @@ Here's the code to run our app in gunicorn. Nice and simple we, change directory
 # run with gunicorn (http://docs.gunicorn.org/en/stable/run.html#gunicorn)
 exec gunicorn --chdir app  -b :5000 flask-api:app
 ```
+
+### Python environment.yml
+Nothing fancy here i'm using [Conda](https://docs.conda.io/en/latest/) but you could also use pip virtualenv.
+```
+name: base
+channels:
+- defaults
+dependencies:
+- python=3.7
+- flask
+- gunicorn
+```
+
+### Dcokerfile
+This is the file that we pass to Docker and lists the instructions used to build and execute our container.
+In a similar fashion to Git, Docker Hub hosts official and community developed Docker images for popular operating systems and deployments.
+Here we use a [debian/miniconda environment from contiuumio](https://hub.docker.com/r/continuumio/miniconda/). You can even check out the [Dockerfile](https://hub.docker.com/r/continuumio/miniconda/dockerfile) to see how this image itself is built.
+
+```
+# pull the image from docker hub
+FROM continuumio/miniconda3:latest
+
+# adds metadata to an image
+LABEL MAINTAINER="Ben Postance"
+LABEL GitHub="https://github.com/bpostance/training.docker"
+LABEL version="0.0"
+LABEL description="A Docker container to serve a simple Python Flask API"
+
+## Override the default shell (not supported on older docker, prepend /bin/bash -c )
+SHELL ["/bin/bash", "-c"]
+
+# Set WORKDIR - the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile
+WORKDIR /home/flask-api
+
+# COPY - copies files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
+COPY environment.yml ./
+
+# ADD - "adds" directories and their contents to the container
+ADD app ./app
+
+# chmod - modifies the boot.sh file so it can be recognized as an executable file.
+COPY serve.sh ./
+RUN chmod +x serve.sh
+
+# conda set-config and create environment based on .yml
+# chain seperate multi-line commands using '&& \'
+RUN conda env update -f environment.yml
+
+# set env variables
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate" >> ~/.bashrc
+
+# EXPOSE - informs Docker that the container listens on the specified network ports at runtime
+EXPOSE 5000
+
+# ENTRYPOINT - allows you to configure a container that will run as an executable.
+ENTRYPOINT ["./serve.sh"]
+```
+
+### Build & Run docker 
+This last file brings everything together in Docker. 
+
+To run this file you will need to be within the project root /conda-flask-api. 
+First, docker build and tag your image. The standard format is "type/name:version".
+The "." references the "./Dockerfile".
+
+When you run Docker build docker will print step by step information and raise any issues in the terminal. When getting started it can be helpful to add additional prints to see exactly what docker is doing e.g. "RUN pwd", "RUN ls" etc.
+
+```
+# docker build
+docker build -t demo/flask-api:0.0 .
+```
+
+and to run the container:
+
+```
+# docker run
+# --name assign name for ease of reference
+# -d to run in detached mode
+# -p to bind container:local ports
+# tag of the container to run
+docker run --name demo-flask-api -d -p 5000:5000 demo/flask-api:0.0
+```
+
+Now when you inspect running dockers you will see your container.
+```
+$ docker ps                                                                 
+
+CONTAINER ID        IMAGE                COMMAND             CREATED             STATUS              PORTS                    NAMES
+6d4ea8c141df        demo/flask-api:0.1   "./serve.sh"        52 seconds ago      Up 51 seconds       0.0.0.0:5000->5000/tcp   demo-flask-api    
+```
+
+And visit http://localhost:5000/ or http://localhost:5000/api?value=2 to visit your api.
+
+Et Voila. 
 
 
 That's all folks<BR>
