@@ -243,9 +243,7 @@ CONTAINER ID        IMAGE                COMMAND             CREATED            
 6d4ea8c141df        demo/flask-api:0.1   "./serve.sh"        52 seconds ago      Up 51 seconds       0.0.0.0:5000->5000/tcp   demo-flask-api    
 ```
 
-And visit http://localhost:5000/ or http://localhost:5000/api?value=2 to visit your api.
-
-Et Voila. 
+And visit [http://localhost:5000/](http://localhost:5000/) or [http://localhost:5000/api?value=2](http://localhost:5000/api?value=2) to visit your api.
 
 
 That's all folks<BR>
