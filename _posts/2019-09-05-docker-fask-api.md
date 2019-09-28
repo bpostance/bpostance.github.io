@@ -18,6 +18,8 @@ Containers solve this problem by packaging up all of the software, settings and 
 This post demonstrates how to setup a simple Docker container to run an API using Python Flask. The code is avaliable in this [repo](https://github.com/bpostance/training.docker).
 
 ## Install Docker
+**These instructions are for Windows 10 OS.**
+**See [these instructions for Ubunut/Linux Mint 19 installation](https://computingforgeeks.com/install-docker-and-docker-compose-on-linux-mint-19/).**
 Create an account, download and install Docker Desktop for your operating system following the [official channel](https://www.docker.com/products/docker-desktop).
 Once installed you check some basics using the following commands. See the git repo readme and official docs for more. 
 
