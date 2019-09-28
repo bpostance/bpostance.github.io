@@ -15,7 +15,7 @@ Containers solve this problem by packaging up all of the software, settings and 
 
 ![png]({{ "/assets/images/2019-09-05-docker-containers-fig1.png" }})
 
-This post demonstrates how to setup a simple Docker container to run an API using Python Flask. The code is avaliable in this [repo](https://github.com/bpostance/training.docker).
+This post demonstrates how to setup a simple Docker container to run an API using Python Flask. The code is avaliable in this [repo](https://github.com/bpostance/training.docker-flask-api).
 
 ## Install Docker
 **These instructions are for Windows 10 OS.**
