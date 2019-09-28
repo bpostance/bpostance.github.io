@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Docker Containers: a simple Rest API using Python Flask"
+title:  "Docker part-1: containerizing a simple Rest API using Python Flask"
 date:   2019-09-05 18:00:00 +0000
 comments: true
 categories: [tutorial]
@@ -249,6 +249,8 @@ And visit [http://localhost:5000/](http://localhost:5000/) or [http://localhost:
 
 
 That's all folks<BR>
+I am writing a follow up post that explains how to use [docker-compose](https://docs.docker.com/compose/) to create multi-container applications.
+
 Thank you for reading.
 
 Ben Postance
