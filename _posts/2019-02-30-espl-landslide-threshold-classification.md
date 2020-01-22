@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Earth Surface Processes and Landforms: agent simulation of natural hazards in complex networks"
+title:  "Earth Surface Processes and Landforms: classficiation of rare events for landslide early warning systems"
 date:   2019-02-30 18:00:00 +0000
 comments: true
 categories: [paper]
