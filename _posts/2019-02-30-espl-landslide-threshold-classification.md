@@ -7,7 +7,7 @@ categories: [paper]
 tags: [natural-hazards,rainfall-thresholds,classification,decision-systems]
 ---
 
-![png]({{ "/assets/images/2019-06-30-espl-landslide-threshold-classification-fig1.png" }})
+![png]({{ "/assets/images/2019-02-30-espl-landslide-threshold-classification-fig1.png" }})
 
 Link to my 2018 paper in [ESPL](https://onlinelibrary.wiley.com/doi/full/10.1002/esp.4202).
 
