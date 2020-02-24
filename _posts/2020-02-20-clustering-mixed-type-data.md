@@ -13,6 +13,8 @@ This article focusses on theory, method and practical application of clustering 
 Cluster analysis (clustering) is the task of assigning sets of objects within a population in such a way that objects in the same group (cluster) are more similar to one another than to those in other clusters. Clustering is a form of unsupervised learning as the number, size and distribution of clusters is unknown a priori.
 Clustering can be applied to a variety of different problems and domains including: customer segmentation for retail sales and marketing, identifying higher or lower risk groups within [insurance portfolios](https://www.casact.org/pubs/dpp/dpp08/08dpp170.pdf), to finding [storm systems on Jupyter](https://astronomycommunity.nature.com/users/253561-ingo-waldmann/posts/48323-deep-learning-saturn), and even [galaxies far far away](https://arxiv.org/abs/1404.3097).
 
+*[all code is avaliable here](https://github.com/bpostance/training.data_science/blob/master/ML/2.3_Clustering/10-Clustering-Mixed-Data.ipynb)
+
 ***Aim:***
 *To define a strategy and method to cluster large datasets containing a variety of dataype's*
 
