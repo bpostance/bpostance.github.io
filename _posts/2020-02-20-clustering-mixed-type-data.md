@@ -6,18 +6,12 @@ comments: true
 categories: [tutorial]
 tags: [clustering,data-mining,dimension-reduction,decomposition]
 ---
-
-# Clustering on mixed data-types
-### 1. Introduction: 
-
-This article focusses on theory, method and practical application of clustering of datasets with mixed datatypes. Many real world datasets include combinations of numerical, ordinal (e.g. small, medium, large), and nomial (e.g. France, China, India) data features. Whereas many popular clustering algorithms such as Kmeans are suitable only for either numerical or categorical datatypes independantly. Sklearn provides and excellent [introduction to clustering](https://scikit-learn.org/stable/modules/clustering.html#clustering) methods. Lets begin.
-
-Cluster analysis (clustering) is the task of assigning sets of objects within a population in such a way that objects in the same group (cluster) are more similar to one another than to those in other clusters. Clustering is a form of unsupervised learning as the number, size and distribution of clusters is unknown a priori.
-
-Clustering can be applied to a variety of different problems and domains including: customer segmentation for retail sales and marketing, identifying higher or lower risk groups within [insurance portfolios](https://www.casact.org/pubs/dpp/dpp08/08dpp170.pdf), to finding [storm systems on Jupyter](https://astronomycommunity.nature.com/users/253561-ingo-waldmann/posts/48323-deep-learning-saturn), and even [galaxies far far away](https://arxiv.org/abs/1404.3097).
-
 ![png]({{ "/assets/images/2020-02-20-clustering-fig1.png" }})
 
+***Introduction***
+This article focusses on theory, method and practical application of clustering of datasets with mixed datatypes. Many real world datasets include combinations of numerical, ordinal (e.g. small, medium, large), and nomial (e.g. France, China, India) data features. Whereas many popular clustering algorithms such as Kmeans are suitable only for either numerical or categorical datatypes independantly. Sklearn provides and excellent [introduction to clustering](https://scikit-learn.org/stable/modules/clustering.html#clustering) methods. Lets begin.
+Cluster analysis (clustering) is the task of assigning sets of objects within a population in such a way that objects in the same group (cluster) are more similar to one another than to those in other clusters. Clustering is a form of unsupervised learning as the number, size and distribution of clusters is unknown a priori.
+Clustering can be applied to a variety of different problems and domains including: customer segmentation for retail sales and marketing, identifying higher or lower risk groups within [insurance portfolios](https://www.casact.org/pubs/dpp/dpp08/08dpp170.pdf), to finding [storm systems on Jupyter](https://astronomycommunity.nature.com/users/253561-ingo-waldmann/posts/48323-deep-learning-saturn), and even [galaxies far far away](https://arxiv.org/abs/1404.3097).
 
 ***Aim:***
 *To define a strategy and method to cluster large datasets containing a variety of dataype's*
