@@ -407,7 +407,7 @@ Common distance metrics include:
  - [$Gower$ $distance$](https://www.jstor.org/stable/2528823?seq=1) was proposed to measure dissimilarity between subjects with mixed types of variables using the mathematical concept of distance.
  - [R docs](https://rdrr.io/cran/gower/api)
  
-By transforming and scaling our features we can in theory apply either metric. However, the formula for Gower handlse mixed datatypes. See the [Python Gower](https://www.thinkdatascience.com/post/2019-12-16-introducing-python-package-gower/) package.
+By transforming and scaling our features we can in theory apply either metric. However, the formula for Gower handles mixed datatypes. See the [Python Gower](https://www.thinkdatascience.com/post/2019-12-16-introducing-python-package-gower/) package. Also note that the Python Gower packge performins [MinMax / 0-1 scaling](https://github.com/wwwjk366/gower/blob/master/gower/gower_dist.py) of numerical features for you.
 
 
 ```python
