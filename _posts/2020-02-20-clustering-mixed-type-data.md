@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to cluster mixed datatype datasets"
+title:  "A guide to clustering large datasets with mixed data-types"
 date:   2020-02-20 18:00:00 +0000
 comments: true
 categories: [tutorial]

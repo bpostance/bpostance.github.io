@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Docker part-1: containerizing a simple Rest API using Python Flask"
+title:  "How to containerize a simple Rest API using Python Flask"
 date:   2019-09-05 18:00:00 +0000
 comments: true
 categories: [tutorial]
