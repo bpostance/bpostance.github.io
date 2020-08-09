@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 priority: 0.9
 ---
-Research and data scientist in risk and natural hazards, machine learning and natural language processing. 
-Currently working as a consultant at Lloyd's of London specialty underwriter [Beazley Ltd](https://www.beazley.com/london_market.html).
+Lead Data Scientist. Experience in establishing and building data science teams, forming and executing data science strategy, and delivering centric customer data products. Research expertise in risk and natural hazards, machine learning and natural language processing.
 
 
 ### Experience:
-  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - present
+  - Lead Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2019 - present
+  - Data Scientist, [Beazley](https://www.beazley.com/london_market.html), 2017 - 2019
+  - Research Scientist, [Loughborough University], 2014-2017
   - Meteorological & Geospatial Consultant, [Vaisala](https://www.vaisala.com/en), 2014 - 2016
   - GIS Analyst, [Vaisala](https://www.vaisala.com/en), 2012 - 2014
 
