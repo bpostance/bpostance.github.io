@@ -15,16 +15,17 @@ Following the Modern Portfolio Theory model [(Markowitz 1957)](https://pubsonlin
 
 *Given a fixed quantity of money (say $1000), how much should we invest in a series of stocks so as to (a) have a one month expected return of at least a given threshold, and (b) minimize the risk (variance) of the portfolio return.*
 
-## Solution using Monte Carlo
+### Solution using Monte Carlo
 Monte Carlo (MC) based solutions encompass a wide array of algorithms that exploit repeat random sampling and uncertainty to solve large, complex and generally intractable mathematical problems. MC is akin to exhaustive search type solutions. However in MC framed problems, the input model parameters, initial, boundary and environmental conditions are unknown and or subject to a degree of uncertainty. Therefore a true exahuastive search is not possible. The aim of MC is to conduct repeat random sampling of the input space to generate large numbers (e.g. $n$ = 100,000) of "plausible realities" from which metrics, risk analyses, and further assessments are drawn. Thus one of the most challenging aspects of the monte carlo method is in determining accuracte covariances and probability distributions of the input parameter space.
 
 Lets make some simplifying assumptions:
- - We have \\$1000 to invest.
+ - We have \\$1000 to invest $V$.
  - The risk-free rate is 0.03 (3 %). This is the return we can garuntee by instead putting our money in a savings account.
  - Stocks have a known and fixed starting price. 
  - The monthly returns of a stock follow a standard normal distribution.
 
 ***Stocks***
+
 First let's define some stocks that are avaliable to invest in. For simplicity the stocks are heuristically assignined with a range of average daily return $mu$ and volatility $sigma$ values. For a more realistic simulation, one could derive these values from actual investment instruments. The average return and volatility of each stock is summarised in the table and figure 1.
 
 <div>
@@ -115,9 +116,9 @@ First let's define some stocks that are avaliable to invest in. For simplicity t
 
 ![png]({{ "/assets/images/2020-08-04-portfolios-fig1.png" }})
 
-***Monte Carlo Portfolio's***
+***Random Portfolio's***
 
-The second step is to generate random portfolios of value $V$. Method is adapted from this [SO](https://stackoverflow.com/a/36818198/4538066) answer, but is not optimal. 
+The second step is to generate random portfolios of value upto a maximum value of $$V$$, the total funds avaliable to invest. The method applied is adapted from this [SO](https://stackoverflow.com/a/36818198/4538066) answer but is not optimal in terms of performance.
 
 
 ```python
@@ -153,8 +154,7 @@ for p in range(pmax):
     mc_portfolio_runs.append(df)
 ```
 
-    Investment: $1000.00
-    4999/5000
+Here we can see the investments in portfolio 0.
 
 
 <div>
@@ -215,6 +215,7 @@ for p in range(pmax):
 
 
 ***Balanced Portfolio***
+
 We also create A balanced portfolio. This provides a usefull benchamrk and represents the strategy of investing in each stock equally.
 
 <div>
@@ -330,6 +331,7 @@ We also create A balanced portfolio. This provides a usefull benchamrk and repre
 
 
 ***Calculate Portfolio Risk & Return***
+
 Third, we define and execute a function to calculate the return, risk, and Sharpe ratio of each random portfolio and the balance portfolio. The [Sharpe ratio](https://www.investopedia.com/terms/s/sharperatio.asp) is defined as the return earned in excess of the risk free rate (e.g. fixed rate saving account).
 
 ```python
@@ -364,9 +366,10 @@ summary['Balanced'],_ = portfolio_returns(balanced_portfolio)
 ```
 
 ***Results***
+
 Figure 2 below illustrates the results and relationship between each randomised portfolios (grey dots) risk and investment return (%). The orange dot is the balance portfolio. 
 
-![png]({{ "/assets/images/2020-08-04-portfolios-fig1.png" }})
+![png]({{ "/assets/images/2020-08-04-portfolios-fig2.png" }})
 
 The green dot is the portfolio with the greatest Sharpe ratio, that is the portfolio with lowest risk in relation to the level of return in excess of the risk free rate. We see that this portfolio has a blend of investments in "Deep Impact" 9%  and "Jumanji Inc" 81 %.
 
@@ -439,6 +442,7 @@ mc.loc[mc['p']==summary['MonteCarlo'].sharpe.idxmax()]
 
 
 ***Conclusion***
+
 - This method applies monte carlo (i.e. exhaustive search) to calculate a large number of randomised investment portfolios. 
 - Risk, Return, and Sharpe measures are calculated for each of the random portfolios, and for a balanced portfolio (i.e. equal allocation portfolio assuming no knowledge of where to invest). 
 - An optimal portfolio is identified using the maximum Sharpe ratio that maximises returns whilst minimising risk.
