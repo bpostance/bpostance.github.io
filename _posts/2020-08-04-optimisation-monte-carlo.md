@@ -449,6 +449,10 @@ mc.loc[mc['p']==summary['MonteCarlo'].sharpe.idxmax()]
 - Increasing the number of randomised portfolios increases the chances of identifying an optimal portfolio. 
 - However, finding the optimal portfolio is not garunteed. The likelihood of identifying the most optimal portfolio decreases with increasing number of investment options, and higher degrees of uncertainty of the investment returns and variances.
 
+
+Thank you for reading. Next time I will run through a more sophisticated optimisation technique using Machine Learning. You can find the code to replicate the above analysis on my [Github account here](https://github.com/bpostance/training.data_science/blob/master/optimization/investments/00-portfolio-optimisation-monte-carlo-v0.0.ipynb)
+
+
 ***References:***
 
 - https://towardsdatascience.com/optimization-with-python-how-to-make-the-most-amount-of-money-with-the-least-amount-of-risk-1ebebf5b2f29
