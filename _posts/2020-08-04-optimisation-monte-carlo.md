@@ -7,15 +7,14 @@ categories: [tutorial]
 tags: [optimisation,monte-carlo]
 ---
 
+<img src="https://cdn-images-1.medium.com/max/1000/1*QBQXfHZxYzAsbZGqAxa9nw.jpeg" width="500" height="500" />
+
 # Portolio Optimisation
 ***Problem statement***
 
 *Given a fixed amount of avliable resources, optimise allocation to maximise returns across a set of products with variable returns.*
 
-<img src="https://cdn-images-1.medium.com/max/1000/1*QBQXfHZxYzAsbZGqAxa9nw.jpeg" width="500" height="500" />
-
-
-Following the Markowitz model, we can formulate this problem as:
+Following the Markowitz model (see image above) we can formulate this problem as:
 
 *Given a fixed quantity of money (say $1000), how much should we invest in a series of stocks so as to (a) have a one month expected return of at least a given threshold, and (b) minimize the risk (variance) of the portfolio return.*
 
