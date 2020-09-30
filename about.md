@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-priority: 0.9
+priority: 1.0
 ---
 Lead Data Scientist. Experience in establishing and building data science teams, forming and executing data science strategy, and delivering centric customer data products. Research expertise in risk and natural hazards, machine learning and natural language processing.
 

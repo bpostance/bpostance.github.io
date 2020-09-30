@@ -2,7 +2,7 @@
 layout: page
 title: Posts
 permalink: /posts/
-priority: 1.0
+priority: 0.5
 ---
 
 <ul>
