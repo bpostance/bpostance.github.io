@@ -11,9 +11,9 @@ tags: [geospatial-analysis,MODIS]
 
 The Moderate Resolution Imaging Spectroradiometer (MODIS) is an imaging sensor built by Santa Barbara Remote Sensing that was launched into Earth orbit by NASA in 1999 on board the Terra (EOS AM) satellite, and in 2002 on board the Aqua (EOS PM) satellite. The instruments capture data in 36 spectral bands and has a 2,330-km-wide viewing swath, seeing every point on earth every 1-2 days.
 
-Given its wide spectral band, high frequency and temporal coverage MODIS is used in a variety of applications. From measuring atmospheric variables including: cloud cover, the size of cloud droplets in both liquid water and ice particles, aerosols and pollution from natural and manmade sources like industry emmissions, dust storms, volcanic eruptions, and forest fires.
+Given its wide spectral band, high frequency and temporal coverage MODIS is used in a variety of applications. From measuring atmospheric variables including: cloud cover, the size of cloud droplets in both liquid water and ice particles, aerosols and pollution from natural and man-made sources like industry emissions, dust storms, volcanic eruptions, and forest fires.
 
-This notebook demonstrates how to: download MODIS data; extract metadata and data from native HDF files; and to transform HDF data to common downstream formats for prcessing, analysis and plotting. You can find the code on git [here](https://github.com/bpostance/training.data_engineering/blob/master/earth.observation/modis/00.ETL-MODIS.ipynb).
+This notebook demonstrates how to: download MODIS data; extract meta-data and data from native HDF files; and to transform HDF data to common downstream formats for processing, analysis and plotting. You can find the code on git [here](https://github.com/bpostance/training.data_engineering/blob/master/earth.observation/modis/00.ETL-MODIS.ipynb).
 
 
 ***Download a MODIS tile***
@@ -31,7 +31,7 @@ open(f'{tile}.hdf',"wb").write(r.content)
 
 ![png]({{ "/assets/images/2020-09-01-MODIS-fig2.jpg" }})
 
-HDF files are self describing - this means that all elements (the file itself, groups and datasets) can have associated metadata that describes the information contained within the element.
+HDF files are self describing - this means that all elements (the file itself, groups and datasets) can have associated meta-data that describes the information contained within the element.
 
 Rasterio is used to iterate through the layers contained in the HDF file. A condition is used to extract the spectral bands 1-7 data. 
 
@@ -105,7 +105,7 @@ plt.show()
 
 
 ***Write to GeoTiff***
-A new metadata description is created and used to write the stacked array to common GeoTiff format. The key changes are to update the driver variable to 'GTiff' and the count variable to the shape of the n-dimension array. In this case count is set to 7 for the seven spectral bands.
+A new meta-data description is created and used to write the stacked array to common GeoTiff format. The key changes are to update the driver variable to 'GTiff' and the count variable to the shape of the n-dimension array. In this case count is set to 7 for the seven spectral bands.
 
 ```python
 # prep metadata object
@@ -131,9 +131,9 @@ with rio.open(out_path, "w", **output_meta) as dest:
     dest.write(pre_fire_modis)
 ```
 
-***Load & Reproject GeoTiff CRS***
+***Load & Re-project GeoTiff CRS***
 
-To test that has worked the geotiff is re-loaded and plotted against some country boundaries. Geopandas has a convinient global country dataset for plotting.
+To test that has worked the geotiff is re-loaded and plotted against some country boundaries. Geopandas has a convenient global country dataset for plotting.
 
 ```python
 fig, ax = plt.subplots(figsize=(7,7))
@@ -150,9 +150,9 @@ ax.set_title(f"EPSG:{NA.crs.to_epsg()}");
 
 ![png]({{ "/assets/images/2020-09-01-MODIS-fig5.png" }})
 
-However, in order to plot our MODIS Bands1-7 GeoTiff we will need to reproject the data from EPSG:9122 to the same CRS EPSG:4326 as GeoPandas. We can do this using [rasterio](https://rasterio.readthedocs.io/en/latest/topics/reproject.html) (see also[ this guide from Earth Lab at University of Colorado, Boulder)](https://www.earthdatascience.org/courses/use-data-open-source-python/intro-raster-data-python/raster-data-processing/reproject-raster/).
+However, in order to plot our MODIS Bands1-7 GeoTiff we will need to re-project the data from EPSG:9122 to the same CRS EPSG:4326 as GeoPandas. We can do this using [rasterio](https://rasterio.readthedocs.io/en/latest/topics/reproject.html) (see also[ this guide from Earth Lab at University of Colorado, Boulder)](https://www.earthdatascience.org/courses/use-data-open-source-python/intro-raster-data-python/raster-data-processing/reproject-raster/).
 
-Altering CRS and reprojection is usefull for many geospatial analysis. The [OSGEO GDAL](https://gdal.org/) "*Geospatial Data Abstraction Library*" is another great tool for reprojection and QGIS provide a nice background on the topic [here](https://docs.qgis.org/3.10/en/docs/training_manual/vector_analysis/reproject_transform.html?highlight=reprojecting)
+Altering CRS and re-projection is useful for many geospatial analysis. The [OSGEO GDAL](https://gdal.org/) "*Geospatial Data Abstraction Library*" is another great tool for re-projection and QGIS provide a nice background on the topic [here](https://docs.qgis.org/3.10/en/docs/training_manual/vector_analysis/reproject_transform.html?highlight=reprojecting)
 
 
 ```python
