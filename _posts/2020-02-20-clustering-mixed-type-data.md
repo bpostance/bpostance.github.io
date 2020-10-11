@@ -6,7 +6,7 @@ comments: true
 categories: [tutorial]
 tags: [clustering,data-mining,dimension-reduction,decomposition]
 ---
-![png]({{ "/assets/images/2020-02-20-clustering-fig1.png" }})
+<img src="/assets/images/2020-02-20-clustering-fig1.png" alt="drawing" width="800" height="350"/>
 
 ***Introduction***
 

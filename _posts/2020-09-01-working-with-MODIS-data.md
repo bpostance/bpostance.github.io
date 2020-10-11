@@ -6,7 +6,7 @@ comments: true
 categories: [tutorial,datasets]
 tags: [geospatial-analysis,MODIS]
 ---
-![png]({{ "/assets/images/2020-09-01-MODIS-fig1.jpg" }})
+<img src="/assets/images/2020-09-01-MODIS-fig1.jpg" alt="drawing" width="800" height="350"/>
 
 
 The Moderate Resolution Imaging Spectroradiometer (MODIS) is an imaging sensor built by Santa Barbara Remote Sensing that was launched into Earth orbit by NASA in 1999 on board the Terra (EOS AM) satellite, and in 2002 on board the Aqua (EOS PM) satellite. The instruments capture data in 36 spectral bands and has a 2,330-km-wide viewing swath, seeing every point on earth every 1-2 days.
