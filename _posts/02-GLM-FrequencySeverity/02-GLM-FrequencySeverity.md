@@ -1,24 +1,90 @@
----
-layout: post
-title:  "A deep dive on GLM's in frequency severity models"
-date:   2020-05-17 18:00:00 +0000
-comments: true
-categories: [tutorial]
-tags: [glm,insurance,monte carlo]
----
-<img src="/assets/images/2020-05-17-glm-fig1.png" alt="drawing" width="800" height="350"/>
+<img src="glm-plot.png" width="400" height="400">
+
+# GLM Deep Dive
+## Frequency Severity modelling
+
+This notebook is a deep dive into [General Linear Models (GLM's)](https://online.stat.psu.edu/stat504/node/216/) with a focus on the GLM's used in insurance risk modeling and pricing ([Yan, J. 2010)](https://www.casact.org/education/rpm/2012/handouts/Session_4738_presentation_1068_0.pdf).I have used GLM's before including: a Logistic Regression for landslide geo-hazards (([Postance, 2017](https://onlinelibrary.wiley.com/doi/full/10.1002/esp.4202))), for modeling extreme rainfall and developing catastrophe models ([Postance, 2017](https://scholar.google.co.uk/scholar?oi=bibs&cluster=13784644545966658880&btnI=1&hl=en)). The motivation for this post is to develop a deeper knowledge of the assumptions and application of the models and methods used by Insurance Actuaries, and to better understand how these compare to machine learning methods.
 
 
+```python
+import urllib.request
+import shutil
+import pandas as pd
+import numpy as np
 
-This notebook is a deep dive into [General Linear Models (GLM's)](https://online.stat.psu.edu/stat504/node/216/) with a focus on the GLM's used in insurance risk modeling and pricing (Yan, J. 2010).I have used GLM's before including: a Logistic Regression for landslide geo-hazards (Postance, 2017), for modeling extreme rainfall and developing catastrophe models (Postance, 2017). The motivation for this post is to develop a deeper knowledge of the assumptions and application of the models and methods used by Insurance Actuaries, and to better understand how these compare to machine learning methods.
+from matplotlib import pyplot as plt
+plt.rcParams.update({'font.size': 12})
+import seaborn as sns
+from IPython.display import Image
+from IPython.core.display import HTML 
 
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from scipy import stats
+from patsy import dmatrices,dmatrix
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+```
 
 ### Case study dataset: motorcylce insurance
-The [Ohlsson dataset](https://cran.r-project.org/web/packages/insuranceData/insuranceData.pdf#Rfn.dataOhlsson.1) is from a former Swedish insurance company Wasa. The data includes aggregated  customer, policy and claims data for 64,548 motorcycle coverages for the period 1994-1998. The data is used extensively in actuarial training and syllabus worldwide [Ohlsson, (2010)](https://www.springer.com/gp/book/9783642107900#aboutBook).
+The [Ohlsson dataset](https://cran.r-project.org/web/packages/insuranceData/insuranceData.pdf#Rfn.dataOhlsson.1) is from a former Swedish insurance company Wasa. The data includes aggregated  customer, policy and claims data for 64,548 motocycle coverages for the period 1994-1998. The data is used extensively in actuarial training and sylabus worldwide [Ohlsson, (2010)](https://www.springer.com/gp/book/9783642107900#aboutBook).
 
 
-Variables include:
-- *data available [here](https://staff.math.su.se/esbj/GLMbook/case.html)*
+Variables inclde:
+ 1. (0:2) agarald - The owners age, between 0 and 99, a numeric vector.
+ 1. (2:3) kon - The owners sex,factor with levels K (female) M (male).
+ 1. (3:4) zon - Geographic zone numbered from 1 to 7, in a standard classification of all Swedish parishes, anumeric vector
+ 1. (4:5) mcklass - MC class, a classification by the so called EV ratio, defined as (Engine power in kW x100) / (Vehicle weight in kg + 75), rounded to the nearest lower integer. The 75 kg represents the average driver weight. The EV ratios are divided into seven classes, a numeric vector
+ 1. (5:7) fordald - Vehicle age, between 0 and 99, a numeric vector
+ 1. (7:8) bonuskl - Bonus class, taking values from 1 to 7. 
+  - A new driver starts with bonus class 1. For each claim free year the bonus class is increased by 1. 
+  - After the first claim the bonus is decreased by  2. The  driver  can  not  return  to  class  7  with  less  than  6  consecutive  claim  free  years,  a numeric vector
+ 1. (8:16) duration - the number of policy years, a numeric vector
+ 1. (16:20) antskad - the number of claims, a numeric vector
+ 1. (20:) skadkost - the claim cost, a numeric vector
+
+- *(n:n) are the columnar positions of the data*
+- *data avaliable [here](https://staff.math.su.se/esbj/GLMbook/case.html)*
+
+
+```python
+# read or get file
+file_name='mccase.txt'
+
+try: 
+    file = open(file_name,'r')
+except:
+    url = 'https://staff.math.su.se/esbj/GLMbook/mccase.txt'
+    # Download the file from `url` and save it locally under `file_name`:
+    with urllib.request.urlopen(url) as response, open(file_name, 'wb') as out_file:
+        shutil.copyfileobj(response, out_file)
+    file = open(file_name,'r')
+
+# load file
+dat = list()
+for line in file.readlines():
+    dat.append([line[:2],line[2:3],line[3:4],line[4:5],line[5:7],line[7:8],line[8:16],line[16:20],str(line[20:]).replace('\n','')])
+file.close()
+df = pd.DataFrame(dat,columns=['Age','Sex','Geog','EV','VehAge','NCD','PYrs','Claims','Severity'])
+df = df.astype({'Age':float,'Sex':'category','Geog':'category','EV':'category',
+                'VehAge':int,'NCD':'category','PYrs':float,'Claims':int,'Severity':float}).copy()
+
+# PYrs is the fraction of compelete policy years 
+# there are some policies with 0.0 duration (1/365 = 0.00274 = 1 day)
+# set these to 1 day
+df.loc[df['PYrs']==0.0,'PYrs'] = 1.0/365.0
+
+# single claim frequency indicator
+df['Claim'] = (df['Claims']>=1).astype(int)
+
+# avg severity
+df['SeverityAvg'] = (df['Severity'] / df['Claims']).fillna(0.0)
+
+pd.DataFrame({'dtype':df.dtypes,'null':df.isnull().sum(),'nunique':df.nunique()})
+```
+
+
+
 
 <div>
 <style scoped>
@@ -118,7 +184,14 @@ Variables include:
 
 ### EDA
 
-All data: low number of claims and frequency (1% freq)
+- low number of claims and frequency (1% freq)
+
+
+```python
+df.describe()
+```
+
+
 
 
 <div>
@@ -235,7 +308,13 @@ All data: low number of claims and frequency (1% freq)
 
 
 
-Claims data: 
+
+```python
+claims = df.loc[df['Claims']!=0]
+claims.describe()
+```
+
+
 
 
 <div>
@@ -351,15 +430,46 @@ Claims data:
 </div>
 
 
-Claims and losses by each variable:
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig7_0.png"}})
+```python
+fig,axs=plt.subplots(3,4,figsize=(12,12),sharey=False)
+
+# claim proportions by category
+for ax,feat in zip(axs.flatten()[:4],df.select_dtypes(include='category').columns):
+    ((pd.crosstab(df['Claim'],df[feat])) /
+                    (pd.crosstab(df['Claim'],df[feat]).sum())).T.plot.bar(stacked=True,ax=ax,legend=False,title=None)
+    ax.set_title(feat)
+    ax.set_ylim(0.7,1)
+    ax.set_yticks([])
+axs[0,0].set_yticks(np.arange(0.7,1.0,0.1))
+axs[0,0].set_ylabel('Claim porportion per group')
+
+# severity by category
+for col,ax in zip(df.select_dtypes(include='category').columns,axs.flatten()[4:]):
+    sns.boxplot(x=col,y='Severity',data=claims,ax=ax)
+    ax.set_yticks([])
+    ax.set_ylabel('')
+
+# severity by continuous
+for col,ax in zip(['Age','VehAge','PYrs'],axs.flatten()[8:]):
+    sns.scatterplot(x=col,y='Severity',data=claims,ax=ax)
+    ax.set_yticks([])
+    ax.set_ylabel('')
+
+for ax in axs[1:3,0]:
+    ax.set_ylabel('Severity')
+    ax.set_yticks(np.arange(0,4e5,5e4))
+```
 
 
-### Modeling
+![png](output_7_0.png)
 
-***Train-Test split***
+
+### Modelling
+- StatsModels (SM) uses patsy [formula notation](https://www.statsmodels.org/devel/example_formulas.html).
+- This includes: [notation for categorical variables ](https://www.statsmodels.org/devel/contrasts.html), setting [reference/base levels](https://stackoverflow.com/a/22439820/4538066), [encoding options](https://www.statsmodels.org/devel/contrasts.html), and [operators](https://www.statsmodels.org/devel/example_formulas.html#categorical-variables).
+
 
 ```python
 # train-test splits stratifies on claims
@@ -387,21 +497,21 @@ print(f"Severity\nTrain:\t{len(train_severity)}\t{a}\t${b}\nTest:\t{len(test_sev
     
     
 
-### *Claim Frequency*
+### $Claim Frequency$
 
-For predicting the occurrence of a single claim (i.e. binary classification) one can use the Binomial distribution (a.k.a Bernoulli trial or coin-toss experiment).
+For predicting the occurence of a single claim (i.e. binary classification) one can use the Binomial distribution (a.k.a Bernoulli trial or coin-toss experiment).
 
-When predicting claim counts or frequency, $Y$, a model that produces Poisson distributed outputs is required. For instance, a Poisson model is suitable for estimating the number of insurance claims per policy per year, or to estimate the number of car crashes per month. 
+When predicting claim counts or frequency, $Y$, a model that prodices Poisson distributed outputs is required. For instance, a Poisson model is suitable for estimating the number of insurance claims per policy per year, or to estimate the number of car crashes per month. 
 
 The key components and assumptions of a Poisson distributed process are: 
- 1. event occurrence is independent of other events. 
+ 1. event occurence is independant of other events. 
  1. events occur within a fixed period of time.
  1. the mean a variance of the distribution are equal e.g. $mu(X) = Var(X) = λ$
  
 [*STAT 504: Poisson Distribution*](https://online.stat.psu.edu/stat504/node/57/)
 
 
-If the mean and variance are unequal the distribution is said to be over-dispersed (var > mean) or under-dispersed (var < mean). Over-dispersion commonly arises in data where there are large number of zero's (a.k.a [zero-inflated](https://en.wikipedia.org/wiki/Zero-inflated_model)).
+If the mean and variance are unequal the distribution is said to be over-disperesed (var > mean) or under-dispersed (var < mean). Over-dispersion commonly arises in data where there are large number of zero's (a.k.a [zero-inflated](https://en.wikipedia.org/wiki/Zero-inflated_model)).
 
 In the case of zero-inflated data, it is "*A sound practice is to estimate both Poisson and negative binomial models.*" [*Cameron, 2013*](http://faculty.econ.ucdavis.edu/faculty/cameron/racd2/). Also see this practical example for [beverage consumption in pdummy_xyhon](https://dius.com.au/2017/08/03/using-statsmodels-glms-to-model-beverage-consumption/)
 
@@ -411,8 +521,9 @@ For more information on link-functions see also [here](https://bookdown.org/cast
 
 ![link functions](https://i0.wp.com/www.theanalysisfactor.com/wp-content/uploads/2016/12/StataCombos-CM2-Blog-JM.png?w=535&ssl=1)
 
+Lastly, for any form of count prediction model one can also set an offset or exposure. 
 
-Lastly, for any form of count prediction model one can also set an offset or exposure. An offset, if it is known, is applied in order to account for the relative differences in exposure time for of a set of inputs. For example, in insurance claims we might expect to see more claims on an account with 20 years worth of annual policies compared to an account with a single policy year. Offsets account for the relative exposure, surface area, population size, etc and is akin to the relative frequency of occurrence (*Claims/years*). See these intuitive SO answers [here](https://stats.stackexchange.com/questions/232666/should-i-use-an-offset-for-my-poisson-glm), [here](https://github.com/statsmodels/statsmodels/issues/1486#issuecomment-40945831), and [here](https://stats.stackexchange.com/questions/25415/using-offset-in-binomial-model-to-account-for-increased-numbers-of-patients).
+An offset, if it is known, is applied in order to account for the relative differences in exposure time for of a set of inputs. For example, in insurance claims we might expect to see more claims on an account with 20 years worth of annual policies compared to an account with a single policy year. Offsets account for the relative exposure|surface area|population size|etc and is akin to the relative frequency of occurence ($Claims/years$). See these intuititve SO answers [here](https://stats.stackexchange.com/questions/232666/should-i-use-an-offset-for-my-poisson-glm), [here](https://github.com/statsmodels/statsmodels/issues/1486#issuecomment-40945831), and [here](https://stats.stackexchange.com/questions/25415/using-offset-in-binomial-model-to-account-for-increased-numbers-of-patients).
 
 
 ```python
@@ -426,20 +537,19 @@ print(f'mu =  {mu:.4f}\nvar = {var:.4f}')
     var = 0.0115
     
 
-Here we observe an over-dispersed zero-inflated case as the variance of claim occurrence ($v=0.0115$) exceeds its mean ($mu=0.0108$).
+Here we observe an over-dispersed zero-inflated case as the variance of claim occurence ($v=0.0115$) exceeds its mean ($mu=0.0108$).
 
 As suggested in Cameron (2013) we should therefore try both $Poisson$ and $Negative Binomial$ distributions.
 
-For good measure, and to illustrate its relationship, lets also include a $Binomial$ distribution model. The Binomial model with a logit link is equivalent to a binary Logistic Regression model [[a](https://www.researchgate.net/post/what_is_the_difference_between_running_a_binary_logistic_regression_and_generalised_linear_model),[b](https://towardsdatascience.com/the-binomial-regression-model-everything-you-need-to-know-5216f1a483d3)]. Modeling A binary outcome is not a totally unreasonable approach in this case given that the number of accounts with claims $n>1$ is low (22) and as the $Binomial$ distribution extends to a $Poisson$ when trials $N>20$ is high and $p<0.05$ is low (see [wiki](https://en.wikipedia.org/wiki/Poisson_distribution#Related_distributions), [here](https://math.stackexchange.com/questions/1050184/difference-between-poisson-and-binomial-distributions) and [here](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm)).
+For good measure, and to illustrate its relationship, lets also include a $Binomial$ distribution model. The Binomial model with a logit link is equivalent to a binary Logistic Regression model [[a](https://www.researchgate.net/post/what_is_the_difference_between_running_a_binary_logistic_regression_and_generalised_linear_model),[b](https://towardsdatascience.com/the-binomial-regression-model-everything-you-need-to-know-5216f1a483d3)]. Modelling A binary outcome is not a totally unreasonable approach in this case given that the number of accounts with claims $n>1$ is low (22) and as the $Binomial$ distribution extends to a $Poisson$ when trials $N>20$ is high and $p<0.05$ is low (see [wiki](https://en.wikipedia.org/wiki/Poisson_distribution#Related_distributions), [here](https://math.stackexchange.com/questions/1050184/difference-between-poisson-and-binomial-distributions) and [here](https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc331.htm)).
 
-However, there is one change we need to make with the Binomial model. That is to alter the way we handle exposure. A few hours of research on the matter led me down the rabbit hole of conflicting ideas in textbooks, papers [[i](https://doi.org/10.1093/ije/dyu029)] and debates on CrossValidated [[a](https://stats.stackexchange.com/questions/246318/difference-between-offset-and-weights),[b](https://stats.stackexchange.com/questions/25415/using-offset-in-binomial-model-to-account-for-increased-numbers-of-patients/35478)]. In contrast to Poisson and neg binomial there is no way to add a constant term or offset in the binomial formulation [(see here)](https://stats.stackexchange.com/a/35478/100439). Rather it is appropriate to either: [include the exposure as a predictor variable](https://stats.stackexchange.com/a/35436/100439), or to use weights for each observation (see [here](https://stackoverflow.com/a/62798889/4538066) and the [statsmodels guidance on methods for GLM with weights and observed frequencies](https://www.statsmodels.org/stable/generated/statsmodels.genmod.generalized_linear_model.GLM.html#statsmodels.genmod.generalized_linear_model.GLM). I opted for the weighted GLM. The model output of the binomial GLM is the probability of at least 1 claim occurring weighted by the observation time $t=Pyrs$. Note there is no equivalent setting on the predict side, the predictions assume a discrete equivalent time exposure t=1.
+However, there is one change we need to make with the Binomial model. That is to alter the way we handle exposure. A few hours of research on the matter led me down the rabbit hole of conflicting ideas in textbooks, papers [[i](https://doi.org/10.1093/ije/dyu029)] and debates on CrossValidated [[a](https://stats.stackexchange.com/questions/246318/difference-between-offset-and-weights),[b](https://stats.stackexchange.com/questions/25415/using-offset-in-binomial-model-to-account-for-increased-numbers-of-patients/35478)]. In contrast to poisson and neg binomial there is no way to add a constant term or offset in the binomial formulation [(see here)](https://stats.stackexchange.com/a/35478/100439). Rather it is appropriate to either: [include the exposure as a predictor variable](https://stats.stackexchange.com/a/35436/100439), or to use weights for each observation (see [here](https://stackoverflow.com/a/62798889/4538066) and the [statsmodels guidance on methods for GLM with weights and observed freqeuncies](https://www.statsmodels.org/stable/generated/statsmodels.genmod.generalized_linear_model.GLM.html#statsmodels.genmod.generalized_linear_model.GLM). I opted for the weighted GLM. The model output of the binomial GLM is the probability of at least 1 claim occuring weighted by the observation time $t=Pyrs$. Note there is no equivalent setting on the predict side, the predictions assume a discrete equivalent time exposure t=1.
 
-In addition it is common in insurance risk models to use a [quasi-poisson or zero inflated Poisson (ZIP)](https://towardsdatascience.com/an-illustrated-guide-to-the-zero-inflated-poisson-model-b22833343057) model in scenarios with high instances of zero claims. In data science and machine learning we would refer to this as an unbalanced learning problem (see bootstrap, cross validation, SMOTE). The ZIP model combines:
- - a binomial model to determine the likelihood of one or more claims occurring (0/1)
+In addition it is common in insurance risk models to use a [quasi-poisson or zero inflated poisson (ZIP)](https://towardsdatascience.com/an-illustrated-guide-to-the-zero-inflated-poisson-model-b22833343057) model in scenarios with high instances of zero claims. In data science and machine learning we would refer to this as an unbalanced learning problem (see bootstrap, cross validation, SMOTE). The ZIP model combines:
+ - a binomial model to determine the likelihood of one or more claims occuring (0/1)
  - a negative binomial or poisson to estimate the number of claims (0...n)
  - a severity model to estimate the avg size of each claim (1...n)
 
-Statsmodels uses patsy [formula notation](https://www.statsmodels.org/devel/example_formulas.html). This includes: [notation for categorical variables ](https://www.statsmodels.org/devel/contrasts.html), setting [reference/base levels](https://stackoverflow.com/a/22439820/4538066), [encoding options](https://www.statsmodels.org/devel/contrasts.html), and [operators](https://www.statsmodels.org/devel/example_formulas.html#categorical-variables).
 
 ```python
 # # examples of formula notation in smf
@@ -474,7 +584,7 @@ FreqBinom = smf.glm(formula="Claim ~ Age + Sex + Geog + EV + VehAge + NCD " ,
 - [Poisson GLM params](https://stackoverflow.com/questions/14923684/interpreting-the-output-of-glm-for-poisson-regression)
 - [Find lambda](https://stackoverflow.com/questions/25828184/fitting-to-poisson-histogram)
 
-We can derive the model output using predict or the raw coefficients. Sampling the Poisson rate (*lambda*) illustrates the difference in predicted rates for the intercept and for a when a driver is male. 
+We can derive the model output using predict or the raw coefficients. Sampling the poisson rate ($lambda$) illustrates the difference in predicted rates for the intercept and for a when a driver is male. 
 
 
 ```python
@@ -589,12 +699,84 @@ FreqPoisson.summary()
 
 
 
+```python
+fig,axs = plt.subplots(1,1)
+
+bins = np.arange(0,10,1)
+n = 1000
+print(f'Lambda intercept: {np.exp(FreqPoisson.params[0]):.2f}\nLambda intercept + male: {np.exp(FreqPoisson.params[0]+FreqPoisson.params[1]):.2f}')
+
+axs.hist(np.random.poisson(lam=np.exp(FreqPoisson.params[0]),size=n),
+         bins=bins,rwidth=0.1,
+         alpha=1,label='intercept', align='left',color='k')
+
+axs.hist(np.random.poisson(lam=np.exp(FreqPoisson.params[0]+FreqPoisson.params[1]),size=n),
+         bins=bins,rwidth=0.5,
+         alpha=0.5,label='intercept + Bi',align='left')
+axs.set_xticks(bins)
+axs.legend();
+```
+
     Lambda intercept: 0.40
     Lambda intercept + male: 0.60
     
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig18_1.png"}})
+![png](output_18_1.png)
+
+
+
+```python
+# get prediction to access easy confidence intervals
+gp = FreqPoisson.get_prediction(test)
+gp.summary_frame(alpha=0.05)[:2]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>mean_se</th>
+      <th>mean_ci_lower</th>
+      <th>mean_ci_upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.036901</td>
+      <td>0.007723</td>
+      <td>0.024485</td>
+      <td>0.055614</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.030348</td>
+      <td>0.006528</td>
+      <td>0.019908</td>
+      <td>0.046263</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -608,6 +790,27 @@ FreqPoisson.summary()
 
 ```python
 print(FreqNegBin.summary())
+X_ = np.arange(0,len(FreqNegBin.params[1:]))
+irr_ = np.exp(FreqNegBin.params[1:])
+frq_ = [np.exp(FreqNegBin.params[0]+x) for x in FreqNegBin.params[1:]]
+df_ = pd.DataFrame({'X':X_,'irr':irr_,'frq':frq_})
+df_['lwr'] = np.exp(FreqNegBin.conf_int()[0])
+df_['upr'] = np.exp(FreqNegBin.conf_int()[1])
+
+fig,axs = plt.subplots(1,2,figsize=(15,7))
+ages_ = np.arange(1,50,1)
+
+axs[0].set_title('Incidence Rate (odds)')
+axs[0].scatter(x=df_.irr,y=df_.X,s=50,c='k',linestyle='None')
+axs[0].errorbar(x=df_.irr,y=df_.X,xerr=(df_.lwr,df_.upr),c='k',linestyle='None')
+axs[0].plot([1,1],[20,0],'r--')
+axs[0].set_yticks(df_.X)
+axs[0].set_yticklabels(irr_.index)
+
+axs[1].set_title('Expected Frequency')
+axs[1].plot(ages_,[np.exp(FreqNegBin.params[0]+FreqNegBin.params['VehAge']*i) for i in ages_],label='VehAge')
+axs[1].plot(ages_,[np.exp(FreqNegBin.params[0]+FreqNegBin.params['Age']*i) for i in ages_],label='Age')
+axs[1].legend();
 ```
 
                      Generalized Linear Model Regression Results                  
@@ -649,9 +852,12 @@ print(FreqNegBin.summary())
     ==============================================================================
     
 
+    /home/ben/anaconda3/envs/machine-learning/lib/python3.7/site-packages/pandas/core/series.py:853: RuntimeWarning: overflow encountered in exp
+      result = getattr(ufunc, method)(*inputs, **kwargs)
     
 
-![png]({{"/assets/images/2020-05-17-glm-fig21_2.png"}})
+
+![png](output_21_2.png)
 
 
 ***Binomial Model Coefficients and Logits Log-Odds, Odds and Probabilties***
@@ -715,14 +921,44 @@ print(f'Intercept + Male: p = {_:.3f} ({_-probability:.3f})')
     Intercept: p = 0.058
     Intercept + Male: p = 0.114 (0.056)
     
-  
+
+
+```python
+X_ = np.arange(0,len(FreqBinom.params[1:]))
+odds = np.exp(FreqBinom.params[1:])
+frq_ = [np.exp(FreqBinom.params[0]+x)/(1+np.exp(FreqBinom.params[0]+x)) for x in FreqBinom.params[1:]]
+df_ = pd.DataFrame({'X':X_,'irr':irr_,'frq':frq_})
+df_['lwr'] = [np.exp(FreqBinom.params[0]+x)/(1+np.exp(FreqBinom.params[0]+x)) for x in FreqBinom.conf_int()[0][1:]]
+df_['upr'] = [np.exp(FreqBinom.params[0]+x)/(1+np.exp(FreqBinom.params[0]+x)) for x in FreqBinom.conf_int()[1][1:]]
+
+fig,axs = plt.subplots(1,2,figsize=(15,7))
+ages_ = np.arange(1,50,1)
+
+axs[0].set_title('Probability ($Y$=1 CI 95%)')
+axs[0].scatter(x=df_.frq,y=df_.X,s=50,c='k',linestyle='None')
+axs[0].errorbar(x=df_.frq,y=df_.X,xerr=(df_.lwr,df_.upr),c='k',linestyle='None')
+axs[0].set_yticks(df_.X)
+axs[0].set_yticklabels(irr_.index)
+
+axs[1].set_title('Expected Frequency')
+axs[1].plot(ages_,[np.exp(FreqBinom.params[0]+FreqBinom.params['VehAge']*i) for i in ages_],label='VehAge')
+axs[1].plot(ages_,[np.exp(FreqBinom.params[0]+FreqBinom.params['Age']*i) for i in ages_],label='Age')
+axs[1].legend();
+```
+
+    /home/ben/anaconda3/envs/machine-learning/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: overflow encountered in exp
+      
+    /home/ben/anaconda3/envs/machine-learning/lib/python3.7/site-packages/ipykernel_launcher.py:6: RuntimeWarning: invalid value encountered in double_scalars
+      
     
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig25_1.png"}})
+![png](output_25_1.png)
 
 
 ### Prediction
+
+
 ```python
 test['Fnb'] = FreqNegBin.predict(transform=True,exog=test,offset=np.log(test['PYrs']))
 test['Fpo'] = FreqPoisson.predict(transform=True,exog=test,offset=np.log(test['PYrs']))
@@ -732,8 +968,10 @@ fig,axs = plt.subplots(1,3,figsize=(13,3.3),sharex=True,sharey=True)
 sns.histplot(test['Fpo'],ax=axs[0],label='Poisson')
 sns.histplot(test['Fnb'],ax=axs[1],label='NegBinomial')
 sns.histplot(test['Fbi'],ax=axs[2],label='Binomial')
+
 test.sample(5)
 ```
+
 
 
 
@@ -864,12 +1102,16 @@ test.sample(5)
 
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig27_1.png"}})
+![png](output_27_1.png)
 
 
-Looking at the model summaries, the histograms and results the of predicted values on the test, we see that each model weights covariates similarly and produces similar scores on the test data. ***Again note*** that the $Binomial$ model was only used to demonstrate its similarity in this case, but this may not hold for other data.
+Loooking at the model summaries, the histograms and results the of predicted values on the test, we see that each model weights covariates similarly and produces similar scores on the test data. ***Again note*** that the $Binomial$ model was only used to demonstrate its similarity in this case, but this may not hold for other data.
 
-### *Claim Severity*
+### $Claim Severity$
+
+
+
+
 
 ```python
 # including PYrs as parameter commented out in glm()
@@ -880,11 +1122,14 @@ SevGamma = smf.glm(formula=expr,
               data=train_severity,
               family=sm.families.Gamma(link=sm.families.links.inverse_power())).fit()
 ```
- 
+
+    /home/ben/anaconda3/envs/machine-learning/lib/python3.7/site-packages/statsmodels/genmod/generalized_linear_model.py:296: DomainWarning: The inverse_power link function does not respect the domain of the Gamma family.
+      DomainWarning)
+    
 
 Ignore the warning for now we will come back to that.
 
-After fitting a GLM-Gamma, how do we find the Gamma shape (*a*) and scale (*b*) parameters of predictions for *Xi*?
+After fitting a GLM-Gamma, how do we find the Gamma shape ($a$) and scale ($b$) params of predictions for $Xi$?
 
 "*Regression with the gamma model is going to use input variables Xi and coefficients to make a pre-diction about the mean of yi, but in actuality we are really focused on the scale parameter βi.  This is so because we assume that αi is the same for all observations, and so variation from case to case in μi=βiα is due simply to variation in βi.*" [technical overview of gamma glm](https://pj.freefaculty.org/guides/stat/Regression-GLM/Gamma/GammaGLM-01.pdf)
 
@@ -898,7 +1143,7 @@ After fitting a GLM-Gamma, how do we find the Gamma shape (*a*) and scale (*b*) 
 - [gamma.shape.glm: Estimate the Shape Parameter of the Gamma Distribution R MASS](https://rdrr.io/cran/MASS/man/gamma.shape.glm.html)
 - [The identity link function does not respect the domain of the Gamma family? - Cross Validated](https://stats.stackexchange.com/questions/356053/the-identity-link-function-does-not-respect-the-domain-of-the-gamma-family)
 
-Below I illustrate the range of predicted severity values for the intercept and each level in Geography.
+Below I illustrate the range of predicted severity values for the intercept and each level in Geogrpahy.
 
 
 ```python
@@ -926,10 +1171,10 @@ for ax,x in zip(axs.flatten(),geogs):
     
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig32_1.png"}})
+![png](output_32_1.png)
 
 
-The GLM-Gamma model gives us a prediction of the average severity of a claim should one occur.
+So remember the GLM-Gamma model gives us a prediction of the average severity of a claim should one occur.
 
 
 ```python
@@ -1028,6 +1273,14 @@ Now, remember the error we got using the inverse-power link function. The warnin
 
 ***GLM-Gamma log link***
 
+- https://pj.freefaculty.org/guides/stat/Distributions/DistributionWriteups/Gamma/Gamma-02.pdf
+- https://pj.freefaculty.org/guides/stat/Regression-GLM/Gamma/GammaGLM-01.pdf
+- http://people.stat.sfu.ca/~raltman/stat402/402L26.pdf
+- https://stats.stackexchange.com/questions/431120/how-to-interpret-parameters-of-glm-output-with-gamma-log-link
+- https://seananderson.ca/2014/04/08/gamma-glms/
+
+
+
 ```python
 # formula
 expr = "SeverityAvg ~ Age + Sex + Geog + EV + VehAge + NCD"
@@ -1073,7 +1326,7 @@ for ax,x in zip(axs.flatten(),geogs):
     
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig37_1.png"}})
+![png](output_37_1.png)
 
 
 Statsmodels uses patsy design matrices behind the scenes. We can apply the design matrix to calculate the distribution parameters for both the frequency and severity models, and for any data set. Train, test, synthetic data and portfolios. You name it.
@@ -1099,7 +1352,15 @@ c = a.multiply(b,axis=0)
 # 5. It is much cleaner to use arrays. 
 # et voila
 c = pd.DataFrame(dummy_.data.exog * SevGamma.params.values,columns=dummy_.data.param_names)
+c.shape
 ```
+
+
+
+
+    (201, 22)
+
+
 
 We can then use the coefficients to estimate and plot the values and samples of each row, or the entire dataset.
 
@@ -1119,10 +1380,76 @@ for i,pred,ax in zip(c.index[:num],SevGamma.predict(test_severity)[:num],axs.fla
 ```
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig41_0.png"}})
+![png](output_41_0.png)
 
+
+Here are some other ways you can work with GLM gamma coefficients
+
+
+```python
+# mean severity in train
+print(train_severity['SeverityAvg'].mean())
+
+# intercept severity
+print(np.exp(SevGamma.params[0]))
+
+# Xi severity 
+print(np.exp(SevGamma.params[0]+SevGamma.params[1]))
+
+# Xi abs difference to intercept
+print(np.exp(SevGamma.params[0]+SevGamma.params[1]) - np.exp(SevGamma.params[0]) )
+
+# % of intercept
+print(np.exp(SevGamma.params[1]))
+
+# % change from intercept
+print(np.exp(SevGamma.params[1])-1.0)
+
+# Xi severity by multiplication
+print(np.exp(SevGamma.params[0])*np.exp(SevGamma.params[1]))
+```
+
+    23721.149253731342
+    69330.81029226439
+    58091.82125707675
+    -11238.989035187638
+    0.8378932975424691
+    -0.1621067024575309
+    58091.821257076765
+    
 
 # Putting it all together: Frequency-Severity model
+
+***Recap on probabilities***
+- [p of x in n years](https://math.stackexchange.com/a/490890/775441)
+
+
+```python
+# p of no claim per year
+print('p0 yr:', 1.0-FreqBinom.predict(test)[:3].values)
+
+# p of 1+ claim per year
+print('p1 yr:',FreqBinom.predict(test)[:3].values)
+
+# p of no claim for 10 years
+print('p0 10yr:',(1.0-FreqBinom.predict(test)[:3].values)**10)
+
+# est likelihood of 1+ claim in 10 years
+print('p1 10yr:',1 - (1.0 - FreqBinom.predict(test)[:3].values)**10)
+
+# avg claim size of known claims
+print((test_severity['SeverityAvg']/1000).mean())
+
+# avg predicted claim size
+print((SevGamma.predict(test_severity)/1000).mean())
+```
+
+    p0 yr: [0.99003109 0.98619889 0.98386389]
+    p1 yr: [0.00996891 0.01380111 0.01613611]
+    p0 10yr: [0.90466613 0.87025215 0.84986556]
+    p1 10yr: [0.09533387 0.12974785 0.15013444]
+    23.9593855721393
+    24.38600603349808
     
 
 ***Portfolio price***
@@ -1146,6 +1473,8 @@ portfolio['annual_tech_premium'] = portfolio['annual_exp_loss']/pricing_ratio
 portfolio['result'] = portfolio['annual_tech_premium'] - portfolio['Severity']
 portfolio.iloc[:3,-4:]
 ```
+
+
 
 
 <div>
@@ -1207,6 +1536,16 @@ This summary illustrates the:
 - the profit loss result (calculated on full Severity rather than SeverityAvg)
 
 
+```python
+pd.DataFrame(portfolio[['Claim', 'Severity',
+                        'annual_frq','expected_sev', 'annual_exp_loss',
+                        'annual_tech_premium','result']].sum(),
+             columns=['Summary']).T
+```
+
+
+
+
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1251,10 +1590,25 @@ This summary illustrates the:
 
 
 
-Now we can build a Monte Carlo simulation to:
+No we can build a Monte Carlo simulation to:
 - provide a more robust estimate of our expected profit / loss
 - sample the parameter space to gauge the variance and uncertainty in our model and assumptions
 - calculate metrics for the AAL, AEP, and AXS loss and return
+
+
+```python
+# fitted params
+dispersion = SevGamma.scale
+shape = 1/dispersion
+# define a dummy model to get the get design matrix
+dummy_ = smf.glm(formula=expr,data=portfolio,family=sm.families.Gamma(link=sm.families.links.log()))
+dmtrx = pd.DataFrame(dummy_.data.exog,columns=dummy_.data.param_names)
+# calculate scale for each row
+scales_ = pd.DataFrame(dmtrx * SevGamma.params.values,columns=dummy_.data.param_names)
+scales_ = np.exp(scales_.sum(axis=1))*dispersion
+portfolio['gamma_shape'] = shape
+portfolio['gamma_scale'] = scales_
+```
 
 
 ```python
@@ -1301,7 +1655,10 @@ def exceedance_prob(df,feature,ascending=False):
     data.sort_values([f'value'],ascending=ascending,inplace=True)
     data.reset_index(drop=True,inplace=True)
     return data
+```
 
+
+```python
 # profit loss based on technical premium
 simulation['sim']['technical_premium'] = portfolio['annual_tech_premium'].sum()
 simulation['sim']['result'] = (simulation['sim']['technical_premium'] - simulation['sim']['loss_sum'])
@@ -1314,10 +1671,44 @@ simulation['result'] = exceedance_prob(simulation['sim'],'result',ascending=True
 
 This illustrates the profit and loss scenarios for our pricing strategy across $N$ iterations.
 
-![png]({{"/assets/images/2020-05-17-glm-fig57_0.png"}})
+
+```python
+simulation['sim']['result'].plot(figsize=(15,3),lw=1,color='gray',label='Profit Loss')
+plt.plot([0,N],[0,0],'r-',lw=2)
+plt.xlabel('Iteration')
+plt.ylabel('$');
+```
 
 
-And more intuitive EP curves.
+![png](output_57_0.png)
 
 
-![png]({{"/assets/images/2020-05-17-glm-fig59_0.png"}})
+And more inuit EP curves.
+
+
+```python
+fig,axs = plt.subplots(1,3,figsize=(14,4),sharey=True)
+
+for ax,lvl in zip(axs.flatten(),['loss_sum','loss_max','result']):
+    ax.set_title(f"{lvl.replace('loss_','Annual Loss ').title()}")
+    ax.plot(simulation[lvl]['value'],simulation[lvl]['EP'],label=lvl,linestyle='-',color='grey',lw=10,alpha=0.3)
+    ax.set_xlabel('Loss ($M)')
+    ax.set_ylabel('EP')
+    ax.set_yticks(np.arange(0,1.1,0.1))
+    
+    i,j = simulation[lvl]['value'].min(),simulation[lvl].loc[simulation[lvl]['EP']==0.5,'value'].values[0]
+    ax.plot([i,j],[0.5,0.5],'k--')
+    ax.plot([j,j],[0,0.5],'k--')
+    ax.annotate(f'{j:.0f} $',xy=(j+9e4,0.5))
+axs[2].set_xlabel('Loss or Profit ($M)');
+plt.tight_layout()
+```
+
+
+![png](output_59_0.png)
+
+
+
+```python
+
+```
