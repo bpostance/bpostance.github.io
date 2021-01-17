@@ -7,13 +7,13 @@ categories: [tutorial,mathematics]
 tags: [bayesian-inference,bayes-theory]
 ---
 
-Bayesian inference is a statistical method on how one should update one’s beliefs upon observing data. It has wide reaching applications from optimising prices to developing probabilisitic weather forecasting. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
+Bayesian inference is a statistical method on how one should update one’s beliefs upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
 
 $$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
 
 In probability theory and statistics, Bayes' theorem (alternatively Bayes' law or Bayes' rule), named after Reverend Thomas Bayes, describes the probability of an event, based on prior knowledge of conditions that might be related to the event. [1](https://plato.stanford.edu/archives/spr2019/entries/bayes-theorem/)
 
-I'm a visual learner. My favourite intuitive example of Bayes Theorem is this [using lego bricks](https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego):
+I'm a visual learner. My favorite intuitive example of Bayes Theorem is this [using lego bricks](https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego):
 
 <img src="/assets/images/2020-12-13-introduction-to-bayesian-inference-01.jpeg" width="400" height="400">
 
@@ -31,8 +31,8 @@ We can work through the maths to determine the probabilities and conditional pro
 pBlue = 40/60
 pRed = 20/60
 pYellow = 6/60
-pYellowRed = 4/20 # probabiity of Yellow given Red
-pYellowBlue = 2 / 40 # probabiity of Yellow given Blue
+pYellowRed = 4/20 # probability of Yellow given Red
+pYellowBlue = 2 / 40 # probability of Yellow given Blue
 
 print('Cond p(Yellow|Red) = {:.3f}'.format(pYellowRed))
 print('Cond p(Yellow|Blue) = {:.3f}'.format(pYellowBlue))
@@ -42,7 +42,7 @@ print('Cond p(Yellow|Blue) = {:.3f}'.format(pYellowBlue))
     Cond p(Yellow|Blue) = 0.050
 
 
-We now some baseline information for the probability and conditional probility of landing on each colour within the Legosphere. We can apply Bayes' theorem to generate estimates for "if we land on a yellow brick, what is the probability its red underneath?"
+We now some baseline information for the probability and conditional probability of landing on each colour within the Legosphere. We can apply Bayes' theorem to generate estimates for "if we land on a yellow brick, what is the probability its red underneath?"
 
 $$P(A|B) = \frac {P(B|A)P(A)}{P(B)}$$
 
@@ -63,8 +63,8 @@ You may now be thinking, "wait so Bayes' rule is just the number of total number
 
 The approach follows:
  1. Set prior assumptions and establish "known knowns" of our data based on heuristics, historical or sample data. 
- 1. Formalise a Mathematical Model of the problem space and prior assumptions.
- 1. Formalise the Prior Distributions.
+ 1. Formalize a Mathematical Model of the problem space and prior assumptions.
+ 1. Formalize the Prior Distributions.
  1. Apply Bayes’ theorem to derive the posterior parameter values from observed sample data.
  1. Repeat steps 1-4 as more data samples are obtained.
 
@@ -73,7 +73,7 @@ To illustrate these steps we will use a simple coin-toss experiment to determine
 
 #### 1. Prior Assumptions
 
-Here we will establish some assumptions and heuristical rules for our coin. We have a reasonable assumption that our coin is fair. That is the prior probability of landing a tails is 0.5. However, we also some observational sample data for 50 tosses of the coin. And it looks as though fewer tails were observed than might have been expected. 
+Here we will establish some assumptions and heuristic rules for our coin. We have a reasonable assumption that our coin is fair. That is the prior probability of landing a tails is 0.5. However, we also some observational sample data for 50 tosses of the coin. And it looks as though fewer tails were observed than might have been expected. 
 
     Trials:	50
     tails:	15
@@ -150,7 +150,7 @@ priors_bb = priors_bb/sum(priors_bb)
     
 
 
-#### 4. Apply Bayes Theorem on observtion data
+#### 4. Apply Bayes Theorem on observation data
 
 We can now put this altogether to produce a posterior probability estimate. 
 
@@ -164,6 +164,8 @@ We toss our coin once and observe a tails.
 
 
 Calling back to our model formula: 
+
+
 $$P(θ|Data) = \frac {P(Data|θ)P(θ)}{P(Data)}$$
 
 1. P(Data\|θ) is given by the likelihood-function or equivalent binomial pmf for the sample.
