@@ -29,7 +29,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-
+markdown: kramdown
+kramdown:
+    math_engine: katex
+    
 # Google Analytics
 google_analytics: UA-140894462-1
 
