@@ -26,6 +26,10 @@ print_hi('Ben')
 #=> prints 'Hi, Ben' to STDOUT.
 {% endhighlight %}
 
+[Latex math](https://stackoverflow.com/a/57370526/4538066):
+
+$$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
+
 Jekyll also supports:
  - [Google Analytics](https://desiredpersona.com/google-analytics-jekyll/)
  - [User comments with Just-comments](https://60devs.com/adding-comments-to-your-jekyll-blog.html) or [Discus](https://desiredpersona.com/disqus-comments-jekyll/).
