@@ -166,7 +166,8 @@ We toss our coin once and observe a tails.
 Calling back to our model formula: 
 
 
-$$P(θ|Data) = \frac {P(Data|θ)P(θ)}{P(Data)}$$
+$$ P(θ|Data) = \frac {P(Data|θ)P(θ)}{P(Data)} $$
+
 
 1. P(Data\|θ) is given by the likelihood-function or equivalent binomial pmf for the sample.
 1. P(θ) is the prior from our triangle or beta-binomial distribution.
