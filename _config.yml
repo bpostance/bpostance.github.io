@@ -32,7 +32,7 @@ plugins:
 markdown: kramdown
 kramdown:
   input: GFM
-    math_engine: katex
+  math_engine: katex
     
 # Google Analytics
 google_analytics: UA-140894462-1
