@@ -393,9 +393,11 @@ Again, this is confirmed  by checking the Credible Intervals and integrals.
 
 ### Conclusion
 
-In this post I have recapped on the basics of Bayes theorem and shown how to  perform bayesian inference by-hand for the binomial distribution on a coin tossing example. I would like to credit [Fong Chun Chan](https://tinyheero.github.io/2018/12/14/crux-of-bayes-statistics.html) for his useful materials on this subject. In practice bayesian inference models are rarely built by hand. Instead we rely on statistical packages and frameworks that better handle probability distributions and sampling using monte-carlo methods. More on those in my next post. See my GitHub code [here](https://github.com/bpostance/training.data_science/blob/master/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb).
+In this post I have recapped on the basics of Bayes theorem and shown how to  perform bayesian inference by-hand for the binomial distribution on a coin tossing example. In practice bayesian inference models are rarely built by hand. Instead we rely on statistical packages and frameworks that better handle probability distributions and sampling using monte-carlo methods. More on those in my next post. See my GitHub code [here](https://github.com/bpostance/training.data_science/blob/master/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb).
 
 ### References
+I would like to credit [Fong Chun Chan](https://tinyheero.github.io/2018/12/14/crux-of-bayes-statistics.html) for his useful materials on this subject.
+
   - https://ro-che.info/articles/2016-06-14-predicting-coin-toss
   - https://www.vosesoftware.com/riskwiki/Bayesiananalysisexampleidentifyingaweightedcoin.php
   - https://www.analyticsvidhya.com/blog/2016/06/bayesian-statistics-beginners-simple-english/
