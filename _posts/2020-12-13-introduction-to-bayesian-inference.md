@@ -1,30 +1,29 @@
 ---
 layout: post
-title:  "Bayesian Inference: introduction"
+title:  "Bayesian Inference: an introduction by hand"
 date:   2020-12-13 18:00:00 +0000
 comments: true
 categories: [tutorial,mathematics]
 tags: [bayesian-inference,bayes-theory]
 ---
 
-Bayesian inference is a statistical method on how one should update one’s beliefs upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
+Bayesian inference is a statistical method used to update one’s beliefs about a process or system upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting and risk models. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
 
 $$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
 
 In probability theory and statistics, Bayes' theorem (alternatively Bayes' law or Bayes' rule), named after Reverend Thomas Bayes, describes the probability of an event, based on prior knowledge of conditions that might be related to the event. [1](https://plato.stanford.edu/archives/spr2019/entries/bayes-theorem/)
 
-I'm a visual learner. My favorite intuitive example of Bayes Theorem is this [using lego bricks](https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego):
+I'm a visual learner and my favorite illustration to explain Bayes Theorem is this one [using lego bricks](https://www.countbayesie.com/blog/2015/2/18/bayes-theorem-with-lego):
 
 <img src="/assets/images/2020-12-13-introduction-to-bayesian-inference-01.jpeg" width="400" height="400">
 
-The image shows a 60 (6 * 10) lego unit area:
-
+The image shows a 60 lego unit area (the legosphere) with:
 
   - 40 blue areas
   - 20 red areas
-  - 6 intersecting yellow areas. 
+  - 6 overlain yellow areas. 
 
-We can work through the maths to determine the probabilities and conditional probabilities of each colour.
+Using this example can work through the maths of Bayes' Theorem to determine the probabilities and conditional probabilities of each colour.
 
 
 ```python
@@ -33,16 +32,13 @@ pRed = 20/60
 pYellow = 6/60
 pYellowRed = 4/20 # probability of Yellow given Red
 pYellowBlue = 2 / 40 # probability of Yellow given Blue
-
-print('Cond p(Yellow|Red) = {:.3f}'.format(pYellowRed))
-print('Cond p(Yellow|Blue) = {:.3f}'.format(pYellowBlue))
 ```
 
     Cond p(Yellow|Red) = 0.200
     Cond p(Yellow|Blue) = 0.050
 
 
-We now some baseline information for the probability and conditional probability of landing on each colour within the Legosphere. We can apply Bayes' theorem to generate estimates for "if we land on a yellow brick, what is the probability its red underneath?"
+We now have the baseline information for the probability and conditional probability of landing on each colour within the Legosphere. We can apply Bayes' theorem to generate estimates for "if we land on a yellow brick, what is the probability its red underneath?"
 
 $$P(A|B) = \frac {P(B|A)P(A)}{P(B)}$$
 
@@ -57,7 +53,7 @@ print('Cond p(Red|Yellow) = {:.3f}'.format(pRedYellow))
     Cond p(Red|Yellow) = 0.667
 
 
-You may now be thinking, "wait so Bayes' rule is just the number of total number of Yellow pegs (6) over the number of yellow pegs on red squares (4)?". Well yes in this case it is, and as you can see follows intuition and logic given that we know everything about the legosphere. However, imagine that the lego brick image above is just one sample of a much larger lego board population. We can apply Bayes' rule to infer and update our beliefs (probability estimates) about the board as more samples are taken. This is called Bayesian Inference.
+You may now be thinking, "wait so Bayes' rule is just the number of total number of Yellow pegs (6) over the number of yellow pegs on red squares (4)?". Well yes in this case it is, and as you can see follows intuition and logic given that we know everything there is to know about the legosphere. However, imagine now that the lego brick image above is just one sample of a much larger lego board. We can apply Bayes' rule to infer and update our beliefs (probability estimates) about the board as more samples are taken. This is called Bayesian Inference.
 
 ## Bayesian Inference
 
@@ -73,7 +69,7 @@ To illustrate these steps we will use a simple coin-toss experiment to determine
 
 #### 1. Prior Assumptions
 
-Here we will establish some assumptions and heuristic rules for our coin. We have a reasonable assumption that our coin is fair. That is the prior probability of landing a tails is 0.5. However, we also some observational sample data for 50 tosses of the coin. And it looks as though fewer tails were observed than might have been expected. 
+Here we will establish some assumptions and heuristic rules for our coin. We have a reasonable assumption that our coin is fair. The prior probability of landing a tails is 0.5. However, we also some observational sample data based on 50 tosses of the coin. It looks as though fewer tails were observed than might have been expected. 
 
     Trials:	50
     tails:	15
@@ -83,7 +79,7 @@ Here we will establish some assumptions and heuristic rules for our coin. We hav
 
 #### 2. The Mathematical Model
 
-Now that we have obtained some sample data and qualitatively compared that to our prior assumption for landing a tails. We can build a mathematical model to represent our coin-tossing example. This model is devised to best capture the real-world physical processes, by means of their probability distribution parameters, that generate the observational data (i.e. the generative process of Heads and Tails). Naturally in many applications such as weather forecasting these models can become quite complex as the number of processes that drive the data, and therefore number of probability distributions in the model, is quite large. In our coin toss example we have a relatively simple world where given the probability of landing a head as θ:
+Now we build a mathematical model to represent the processes in our coin-tossing example. This model is devised to best capture the real-world physical processes, by means of their probability distribution parameters, that generate the observational data (i.e. the generative process of Heads and Tails). Naturally in many real-world applications such as weather forecasting these models can become quite complex as the number of processes that drive the data, and therefore number of probability distributions in the model, is quite large. In our coin toss example we have a relatively simple world where given the probability of landing a head as theta θ:
 
 $$P(Y=1|θ)=θ$$
 
@@ -91,7 +87,7 @@ the probability of landing a tails is then:
 
 $$P(Y=0|θ)=1-θ$$
 
-We also need to select appropriate probability distributions for each data or process in the model (e.g. gaussian, log-normal, gamma, poisson etc). You may recall that a coin-toss is a single Bernoulli trial where each trial results in either: Success or Failure, Heads or Tails, Conversion or non-conversion, Survive or Die, you get the picture. The [binomial distribution](https://www.statisticshowto.com/probability-and-statistics/binomial-theorem/binomial-distribution-formula/) is the probability mass function of multiple independent [bernoulli trials](https://www.unf.edu/~cwinton/html/cop4300/s09/class.notes/DiscreteDist.pdf). Thus the binomial distribution describes the output of our coin toss observation data. 
+Now select an appropriate probability distribution for each data or process in the model (e.g. gaussian, log-normal, gamma, poisson etc). You may recall that a coin-toss is a single Bernoulli trial where each trial results in either: Success or Failure, Heads or Tails, Conversion or non-conversion, Survive or Die, you get the picture. The [binomial distribution](https://www.statisticshowto.com/probability-and-statistics/binomial-theorem/binomial-distribution-formula/) is the probability mass function of multiple independent [bernoulli trials](https://www.unf.edu/~cwinton/html/cop4300/s09/class.notes/DiscreteDist.pdf). Thus the binomial distribution describes the output of our coin toss observation data. 
 
 To recap then. Our mathematical model is configured to determine the most likely value for our coin to produce a tails, theta, given the sample of observed data. Recalling Bayes' theorem this is:
  
@@ -119,7 +115,7 @@ The likelihood of the data P(Data) then is the "*function that describes a hyper
 
 #### 3. The Prior Distribution
 
-We have set the assumption for our prior belief of landing a tails $P(θ)$ is 0.5 and follows a binomial distribution. But in the bayesian world we treat our assumptions as point estimates within possible range of values. So rather than using our single 0.5 point estimate, we represent $P(θ)$ as a prior probability distribution with varying levels of uncertainty.
+Our assumption and prior belief is that the coin is fair. The probability of landing a tails P(Tails\|θ)=0.5 and follows a binomial distribution. But in the bayesian world we treat our assumptions as point estimates within possible range of values. So rather than using our single 0.5 point estimate, we represent θ itself as a prior probability distribution with varying levels of uncertainty.
 
 Now, in practice we can choose any distribution we like here so long as its integral is equal to 1. There are also whats called "[conjugate-priors](https://en.wikipedia.org/wiki/Conjugate_prior)" where the selected prior distribution is in the same family as the posterior distribution and that naturally makes the maths and model interpretation much cleaner. But conceptually they key consideration for us here is to ensure that the "shape" of the prior distribution reflects our prior beliefs and or uncertainties for the data. 
 
@@ -351,7 +347,7 @@ df
     
 
 
-Comparing the prior and posterior distributions shows very little difference, particularly in where theta is in the range of 0.4 to 0.6 where our prior estimate was "strongest". Examining the posterior distribution we see a peak at 0.5, in line with our prior belief in the triangle distribution. Note also that the likelihood function does not really inform the model given that this sample, or "model evidence", is a single toss of the coin.
+Comparing the prior and posterior distributions shows very little difference, particularly in where theta is in the range of 0.4 to 0.6 where our prior estimate was "strongest". Examining the posterior distribution we see a peak at 0.5, in line with our prior belief in the triangle distribution. Note also that the likelihood function does not really inform the model given that this sample, or "model evidence", is just a single toss of the coin. In-fact the likelihood function is the straight linear line we saw above.
 
 We can approximate [credible intervals (CI)](https://en.wikipedia.org/wiki/Credible_interval#Choosing_a_credible_interval) to quantify the posterior distribution. For instance we see that:
 - 99 % CI that theta is between 0.2 and 0.8.
@@ -397,7 +393,7 @@ Again, this is confirmed  by checking the Credible Intervals and integrals.
 
 ### Conclusion
 
-In this post I have recapped on Bayes theorem, and shown how to manually apply bayes theorem for bayesian inference of the binomial distribution on a coin tossing example.
+In this post I have recapped on the basics of Bayes theorem and shown how to  perform bayesian inference by-hand for the binomial distribution on a coin tossing example. I would like to credit [Fong Chun Chan](https://tinyheero.github.io/2018/12/14/crux-of-bayes-statistics.html) for his useful materials on this subject. In practice bayesian inference models are rarely built by hand. Instead we rely on statistical packages and frameworks that better handle probability distributions and sampling using monte-carlo methods. More on those in my next post. See my GitHub code [here](https://github.com/bpostance/training.data_science/blob/master/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb).
 
 ### References
   - https://ro-che.info/articles/2016-06-14-predicting-coin-toss
