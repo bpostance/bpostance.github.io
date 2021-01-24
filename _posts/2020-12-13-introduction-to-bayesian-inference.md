@@ -7,6 +7,11 @@ categories: [tutorial,mathematics]
 tags: [bayesian-inference,bayes-theory]
 ---
 
+<p style="text-align:center;">
+<img src="https://i.stack.imgur.com/07YsT.png" alt="drawing" width="500" height="200" class="center"/>
+</p>
+[<sub>*image source*</sub>](https://stats.stackexchange.com/q/86472/100439)
+
 Bayesian inference is a statistical method used to update one’s beliefs about a process or system upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting and risk models. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
 
 $$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
