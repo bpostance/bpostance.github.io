@@ -29,7 +29,7 @@ Lead Data Scientist. Experience in establishing and building data science teams,
 
 
 ### Skills & [Training](https://github.com/bpostance/training.doctoral_training):
-  - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processsing
+  - Operational Research, Decision Science, Predictive Systems, Early Warning Systems, Risk Analysis, Earth Systems, Machine Learning, Natural Language Processing
   - Applied Mathematics, Probability Theory, Bayesian Statistics, Monte Carlo, Game Theory, Numerical Simulation, Agent Based Modelling, Network and Graph theory
   - **University of Leeds** [Software Carpentry for Environmental Scientists](https://andreww.github.io/2016-01-18-leeds/)
   - **Bournemouth University** [Agent Based Modelling](http://gotw.nerc.ac.uk/list_full.asp?pcode=NE%2FN000595%2F1&cookieConsent=A)
@@ -58,7 +58,7 @@ Lead Data Scientist. Experience in establishing and building data science teams,
   - [**Characterising regional landslide initiation thresholds in Scotland, UK using NIMROD c-band precipitation radar and the BGS National Landslide Database.**](http://adsabs.harvard.edu/abs/2016EGUGA..18.4480P)
 	*2016. Postance, Benjamin; Hillier, John; Dijkstra, Tom; Dixon, Neil
 	EGU General Assembly 2016, 17-22 April, Vienna Austria*
-  - [**Open source big data technologies in earth sytems research: prototype hazard early warning system in python and postgres.**](https://rd-alliance.org/early-career-european-researchers-scientists-working-data-march-2016.html)
+  - [**Open source big data technologies in earth systems research: prototype hazard early warning system in python and postgres.**](https://rd-alliance.org/early-career-european-researchers-scientists-working-data-march-2016.html)
 	*2016. Postance, Benjamin
 	Early Career Researchers Award, [RDA](https://rd-alliance.org/plenaries/rda-seventh-plenary-meeting-tokyo-japan) Plenary 2016, [Japan Science and Technology Agency](http://www.jst.go.jp/EN/), Tokyo, Japan*
   - [**Quantification of Road Network Vulnerability and Traffic Impacts to Regional Landslide Hazards.**](http://adsabs.harvard.edu/abs/2015EGUGA..17.3677P)
