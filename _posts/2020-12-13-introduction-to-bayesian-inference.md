@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Bayesian Inference: an introduction by hand"
+title:  "Bayesian Inference by hand"
 date:   2020-12-13 18:00:00 +0000
 comments: true
 categories: [tutorial,mathematics]
