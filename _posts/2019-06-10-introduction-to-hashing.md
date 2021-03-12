@@ -2,7 +2,6 @@
 layout: post
 mathjax: true
 title:  "An introduction to hashing functions for data mining"
-
 date:   2019-06-10 20:00:01 +0000
 categories: [blog-post,data-analysis]
 tags: [data-mining,data-cleaning,hash-functions]
@@ -54,7 +53,7 @@ As above we'll use the [sha-1](https://en.wikipedia.org/wiki/SHA-1) hash functio
 
  - sha-1 hash values are 160 binary bits in length.
  - The hash values are typically written as a 40 digit hexadecimal string.
- - A single hexadecimal character can only represent 16 different values 0-9 and A-F. E.g. the hex digits "0F" represents two sets of 4 binary bits "0000 1111" (see the [wiki on hexidecimals]([hexidecimal](https://en.wikipedia.org/wiki/Hexadecimal))).
+ - A single hexadecimal character can only represent 16 different values 0-9 and A-F. E.g. the hex digits "0F" represents two sets of 4 binary bits "0000 1111".
  - Therefore there are a total $16^{40} = 2^{160}$ sha-1 hash values in existence. Or
  
 *"one quindecillion, four hundred sixty-one quattuordecillion, five hundred one tredecillion, six hundred thirty-seven duodecillion, three hundred thirty undecillion, nine hundred two decillion, nine hundred eighteen nonillion, two hundred three octillion, six hundred eighty-four septillion, eight hundred thirty-two sextillion, seven hundred sixteen quintillion, two hundred eighty-three quadrillion, nineteen trillion, six hundred fifty-five billion, nine hundred thirty-two million, five hundred forty-two thousand, nine hundred seventy-six"*[rbn](http://www.mathcats.com/explore/reallybignumbers.html)
