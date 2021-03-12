@@ -3,7 +3,7 @@ layout: post
 title:  "Portfolio Optimisation: Monte Carlo method"
 date:   2020-08-04 18:00:00 +0000
 categories: [blog-post,data-analysis]
-tags: [optimisation,monte-carlo]
+tags: [optimisation,monte carlo]
 math: true
 comments: true
 ---

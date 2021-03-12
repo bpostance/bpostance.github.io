@@ -3,7 +3,7 @@ layout: post
 title:  "Bayesian Inference by hand"
 date:   2020-12-13 18:00:00 +0000
 categories: [blog-post,data-analysis]
-tags: [bayesian-inference,bayes-theory]
+tags: [bayesian-inference,bayes-theory,monte carlo]
 math: true
 comments: true
 ---
