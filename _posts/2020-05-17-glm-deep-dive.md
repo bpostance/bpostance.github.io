@@ -2,9 +2,10 @@
 layout: post
 title:  "A deep dive on GLM's in frequency severity models"
 date:   2020-05-17 18:00:00 +0000
-comments: true
-categories: [tutorial]
+categories: [blog-post,data-analysis]
 tags: [glm,insurance,monte carlo]
+math: true
+comments: true
 ---
 <img src="/assets/images/2020-05-17-glm-fig1.png" alt="drawing" width="800" height="350"/>
 

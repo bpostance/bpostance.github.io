@@ -2,10 +2,12 @@
 layout: post
 mathjax: true
 title:  "An introduction to hashing functions for data mining"
-comments: true
+
 date:   2019-06-10 20:00:01 +0000
-categories: [tutorial]
+categories: [blog-post,data-analysis]
 tags: [data-mining,data-cleaning,hash-functions]
+math: true
+comments: true
 ---
 This post is intended to provide a quick introduction to hash functions and to discuss some practical applications of hashes in data mining and machine learning. The aim of this post is to provide a basic level of understanding of the concept and to demonstrate a real world use case.
 

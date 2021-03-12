@@ -2,9 +2,10 @@
 layout: post
 title:  "Earth Surface Processes and Landforms: classficiation of rare events for landslide early warning systems"
 date:   2019-02-30 18:00:00 +0000
-comments: true
-categories: [paper]
+categories: [blog-post,academic-paper]
 tags: [natural-hazards,rainfall-thresholds,classification,decision-systems]
+math: true
+comments: true
 ---
 
 ![png]({{ "/assets/images/2019-02-30-espl-landslide-threshold-classification-fig1.png" }})

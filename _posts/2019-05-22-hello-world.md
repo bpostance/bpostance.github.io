@@ -2,11 +2,16 @@
 layout: post
 title:  "Hello Jekyll!"
 date:   2019-05-23 20:56:21 +0000
-comments: true
-categories: [blog]
+categories: [blog-post,engineering]
 tags: [general]
+math: true
+comments: true
 ---
 Hello and welcome to my new Research and DataScience portfolio page. 
+
+**Update March 2021**
+I have now adopted the [Chirpy theme](https://chirpy.cotes.info/). 
+
 On this site I'll be posting links to projects, demo's and training material on machine learning and data science, in addition to research article reviews and any other interesting updates.
 I already have lots of content in my various [github repo's](https://github.com/bpostance/training.data_science), and this is my attempy to curate this and new work.
 

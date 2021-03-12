@@ -2,13 +2,14 @@
 layout: post
 title:  "Bayesian Inference by hand"
 date:   2020-12-13 18:00:00 +0000
-comments: true
-categories: [tutorial,mathematics]
+categories: [blog-post,data-analysis]
 tags: [bayesian-inference,bayes-theory]
+math: true
+comments: true
 ---
 
-<p style="text-align:center;">
-<img src="https://i.stack.imgur.com/07YsT.png" alt="drawing" width="500" height="200" class="center"/>
+<p>
+<img src="https://i.stack.imgur.com/07YsT.png" alt="drawing" width="800" height="300" class="center"/>
 </p>
 [<sub>*image source*</sub>](https://stats.stackexchange.com/q/86472/100439)
 

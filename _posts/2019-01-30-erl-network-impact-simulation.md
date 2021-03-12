@@ -2,9 +2,10 @@
 layout: post
 title:  "Environmental Research Letters: agent simulation of natural hazards in complex networks"
 date:   2019-01-30 18:00:00 +0000
-comments: true
-categories: [paper]
+categories: [blog-post,academic-paper]
 tags: [network,agent-simulation,natural-hazards]
+math: true
+comments: true
 ---
 
 ![png]({{ "/assets/images/2019-01-30-erl-network-impact-simulation-fig1.png" }})

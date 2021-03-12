@@ -2,9 +2,10 @@
 layout: post
 title:  "How to containerize a simple Rest API using Python Flask"
 date:   2019-09-05 18:00:00 +0000
-comments: true
-categories: [tutorial]
+categories: [blog-post,engineering]
 tags: [rest-api,docker,containers,gunicorn,anaconda]
+math: true
+comments: true
 ---
 You've conducted your research, analysed the data, built models, and packaged everything up in a user friendly application that is ready to be shared and published within your research community and beyond. 
 

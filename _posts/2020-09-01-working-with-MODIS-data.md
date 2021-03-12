@@ -2,9 +2,10 @@
 layout: post
 title:  "Geospatial Analysis: Working with MODIS data"
 date:   2020-09-01 18:00:00 +0000
-comments: true
-categories: [tutorial,datasets]
+categories: [blog-post,datasets]
 tags: [geospatial-analysis,MODIS]
+math: true
+comments: true
 ---
 <img src="/assets/images/2020-09-01-MODIS-fig1.jpg" alt="drawing" width="800" height="350"/>
 

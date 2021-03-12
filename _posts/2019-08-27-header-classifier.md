@@ -2,9 +2,10 @@
 layout: post
 title:  "Using machine learning to cleanse datasets: classifying column headers in data tables"
 date:   2019-08-27 18:00:00 +0000
-comments: true
-categories: [tutorial]
+categories: [blog-post,data-analysis]
 tags: [data-cleaning,classification,machine-learning]
+math: true
+comments: true
 ---
 When dealing with large volumes of inbound data files and from multiple different sources, the data recieved can often come in a variety of formats, structures and to varying standards. 
 One particularly challenging issue is data files that, although representing the same type of information, feature a variety of different label and data formats. 

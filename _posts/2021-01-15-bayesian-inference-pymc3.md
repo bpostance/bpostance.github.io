@@ -1,26 +1,29 @@
 ---
 layout: post
-title:  "Bayesian Inference using PyMC3"
+title:  "Bayesian Inference with PyMC3: pt 1 posterior distributions"
 date:   2021-01-15 18:00:00 +0000
-comments: true
-categories: [tutorial,mathematics]
+categories: [blog-post,data-analysis]
 tags: [bayesian-inference,bayes-theory,pymc3]
+math: true
+comments: true
 ---
 
-<p style="text-align:center;">
-<img src="/assets/images/pymc3.png" alt="drawing" width="300" height="150" class="center"/>
+<p>
+<img src="/assets/images/pymc3.png" alt="drawing" width="500" height="250" class="center"/>
 </p>
 
-Here we use PyMC3 on two bayesian inference case studies: coin-toss and Insurance Claim occurrence. My last post was an introduction to Bayes' theorem and [bayesian inference by hand](https://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.htmlhttps://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.html). There we looked at a simple coin toss scenario, modelling each step by hand, to conclude that we had a bias coin bias with posterior probability of landing tails P(Tails\|Observed Data) = 0.36.
+### Introduction
+Here we use PyMC3 on two Bayesian inference case studies: coin-toss and Insurance Claim occurrence. My last post was an introduction to Baye's theorem and [Bayesian inference by hand](https://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.htmlhttps://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.html). There we looked at a simple coin toss scenario, modelling each step by hand, to conclude that we had a bias coin bias with the posterior probability of landing tails P(Tails\|Observed Data) = 0.36.
 
-This time we will run: i) the same coin-toss scenario again, and ii) an example for poisson insurance claim counts, using the probabilistic programming package [PyMC3](https://docs.pymc.io/https://docs.pymc.io/). An alternative would be to use the equally popular Stanford "Stan"package and its python wrapper [PyStan](https://pystan.readthedocs.io/en/latest/index.htmlhttps://pystan.readthedocs.io/en/latest/index.html). These packages provide an easy to use and intuitive frameworks for developing complex models of data generative processes. In addition, easy access to [Markov Chain Monte Carlo](https://twiecki.io/blog/2015/11/10/mcmc-sampling/https://twiecki.io/blog/2015/11/10/mcmc-sampling/) sampling algorithms.
+This time we will run: i) the same coin-toss scenario again, and ii) an example for Poisson insurance claim counts, using the probabilistic programming package [PyMC3](https://docs.pymc.io/https://docs.pymc.io/). An alternative would be to use the equally popular Stanford "Stan" package and its python wrapper [PyStan](https://pystan.readthedocs.io/en/latest/index.htmlhttps://pystan.readthedocs.io/en/latest/index.html). These packages provide an easy to use and intuitive frameworks for developing complex models of data generative processes. In addition, easy access to [Markov Chain Monte Carlo](https://twiecki.io/blog/2015/11/10/mcmc-sampling/https://twiecki.io/blog/2015/11/10/mcmc-sampling/) sampling algorithms.
 
+### Method:
 Recall that our initial approach to Bayesian Inference followed:
- 1. Set prior assumptions and establish "known knowns" of our data based on heuristics, historical or sample data. 
- 1. Formalise a Mathematical Model of the problem space and prior assumptions.
- 1. Formalise the Prior Distributions.
- 1. Apply Bayes’ theorem to derive the posterior parameter values from observed sample data.
- 1. Repeat steps 1-4 as more data samples are obtained.
+ 1. Set prior assumptions and establish "known knowns" of our data based on heuristics, historical, or sample data. 
+ 2. Formalise a Mathematical Model of the problem space and prior assumptions.
+ 3. Formalise the Prior Distributions.
+ 4. Apply Baye's theorem to derive the posterior parameter values from observed sample data.
+ 5. Repeat steps 1-4 as more data samples are obtained.
 
 Using PyMC3 we can now simplify and condense these steps down.
 
@@ -105,7 +108,7 @@ $$
             \end{array}
             $$
 
-
+### Results
 
 Or with more sampling and across more chains. Then the trace summary returns useful summary statistics of model performance:
  - mc_error estimates simulation error by breaking the trace into batches, computing the mean of each batch, and then the standard deviation of these means.
@@ -212,7 +215,8 @@ with warnings.catch_warnings():
 
 And there we have it. PyMC3 and other similar packages offer an easy set of functions to assemble and run probabilistic simulations such as Bayesian Inference. Below I will show one more example for Insurance claim counts.
 
-## Example: Evaluating Insurance claim occurrences using Bayesian Inference
+### Case Study:
+#### Evaluating Insurance claim occurrences using Bayesian Inference
 
 
 Insurance claims are typically modelled as occurring due to a [Poisson distributed](https://en.wikipedia.org/wiki/Poisson_distributionhttps://en.wikipedia.org/wiki/Poisson_distribution) process. A discrete probability distribution that gives the expected number of events (e.g. claims) to occurring within a time interval (e.g. per year). The Poisson distribution has many applications such as modelling machine component failure rates, customer arrival rates, website traffic, and storm events. First, we will run this through by hand as before and then using PyMC3.
@@ -548,7 +552,7 @@ with warnings.catch_warnings():
 You may have noticed that in this example that we have defined our prior distribution from the observed data and applied bayesian inference on this data to derive the posterior distribution, confirming a lambda of 2. 
 
 ### Conclusion:
-In this post PyMC3 was applied to performance Bayesian Inference on two examples: coin toss bias using the beta-binomial distribution, and insurance claim occurrence using the gamma-poisson distribution. 
+In this post PyMC3 was applied to perform Bayesian Inference on two examples: coin toss bias using the beta-binomial distribution, and insurance claim occurrence using the gamma-poisson distribution. 
 
 
 ### References:

@@ -2,9 +2,10 @@
 layout: post
 title:  "Portfolio Optimisation: Monte Carlo method"
 date:   2020-08-04 18:00:00 +0000
-comments: true
-categories: [tutorial]
+categories: [blog-post,data-analysis]
 tags: [optimisation,monte-carlo]
+math: true
+comments: true
 ---
 
 *Given a fixed amount of avliable resources, optimise allocation to maximise returns across a set of products with variable returns.*
