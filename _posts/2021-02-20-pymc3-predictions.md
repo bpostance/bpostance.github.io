@@ -1,11 +1,11 @@
 ---
 layout: post
+comments: true
 title:  "Bayesian Inference with PyMC3: pt 2 making predictions"
 date:   2021-02-20 18:00:00 +0000
 categories: [blog-post,data-analysis]
 tags: [bayesian-inference,bayes-theory,pymc3,glm]
 math: true
-comments: true
 ---
 
 In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this, we will build two models using a case study of predicting student grades on a classical dataset. The first model is a classic frequentist normally distributed regression General Linear Model (GLM). While the second is, again A normal GLM, but built using the Bayesian inference method.
