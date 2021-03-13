@@ -8,7 +8,7 @@ math: true
 comments: true
 ---
 
-In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this we will build a simple normally distributed regression General Linear Model (GLM) on a sample data set. 
+In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this, we will build two models using a case study of predicting student grades on a classical dataset. The first model is a classic frequentist normally distributed regression General Linear Model (GLM). While the second is, again A normal GLM, but built using the Bayesian inference method.
 
 # Case Study: predicting student grades
 The objective is to develop a model that can predict student grades given several input factors about each student. The publicly available [UCI dataset](https://archive.ics.uci.edu/ml/datasets/student+performance#) contains grades and factors for 649 students taking a Portuguese language course. #
@@ -598,7 +598,7 @@ ax1.legend(bbox_to_anchor=(1,1));
 
 # Conclusion
 
-This post demonstrates how to develop a Bayesian inference General Linear Model. A case study for modelingstudent grades was used to demonstrate a classical frequentist approach in statsmodels and with a Bayes's approach in PyMC3 with several implementations on predicting out of sample data. 
+This post demonstrates how to develop a Bayesian inference General Linear Model. A case study for modeling student grades was used to demonstrate a classical frequentist approach in statsmodels and with a Bayes's approach in PyMC3 with several implementations on predicting out of sample data. 
 
 # References
 
