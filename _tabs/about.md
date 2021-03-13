@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 priority: 1.0
 ---
-Lead Data Scientist. Experience in building data science teams, creating and executing data science strategy, project management, technical design, and development. Research expertise in risk and natural hazards, machine learning, and natural language processing.
+Lead Data Scientist. Experience in building data science teams, creating and executing data science strategy, project management, solution design, and technical development. Research expertise in risk and natural hazards, machine learning, and natural language processing.
 
 
 ### Experience:
