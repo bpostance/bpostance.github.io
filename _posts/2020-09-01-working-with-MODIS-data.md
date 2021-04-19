@@ -194,7 +194,7 @@ And then plot.
 
 Thanks for reading, 
 
-References
+## References
 -----
  - [Official MODIS authentication Python and R scripts](https://lpdaac.usgs.gov/tools/data-prep-scripts/)
  - [MCD19A1 v006 - MODIS/Terra+Aqua MAIAC Land Surface BRF Daily L2G Global 500 m and 1 km SIN Grid](https://lpdaac.usgs.gov/products/mcd19a1v006/)

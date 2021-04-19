@@ -603,6 +603,7 @@ ax1.legend(bbox_to_anchor=(1,1));
 This post demonstrates how to develop a Bayesian inference General Linear Model. A case study for modeling student grades was used to demonstrate a classical frequentist approach in statsmodels and with a Bayes's approach in PyMC3 with several implementations on predicting out of sample data. 
 
 # References
+-----
 
 - [Getting started with GLM in PyMC3](https://docs.pymc.io/notebooks/getting_started.html?highlight=glm)
 - [All GLM examples in PyMC3](https://docs.pymc.io/notebooks/GLM.html)

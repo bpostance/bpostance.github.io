@@ -557,7 +557,9 @@ You may have noticed that in this example that we have defined our prior distrib
 In this post PyMC3 was applied to perform Bayesian Inference on two examples: coin toss bias using the beta-binomial distribution, and insurance claim occurrence using the gamma-poisson distribution. 
 
 
-### References:
+### References
+-----
+
 - https://twiecki.io/blog/2015/11/10/mcmc-sampling/https://twiecki.io/blog/2015/11/10/mcmc-sampling/
 - https://docs.pymc.io/https://docs.pymc.io/
 - https://pystan.readthedocs.io/en/latest/index.htmlhttps://pystan.readthedocs.io/en/latest/index.html

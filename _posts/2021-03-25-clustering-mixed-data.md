@@ -66,181 +66,7 @@ for col in raw.select_dtypes(include='object').columns:
         raw[col] = raw[col].str.upper().replace('Z_','',regex=True).replace('[^A-Z]','',regex=True)
         
 data_types = {f:t for f,t in zip(raw.columns,raw.dtypes)}
-
-raw[:5]
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ID</th>
-      <th>KIDSDRIV</th>
-      <th>BIRTH</th>
-      <th>AGE</th>
-      <th>HOMEKIDS</th>
-      <th>YOJ</th>
-      <th>INCOME</th>
-      <th>PARENT1</th>
-      <th>HOME_VAL</th>
-      <th>MSTATUS</th>
-      <th>...</th>
-      <th>CAR_TYPE</th>
-      <th>RED_CAR</th>
-      <th>OLDCLAIM</th>
-      <th>CLM_FREQ</th>
-      <th>REVOKED</th>
-      <th>MVR_PTS</th>
-      <th>CLM_AMT</th>
-      <th>CAR_AGE</th>
-      <th>CLAIM_FLAG</th>
-      <th>URBANICITY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>63581743</td>
-      <td>0</td>
-      <td>MAR</td>
-      <td>60.0</td>
-      <td>0</td>
-      <td>11.0</td>
-      <td>67349.0</td>
-      <td>NO</td>
-      <td>0.0</td>
-      <td>NO</td>
-      <td>...</td>
-      <td>MINIVAN</td>
-      <td>YES</td>
-      <td>4461.0</td>
-      <td>2</td>
-      <td>NO</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>18.0</td>
-      <td>0</td>
-      <td>HIGHLYURBANURBAN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>132761049</td>
-      <td>0</td>
-      <td>JAN</td>
-      <td>43.0</td>
-      <td>0</td>
-      <td>11.0</td>
-      <td>91449.0</td>
-      <td>NO</td>
-      <td>257252.0</td>
-      <td>NO</td>
-      <td>...</td>
-      <td>MINIVAN</td>
-      <td>YES</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>NO</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0</td>
-      <td>HIGHLYURBANURBAN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>921317019</td>
-      <td>0</td>
-      <td>NOV</td>
-      <td>48.0</td>
-      <td>0</td>
-      <td>11.0</td>
-      <td>52881.0</td>
-      <td>NO</td>
-      <td>0.0</td>
-      <td>NO</td>
-      <td>...</td>
-      <td>VAN</td>
-      <td>YES</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>NO</td>
-      <td>2</td>
-      <td>0.0</td>
-      <td>10.0</td>
-      <td>0</td>
-      <td>HIGHLYURBANURBAN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>727598473</td>
-      <td>0</td>
-      <td>MAR</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>10.0</td>
-      <td>16039.0</td>
-      <td>NO</td>
-      <td>124191.0</td>
-      <td>YES</td>
-      <td>...</td>
-      <td>SUV</td>
-      <td>NO</td>
-      <td>38690.0</td>
-      <td>2</td>
-      <td>NO</td>
-      <td>3</td>
-      <td>0.0</td>
-      <td>10.0</td>
-      <td>0</td>
-      <td>HIGHLYURBANURBAN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>450221861</td>
-      <td>0</td>
-      <td>JUN</td>
-      <td>51.0</td>
-      <td>0</td>
-      <td>14.0</td>
-      <td>0.0</td>
-      <td>NO</td>
-      <td>306251.0</td>
-      <td>YES</td>
-      <td>...</td>
-      <td>MINIVAN</td>
-      <td>YES</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>NO</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>6.0</td>
-      <td>0</td>
-      <td>HIGHLYURBANURBAN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 27 columns</p>
-</div>
-
-
 
 # 3. Method
 
@@ -295,41 +121,11 @@ df['CAR_TYPE'] = df['CAR_TYPE'].map({'MINIVAN':'MVAN',
 
 ## 3.2 Exploratory Data Analysis
 
-
-```python
-# # Mosaic Plots
-# # https://rpubs.com/data_feelings/msda_data621_hw4
-# import numpy as np
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# from statsmodels.graphics.mosaicplot import mosaic
-
-# props = {}
-# for car in df['CAR_TYPE'].unique():
-#     for i,color in zip([0,1],['grey','red']):
-#         props[(str(i),car)] = {'color':color}
-# props
-
-# m = mosaic(df, ['CAR_TYPE','CLAIM_FLAG',], title='DataFrame as Source',properties=props)
-# plt.show()
-```
-
 ***Categorical feature histograms***
 
 Shown below are the histogram of each categorical feature. This illustrates both the number and frequency of each category in the dataset.
 
 
-```python
-fig,axs = plt.subplots(3,4,figsize=(12,9),sharey=True)
-
-for ax,feat in zip(axs.flatten(),categorical_features):
-    ax.hist(df[feat],align='left')
-    ax.set_title(feat)
-plt.tight_layout()
-```
-
-
-    
 ![png](/assets/images/2021-03-25-clustering//output_10_0.png)
     
 
@@ -337,17 +133,6 @@ plt.tight_layout()
 ***How are claims distributed amongst the categorical features?***
 
 As above, the bar plots again illustrate each categorical feature and value, but now also show how the proportion of claims is distributed to each categorical value. For example, Commericial CAR_USE has a relatively higher proportion of claims than Private car use.
-
-
-```python
-fig,axs = plt.subplots(3,4,figsize=(12,10),sharey=True)
-
-for ax,feat in zip(axs.flatten(),categorical_features):
-    ((pd.crosstab(df['CLAIM_FLAG'],df[feat])) / (pd.crosstab(df['CLAIM_FLAG'],df[feat]).sum())).T.plot.bar(stacked=True,ax=ax,legend=False,title=None)
-    ax.set_title(feat)
-plt.tight_layout()
-```
-
 
     
 ![png](/assets/images/2021-03-25-clustering//output_12_0.png)
@@ -815,111 +600,10 @@ for i,x in df[nominal_features].nunique().iteritems():
         nominal_data.append(pd.get_dummies(df[[i]],drop_first=False))
         
 nominal_data = pd.concat(nominal_data,axis=1)
-nominal_data[:2]
 ```
 
     Nominals:
      ['CAR_USE', 'REVOKED', 'RED_CAR', 'GENDER', 'MSTATUS', 'URBANICITY', 'PARENT1', 'CAR_TYPE', 'OCCUPATION']
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CAR_USE_PRIVATE</th>
-      <th>REVOKED_YES</th>
-      <th>RED_CAR_YES</th>
-      <th>GENDER_M</th>
-      <th>MSTATUS_YES</th>
-      <th>URBANICITY_URBAN</th>
-      <th>PARENT1_YES</th>
-      <th>CAR_TYPE_MVAN</th>
-      <th>CAR_TYPE_PKUP</th>
-      <th>CAR_TYPE_PTRK</th>
-      <th>...</th>
-      <th>CAR_TYPE_VAN</th>
-      <th>OCCUPATION_BLUECOLLAR</th>
-      <th>OCCUPATION_CLERICAL</th>
-      <th>OCCUPATION_DOCTOR</th>
-      <th>OCCUPATION_HOMEMAKER</th>
-      <th>OCCUPATION_LAWYER</th>
-      <th>OCCUPATION_MANAGER</th>
-      <th>OCCUPATION_OTHER</th>
-      <th>OCCUPATION_PROFESSIONAL</th>
-      <th>OCCUPATION_STUDENT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>2 rows × 22 columns</p>
-</div>
-
 
 
 ***Final Datasets used for clustering***
@@ -1604,84 +1288,7 @@ n = 5
 focus = Xy_original.sample(1)
 similar = gower.gower_topn(focus,Xy_original,
                            n=n,cat_features=cat)
-focus
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MVR_PTS</th>
-      <th>YOJ</th>
-      <th>TIF</th>
-      <th>CAR_AGE</th>
-      <th>AGE</th>
-      <th>TRAVTIME</th>
-      <th>CLM_AMT</th>
-      <th>BLUEBOOK</th>
-      <th>OLDCLAIM</th>
-      <th>HOME_VAL</th>
-      <th>...</th>
-      <th>RED_CAR</th>
-      <th>GENDER</th>
-      <th>MSTATUS</th>
-      <th>URBANICITY</th>
-      <th>PARENT1</th>
-      <th>CAR_TYPE</th>
-      <th>OCCUPATION</th>
-      <th>EDUCATION</th>
-      <th>KIDSDRIV</th>
-      <th>HOMEKIDS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6327</th>
-      <td>0</td>
-      <td>7.0</td>
-      <td>6</td>
-      <td>18.0</td>
-      <td>40.0</td>
-      <td>14</td>
-      <td>5800.0</td>
-      <td>26440.0</td>
-      <td>3699.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PTRK</td>
-      <td>PROFESSIONAL</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>1 rows × 23 columns</p>
-</div>
-
-
 
 Gower returns the index locations and similarity ```values```. 
 
@@ -1692,178 +1299,6 @@ Xy_original.iloc[similar['index']]
 ```
 
     [0.         0.08845895 0.09403952 0.10647902 0.11503713]
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MVR_PTS</th>
-      <th>YOJ</th>
-      <th>TIF</th>
-      <th>CAR_AGE</th>
-      <th>AGE</th>
-      <th>TRAVTIME</th>
-      <th>CLM_AMT</th>
-      <th>BLUEBOOK</th>
-      <th>OLDCLAIM</th>
-      <th>HOME_VAL</th>
-      <th>...</th>
-      <th>RED_CAR</th>
-      <th>GENDER</th>
-      <th>MSTATUS</th>
-      <th>URBANICITY</th>
-      <th>PARENT1</th>
-      <th>CAR_TYPE</th>
-      <th>OCCUPATION</th>
-      <th>EDUCATION</th>
-      <th>KIDSDRIV</th>
-      <th>HOMEKIDS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6327</th>
-      <td>0</td>
-      <td>7.0</td>
-      <td>6</td>
-      <td>18.0</td>
-      <td>40.0</td>
-      <td>14</td>
-      <td>5800.0</td>
-      <td>26440.0</td>
-      <td>3699.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PTRK</td>
-      <td>PROFESSIONAL</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1210</th>
-      <td>1</td>
-      <td>9.0</td>
-      <td>12</td>
-      <td>9.0</td>
-      <td>35.0</td>
-      <td>27</td>
-      <td>4621.0</td>
-      <td>23740.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PTRK</td>
-      <td>PROFESSIONAL</td>
-      <td>1</td>
-      <td>0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1656</th>
-      <td>0</td>
-      <td>14.0</td>
-      <td>1</td>
-      <td>14.0</td>
-      <td>36.0</td>
-      <td>44</td>
-      <td>5295.0</td>
-      <td>31390.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PTRK</td>
-      <td>MANAGER</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>5487</th>
-      <td>1</td>
-      <td>8.0</td>
-      <td>13</td>
-      <td>9.0</td>
-      <td>44.0</td>
-      <td>43</td>
-      <td>5125.0</td>
-      <td>6400.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PKUP</td>
-      <td>PROFESSIONAL</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>7319</th>
-      <td>3</td>
-      <td>11.0</td>
-      <td>1</td>
-      <td>8.0</td>
-      <td>38.0</td>
-      <td>39</td>
-      <td>1696.0</td>
-      <td>30260.0</td>
-      <td>5255.0</td>
-      <td>281950.0</td>
-      <td>...</td>
-      <td>YES</td>
-      <td>M</td>
-      <td>NO</td>
-      <td>URBAN</td>
-      <td>YES</td>
-      <td>PTRK</td>
-      <td>PROFESSIONAL</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 23 columns</p>
-</div>
-
 
 
 For agglomerative clustering ```gower_matrix``` is used to calculate a similarity matrix between all records in the dataset. 
@@ -1919,21 +1354,21 @@ pd.DataFrame(gd[:3,:3])
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000000</td>
-      <td>0.206693</td>
-      <td>0.177288</td>
+      <td>0.000</td>
+      <td>0.206</td>
+      <td>0.177</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.206693</td>
-      <td>0.000000</td>
-      <td>0.210374</td>
+      <td>0.206</td>
+      <td>0.000</td>
+      <td>0.210</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.177288</td>
-      <td>0.210374</td>
-      <td>0.000000</td>
+      <td>0.177</td>
+      <td>0.210</td>
+      <td>0.000</td>
     </tr>
   </tbody>
 </table>
@@ -1996,14 +1431,14 @@ Z_df[:2]
       <th>0</th>
       <td>6036.0</td>
       <td>9801.0</td>
-      <td>0.000000</td>
+      <td>0.000</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2867.0</td>
       <td>8191.0</td>
-      <td>0.000849</td>
+      <td>0.000</td>
       <td>2.0</td>
     </tr>
   </tbody>
@@ -2099,41 +1534,12 @@ Common issues and challenges include: selecting appropriate distance metrics tha
 Additional methods one might also try include: decomposition, applying principal component and multiple correspondence analysis to the data to reduce dimensionality; in addition to other clustering algorithms such as DBSCAN.
 
 # References
+-----
 
-- https://geodacenter.github.io/workbook/7c_clusters_3/lab7c.html#clarans
-- https://www.thinkdatascience.com/post/2019-12-16-introducing-python-package-gower/
 - https://pypi.org/project/gower/
 - https://medium.com/analytics-vidhya/gowers-distance-899f9c4bd553
-- https://www.researchgate.net/publication/324073652_Sparse_dynamical_Boltzmann_machine_for_reconstructing_complex_networks_with_binary_dynamics
 - https://towardsdatascience.com/clustering-on-mixed-type-data-8bbd0a2569c3
 - https://medium.com/@rumman1988/clustering-categorical-and-numerical-datatype-using-gower-distance-ab89b3aa90d9
-- https://www2.cs.duke.edu/courses/spring18/compsci216/lectures/07-clustering.pdf
 - https://towardsdatascience.com/hierarchical-clustering-on-categorical-data-in-r-a27e578f2995
 - https://www.researchgate.net/post/What_is_the_best_way_for_cluster_analysis_when_you_have_mixed_type_of_data_categorical_and_scale
-- https://www.google.com/search?client=firefox-b-d&q=python+gower+distance
-- https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html
-- https://discuss.analyticsvidhya.com/t/clustering-technique-for-mixed-numeric-and-categorical-variables/6753
-- https://stackoverflow.com/questions/24196897/r-distance-matrix-and-clustering-for-mixed-and-large-dataset
-- https://www.analyticsvidhya.com/blog/2015/11/easy-methods-deal-categorical-variables-predictive-modeling/
-- https://towardsdatascience.com/all-about-categorical-variable-encoding-305f3361fd02
-- https://rpubs.com/data_feelings/msda_data621_hw4
-- https://pypi.org/project/gower/
-- https://scikit-learn-extra.readthedocs.io/en/latest/generated/sklearn_extra.cluster.KMedoids.html
-- https://towardsdatascience.com/k-medoids-clustering-on-iris-data-set-1931bf781e05
-- https://www.rdocumentation.org/packages/cluster/versions/2.1.0/topics/pam
-- https://github.com/annoviko/pyclustering/issues/499
-- https://stats.stackexchange.com/questions/2717/clustering-with-a-distance-matrix
-- https://www.kaggle.com/fabiendaniel/customer-segmentation
-- https://dkopczyk.quantee.co.uk/claim-prediction/ (http://web.archive.org/web/20190429040211/https://dkopczyk.quantee.co.uk/claim-prediction/)
-- https://www.casact.org/pubs/dpp/dpp08/08dpp170.pdf
 - https://medium.com/analytics-vidhya/partitional-clustering-using-clarans-method-with-python-example-545dd84e58b4
-- https://www.uio.no/studier/emner/matnat/math/nedlagte-emner/STK2510/v08/undervisningsmateriale/ch8b.pdf
-- https://github.com/annoviko/pyclustering/issues/499
-- https://stackoverflow.com/questions/3081066/what-techniques-exists-in-r-to-visualize-a-distance-matrix
-- https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68
-- https://datascience.stackexchange.com/questions/22/k-means-clustering-for-mixed-numeric-and-categorical-data
-- http://www.cs.ust.hk/~qyang/Teaching/537/Papers/huang98extensions.pdf
-- https://www.researchgate.net/post/What_is_the_best_way_for_cluster_analysis_when_you_have_mixed_type_of_data_categorical_and_scale
-- https://towardsdatascience.com/hierarchical-clustering-on-categorical-data-in-r-a27e578f2995
-- https://gist.github.com/AKST/d27b9006bb0f9670e370
-

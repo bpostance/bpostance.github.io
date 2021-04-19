@@ -456,7 +456,8 @@ mc.loc[mc['p']==summary['MonteCarlo'].sharpe.idxmax()]
 Thank you for reading. Next time I will run through a more sophisticated optimisation technique using Machine Learning. You can find the code to replicate the above analysis on my [Github account here](https://github.com/bpostance)
 
 
-***References:***
+## References
+-----
 
 - https://towardsdatascience.com/optimization-with-python-how-to-make-the-most-amount-of-money-with-the-least-amount-of-risk-1ebebf5b2f29
 - https://colab.research.google.com/github/cvxgrp/cvx_short_course/blob/master/applications/portfolio_optimization.ipynb
