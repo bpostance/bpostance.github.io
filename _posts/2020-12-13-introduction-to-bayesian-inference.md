@@ -13,6 +13,9 @@ comments: true
 </p>
 [<sub>*image source*</sub>](https://stats.stackexchange.com/q/86472/100439)
 
+**[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb)**
+
+
 Bayesian inference is a statistical method used to update one’s beliefs about a process or system upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting and risk models. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
 
 $$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
@@ -399,7 +402,7 @@ Again, this is confirmed  by checking the Credible Intervals and integrals.
 
 ### Conclusion
 
-In this post I have recapped on the basics of Bayes theorem and shown how to  perform bayesian inference by-hand for the binomial distribution on a coin tossing example. In practice bayesian inference models are rarely built by hand. Instead we rely on statistical packages and frameworks that better handle probability distributions and sampling using monte-carlo methods. More on those in my next post. See my GitHub code [here](https://github.com/bpostance/training.data_science/blob/master/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb).
+In this post I have recapped on the basics of Bayes theorem and shown how to  perform bayesian inference by-hand for the binomial distribution on a coin tossing example. In practice bayesian inference models are rarely built by hand. Instead we rely on statistical packages and frameworks that better handle probability distributions and sampling using monte-carlo methods. More on those in my next post.
 
 ### References
 I would like to credit [Fong Chun Chan](https://tinyheero.github.io/2018/12/14/crux-of-bayes-statistics.html) for his useful materials on this subject.

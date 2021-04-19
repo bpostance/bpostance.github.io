@@ -12,8 +12,10 @@ comments: true
 <img src="/assets/images/pymc3.png" alt="drawing" width="500" height="250" class="center"/>
 </p>
 
+**[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/statistics/bayesian-inference/02.2.bayesian-inference-pymc3-gamma-poisson.ipynb)**
+
 ### Introduction
-Here we use PyMC3 on two Bayesian inference case studies: coin-toss and Insurance Claim occurrence. My last post was an introduction to Baye's theorem and [Bayesian inference by hand](https://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.htmlhttps://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.html). There we looked at a simple coin toss scenario, modelling each step by hand, to conclude that we had a bias coin bias with the posterior probability of landing tails P(Tails\|Observed Data) = 0.36.
+Here we use PyMC3 on two Bayesian inference case studies: coin-toss and Insurance Claim occurrence. My last post was an introduction to Baye's theorem and [Bayesian inference by hand](https://bpostance.github.io/tutorial/mathematics/2020/12/13/introduction-to-bayesian-inference.html). There we looked at a simple coin toss scenario, modelling each step by hand, to conclude that we had a bias coin bias with the posterior probability of landing tails P(Tails\|Observed Data) = 0.36.
 
 This time we will run: i) the same coin-toss scenario again, and ii) an example for Poisson insurance claim counts, using the probabilistic programming package [PyMC3](https://docs.pymc.io/https://docs.pymc.io/). An alternative would be to use the equally popular Stanford "Stan" package and its python wrapper [PyStan](https://pystan.readthedocs.io/en/latest/index.htmlhttps://pystan.readthedocs.io/en/latest/index.html). These packages provide an easy to use and intuitive frameworks for developing complex models of data generative processes. In addition, easy access to [Markov Chain Monte Carlo](https://twiecki.io/blog/2015/11/10/mcmc-sampling/https://twiecki.io/blog/2015/11/10/mcmc-sampling/) sampling algorithms.
 

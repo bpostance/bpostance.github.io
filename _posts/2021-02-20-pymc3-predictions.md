@@ -8,6 +8,8 @@ tags: [bayesian-inference,bayes-theory,pymc3,glm]
 math: true
 ---
 
+**[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/statistics/bayesian-inference/03.1-bayesian-regression-oos-predictions.ipynb)**
+
 In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this, we will build two models using a case study of predicting student grades on a classical dataset. The first model is a classic frequentist normally distributed regression General Linear Model (GLM). While the second is, again A normal GLM, but built using the Bayesian inference method.
 
 # Case Study: predicting student grades

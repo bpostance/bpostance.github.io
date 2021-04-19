@@ -10,11 +10,13 @@ comments: true
 <img src="/assets/images/2020-09-01-MODIS-fig1.jpg" alt="drawing" width="800" height="350"/>
 
 
+**[Jupyter notebook here](https://github.com/bpostance/deng.learn/blob/master/earth.observation/modis/00.ETL-MODIS.ipynb)**
+
 The Moderate Resolution Imaging Spectroradiometer (MODIS) is an imaging sensor built by Santa Barbara Remote Sensing that was launched into Earth orbit by NASA in 1999 on board the Terra (EOS AM) satellite, and in 2002 on board the Aqua (EOS PM) satellite. The instruments capture data in 36 spectral bands and has a 2,330-km-wide viewing swath, seeing every point on earth every 1-2 days.
 
 Given its wide spectral band, high frequency and temporal coverage MODIS is used in a variety of applications. From measuring atmospheric variables including: cloud cover, the size of cloud droplets in both liquid water and ice particles, aerosols and pollution from natural and man-made sources like industry emissions, dust storms, volcanic eruptions, and forest fires.
 
-This notebook demonstrates how to: download MODIS data; extract meta-data and data from native HDF files; and to transform HDF data to common downstream formats for processing, analysis and plotting. You can find the code on git [here](https://github.com/bpostance/training.data_engineering/blob/master/earth.observation/modis/00.ETL-MODIS.ipynb).
+This notebook demonstrates how to: download MODIS data; extract meta-data and data from native HDF files; and to transform HDF data to common downstream formats for processing, analysis and plotting.
 
 
 ***Download a MODIS tile***

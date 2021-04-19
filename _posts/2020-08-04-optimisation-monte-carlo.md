@@ -8,6 +8,8 @@ math: true
 comments: true
 ---
 
+**[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/optimization/investments/00-portfolio-optimisation-monte-carlo-v0.0.ipynb)**
+
 *Given a fixed amount of avliable resources, optimise allocation to maximise returns across a set of products with variable returns.*
 
 <img src="https://cdn-images-1.medium.com/max/1000/1*QBQXfHZxYzAsbZGqAxa9nw.jpeg" width="500" height="300" />
@@ -451,7 +453,7 @@ mc.loc[mc['p']==summary['MonteCarlo'].sharpe.idxmax()]
 - However, finding the optimal portfolio is not garunteed. The likelihood of identifying the most optimal portfolio decreases with increasing number of investment options, and higher degrees of uncertainty of the investment returns and variances.
 
 
-Thank you for reading. Next time I will run through a more sophisticated optimisation technique using Machine Learning. You can find the code to replicate the above analysis on my [Github account here](https://github.com/bpostance/training.data_science/blob/master/optimization/investments/00-portfolio-optimisation-monte-carlo-v0.0.ipynb)
+Thank you for reading. Next time I will run through a more sophisticated optimisation technique using Machine Learning. You can find the code to replicate the above analysis on my [Github account here](https://github.com/bpostance)
 
 
 ***References:***

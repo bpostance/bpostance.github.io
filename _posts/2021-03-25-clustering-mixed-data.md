@@ -9,6 +9,7 @@ comments: true
 ---
 <img src="/assets/images/2020-02-20-clustering-fig1.png" alt="drawing" width="800" height="350"/>
 
+**[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/ML/2.3_Clustering/1.1-Clustering-Mixed-Data.ipynb)**
 
 # A guide to clustering large datasets with mixed data-types
 
@@ -23,7 +24,7 @@ Clustering can be applied to a variety of different problems and domains includi
 
 Many real-world datasets include combinations of numerical, ordinal (e.g. small, medium, large), and nominal (e.g. France, China, India) data features. However, many popular clustering algorithms and tutorials such as K-means are suitable for numerical data types only. This article is written on the assumption that these methods are familiar - but otherwise Sklearn provides an excellent review of these methods [here](https://scikit-learn.org/stable/modules/clustering.html#clustering) for a quick refresher. 
 
-This article seeks to provide a review of methods and a practical application for clustering a dataset with mixed datatypes. You can find all of my code on [Github here](https://github.com/bpostance/training.data_science/blob/master/ML/2.3_Clustering/10-Clustering-Mixed-Data.ipynb)
+This article seeks to provide a review of methods and a practical application for clustering a dataset with mixed datatypes.
 
 
 ## 1.1 Aim:
