@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How businesses can use AI effectively and cost-efficiently"
+title:  "How to use AI effectively in business"
 date:   2021-09-21 18:00:00 +0000
 categories: [blog-post,thought-piece]
 tags: [business-strategy,data-driven,enablers]

@@ -2,7 +2,7 @@
 layout: post
 title:  "Earth Surface Processes and Landforms: classficiation of rare events for landslide early warning systems"
 date:   2019-02-30 18:00:00 +0000
-categories: [blog-post,academic-paper]
+categories: [academic-paper,abstract]
 tags: [natural-hazards,rainfall-thresholds,classification,decision-systems]
 math: true
 comments: true

@@ -3,7 +3,7 @@ layout: post
 comments: true
 title:  "Environmental Research Letters: agent simulation of natural hazards in complex networks"
 date:   2019-01-30 18:00:00 +0000
-categories: [blog-post,academic-paper]
+categories: [academic-paper,abstract]
 tags: [network,agent-simulation,natural-hazards]
 math: true
 ---
