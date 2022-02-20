@@ -2,7 +2,7 @@
 layout: post
 title:  "Geospatial Analysis: Working with MODIS data"
 date:   2020-09-01 18:00:00 +0000
-categories: [blog-post,datasets]
+categories: [blog-post,datasets,engineering]
 tags: [geospatial-analysis,MODIS]
 math: true
 comments: true
