@@ -12,7 +12,7 @@ There is huge potential for AI to disrupt and transform business. From automatio
 
 >The National AI Strategy builds on the UK’s strengths but also represents the start of a step-change for AI in the UK, recognising the power of AI to increase resilience, productivity, growth and innovation across the private and public sectors. <br>*[National AI Strategy, 2021. UK Government](https://www.gov.uk/government/publications/national-ai-strategy)*
 
-We know that the likes of FAANG (Facebook "Meta", Apple, Amazon, Netflix, and Google) and other Big-Tech companies (e.g. Tik Tok, Snap, Baidu, Huawei etc) are utilising big data and AI at scale to drive revenue and to make eye watering profits. And yet, **AI has not taken hold in most industries**. And this is despite the proliferation of AI knowldege and technology enablers, including: an explosion in data availability, open source technology and software, industry and research forums, cloud computing, the rise of data engineering and data scientist teams, amongst others... So what's going on?
+We know that the likes of FAANG (Facebook "Meta", Apple, Amazon, Netflix, and Google) and other Big-Tech companies (e.g. Tik Tok, Snap, Baidu, Huawei etc) are utilising big data and AI at scale to drive revenue and to make eye watering profits. And yet, **AI has not taken hold in most industries**. And this is despite the proliferation of AI knowledge and technology enablers, including: an explosion in data availability, open source technology and software, industry and research forums, cloud computing, the rise of data engineering and data scientist teams, amongst others... So what's going on?
 
 ## Why do AI initiatives fail?
 
