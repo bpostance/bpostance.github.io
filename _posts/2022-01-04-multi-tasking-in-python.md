@@ -8,7 +8,6 @@ math: false
 comments: true
 ---
 
-# How to multi-task in python
 
 Multitasking is the concept of dividing up resources to work on more than one task at the same time. It is the concurrent execution of tasks within a computing system.
 
