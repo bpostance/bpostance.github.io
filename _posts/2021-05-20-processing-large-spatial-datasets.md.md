@@ -2,7 +2,7 @@
 layout: post
 title:  "Geospatial Analysis: obtaining and pre-processing OpenSource satellite data"
 date:   2021-05-20 18:00:00 +0000
-categories: [blog-post,datasets]
+categories: [blog-post,datasets,engineering]
 tags: [geospatial-analysis,MODIS,open-source]
 math: true
 comments: true

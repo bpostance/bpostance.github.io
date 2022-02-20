@@ -3,7 +3,7 @@ layout: post
 mathjax: true
 title:  "An introduction to hashing functions for data mining"
 date:   2019-06-10 20:00:01 +0000
-categories: [blog-post,data-analysis]
+categories: [blog-post,data-analysis,engineering]
 tags: [data-mining,data-cleaning,hash-functions]
 math: true
 comments: true
