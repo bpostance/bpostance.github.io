@@ -8,131 +8,42 @@ math: false
 comments: true
 ---
 
+Multitasking is the concept of dividing up resources to work on more than one task at the same time. Within computing systems multi-tasking is the concurrent execution of tasks.
 
-Multitasking is the concept of dividing up resources to work on more than one task at the same time. It is the concurrent execution of tasks within a computing system.
+In data engineering, analytics, and data science we are often faced with scenarios where it is necessary to optimise the speed of execution. In some cases these problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed data processing on Apache Spark. But in other cases the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls or web-scraping, loading and operating on data in files, returning data to reactive visualisations and dashboards, amongst others. 
 
-In data and analytics we are often faced with problems and requirements where it is necessary to optimise the speed of execution. 
+In these scenarios you can draw on threading and multi-processing techniques to run tasks concurrently. 
 
-In some cases, such problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed processing on Apache Spark.
+## Synchronous & Asynchronous execution
 
-But in other cases, the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls, web-scraping, operating and loading data from files, returning data to reactive visualisations and dashboards, amongst others. 
+<div>
+    <img src="/assets/images/2022-01-04-multi-tasking/parallel-processing.png" width="90%" height="90%">
+</div>
 
-In these scenarios you can draw on threading and multi-processing techniques to decrease overall execution time. 
+Python code can run in one of two "worlds", synchronous and asynchronous. 
 
-Here, I present two techniques to:
+The synchronous world is our typical day to day python. In the synchronous world tasks and jobs are run one after the other on threads. The only option to multi-task here is to use multiple execution threads - covered below in [Other Methods](#other-methods).
 
-1. Waiting for tasks to complete
-2. Asynchronous execution methods
-
-
-## 1. Waiting for tasks to complete
-
-Here the python `threading` package is used to enable more explicit control of a thread process. This approach can be useful when waiting on the result of a slow or external process such as an API call or database query. 
-
-A `slow_calculation` function updating a global variable `result` and `thread.join()` is used to ensure that the slow function completes before progressing. 
+The asynchronous world is in a whole different space with different libraries and routines. In asynchronous tasks are run concurrently on a central [event loop](https://docs.python.org/3/library/asyncio-eventloop.html). The event loop is the core of every asyncio application. Event loops run asynchronous tasks and callbacks, perform network IO operations, and run sub-processes.
 
 
-```python
-import threading
-result = None
+Given the two worlds there are a few different execution patterns with which we call synchronous and asynchronous functions: 
 
-def slow_calculation():
-    
-    # here goes some long calculation
-    rand = np.random.randint(low=2,high=8)
-    print(f'Waiting {rand}....')
-    time.sleep(rand)
-   
-    # when the calculation is done, the result is stored in a global variable
-    global result
-    result = rand**2
+1. Sync: This is just regular python functions that run sequentially.
+2. Async: Use async functions that can be run as concurrent tasks. 
+3. Async execution of Sync: We don't want to be limited to just using async specific functions. In some cases it is possible to run sync functions asynchronoulsy.
 
-def main():
-    thread = threading.Thread(target=slow_calculation())
-    thread.start()
- 
-    # dont do this
-    # while result is None:
-    #     pass
-    
-    # Do this, wait here for the result to be available before continuing
-    thread.join()
-   
-    print('The result is', result)
-    
-main()
-```
-    Waiting 3....
-    The result is 9
+We don't need to cover Sync here so lets jump straight to point 2 Async.
 
-Below is a similar, but this time instead of waiting for the whole slow function to complete we use an event `result_available = threading.Event()` to trigger the continuation of the thread. 
+### Async 
 
+Async functions can be used directly with `await/async` functionality. 
 
-```python
-result = None
-result_available = threading.Event()
-
-def slow_calculation():
-    
-    # here goes some long calculation
-    rand = np.random.randint(low=2,high=8)
-    print(f'Waiting {rand}....')
-    time.sleep(rand)
-   
-    # when the calculation is done, the result is stored in a global variable
-    global result
-    result = rand**2
-    result_available.set()
-    
-    # do some more work before exiting the thread
-    time.sleep(2)
-    print('thread finished')
-
-def main():
-    thread = threading.Thread(target=slow_calculation())
-    thread.start()
- 
-    # wait here for the result to be available before continuing
-    result_available.wait()
-   
-    print('The result is', result)
-    
-main()
-```
-    Waiting 4....
-    thread finished
-    The result is 16
-
-## 2. Asynchronous execution
-
-The key concept here - Python code can run in one of two "worlds", synchronous and asynchronous. The synchronous world is our typical day to day python. Whereas the asynchronous world is in effect a whole different space, with different libraries and routines.
-
-But in essence, in synchronous tasks and jobs are run one after the other. In asynchronous, they run concurrently saving time.
-
-<img src="/assets/images/2022-01-04-multi-tasking/parallel-processing.png" width="600" height="400">
-
-This [article](https://www.aeracode.org/2018/02/19/python-async-simplified/) has an excellent breakdown of the Asyncrhonous operations in Python. Some of the key excerpts relevant to here are:
-
-*In the synchronous world, the Python that's been around for decades, you call functions directly and everything gets processed as it's written on screen. Your only built-in option for running code in parallel in the same process is threads.*
-
-*In the asynchronous world, things change around a bit. Everything runs on a central event loop, which is a bit of core code that lets you run several coroutines at once. Coroutines run synchronously until they hit an await and then they pause, give up control to the event loop, and something else can happen.*
-
-For multi-tasking then, there are a few different patterns we can follow to call functions: 
-
-1. Sync-code: This is just regular function calls that will run sequentially.
-2. Async-code: Use async functions patterns to run concurrent tasks. 
-3. Sync-code with async execution: We don't want to be limited to just using async specific functions. In some cases it is possible to run sync functions, asynchronoulsy i.e. multi-task.
-
-
-### Async to Async 
-
-Async functions can be used directly, these functions are compatible with `await/async` functionality. 
-
-Here is a single async task "coroutine". Note that instead of using the standard `time.sleep()` it uses the async compatible `asyncio.sleep()` function.
+Below is a example async task "coroutine" to sleep. Note that instead of using the standard `time.sleep()` it uses the async compatible `asyncio.sleep()` function.
 
 > **NOTE Jupyter Notebooks**: 
 > 
-> If using IPython you must invoke `async main()` functions with `await main()`. If you're using python use `asyncio.run(main())`. 
+> If you're using IPython or Jupyter Notebooks, you must invoke `async main()` functions with `await main()`. If you're using python shell use `asyncio.run(main())`. 
 >   ```
 > # example.py
 >   import asyncio
@@ -266,7 +177,7 @@ print(f"List items:\t{list_items}")
 
 ### Sync to Async
 
-Here's another sync function - it takes some time to run each task.
+Here is a simple sync function to sleep - as you can see it takes some time to run each task.
 
 
 ```python
@@ -335,12 +246,125 @@ print(f"List items:\t{list_items}")
     
     List items:	[1, 2, 3, 4]
 
+That concludes this introduction to asynchronous python routines.
+
 ## Other methods
 
-Aside from `asyncio`, there are other ways to access threads and to do concurrent multiprocessing in python.
+Here are some other ways to multi-task in python. 
+
+### threading
+
+The `threading` package is used to enable more explicit control of a thread process. This approach can be useful when waiting on the result of a slow or external process such as an API call or database query. 
+
+A `slow_calculation` function updating a global variable `result` and `thread.join()` is used to ensure that the slow function completes before progressing. 
+
+
+```python
+import threading
+result = None
+
+def slow_calculation():
+    
+    # here goes some long calculation
+    rand = np.random.randint(low=2,high=8)
+    print(f'Waiting {rand}....')
+    time.sleep(rand)
+   
+    # when the calculation is done, the result is stored in a global variable
+    global result
+    result = rand**2
+
+def main():
+    thread = threading.Thread(target=slow_calculation())
+    thread.start()
+ 
+    # dont do this
+    # while result is None:
+    #     pass
+    
+    # Do this, wait here for the result to be available before continuing
+    thread.join()
+   
+    print('The result is', result)
+    
+main()
+```
+    Waiting 3....
+    The result is 9
+
+Below is a similar, but this time instead of waiting for the whole slow function to complete we use an event `result_available = threading.Event()` to trigger the continuation of the thread. 
+
+
+```python
+result = None
+result_available = threading.Event()
+
+def slow_calculation():
+    
+    # here goes some long calculation
+    rand = np.random.randint(low=2,high=8)
+    print(f'Waiting {rand}....')
+    time.sleep(rand)
+   
+    # when the calculation is done, the result is stored in a global variable
+    global result
+    result = rand**2
+    result_available.set()
+    
+    # do some more work before exiting the thread
+    time.sleep(2)
+    print('thread finished')
+
+def main():
+    thread = threading.Thread(target=slow_calculation())
+    thread.start()
+ 
+    # wait here for the result to be available before continuing
+    result_available.wait()
+   
+    print('The result is', result)
+    
+main()
+```
+    Waiting 4....
+    thread finished
+    The result is 16
+
+Finally, let's look at running multiple threads concurrently now that we understand how threads operate and can be controlled. 
+
+```python
+import concurrent.futures
+import numpy as np
+import time
+
+list_items=list()
+
+def slow_calculation(i):
+    # here goes some long calculation
+    print(f'Waiting {i}....')
+    time.sleep(i)
+   
+    # when the calculation is done, the result is stored in a global variable
+    global list_items
+    list_items.append(i**2)
+
+start_time = time.time()
+with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    executor.map(slow_calculation, np.arange(1,5))
+
+print(list_items)
+print(f"--- {time.time() - start_time:.5f} seconds ---\n\r")
+```
+    Waiting 1....
+    Waiting 2....
+    Waiting 3....
+    Waiting 4....
+    [1, 4, 9, 16]
+    --- 4.00680 seconds --
 
 ### multiprocessing
-The [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) package.
+
+The [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) package supports spawning processes similar to the threading module. Multiprocessing does this by spawning sub-processes that allows users to leverage multiple processors at simultaneously.
 
 
 ```python
@@ -375,9 +399,9 @@ print(f"List items:\t{list_items}")
     
     List items:	[1, 2, 3, 4]
 
-## pyrallel
+### pyrallel
 
-[PyRallel](https://pyrallel.readthedocs.io/en/latest/parallel_processor.html) is another ParallelProcessor that uses  CPU cores to process compute-intensive tasks.
+[PyRallel](https://pyrallel.readthedocs.io/en/latest/parallel_processor.html) is another ParallelProcessor that uses CPU cores to process compute-intensive tasks. It is similar to multiprocessing.
 
 There is relatively little/no documentation on PyRallel beyond the [official documentation](https://pyrallel.readthedocs.io/en/latest/parallel_processor.html). There is also an unrelated and deprecated predecessor to Dask with the [same name](https://github.com/pydata/pyrallel) - so expect little help. But it also has as a `MapReduce` and `Queue` function that looks interesting and that i'll check out at some point.
 
@@ -429,8 +453,12 @@ print(f"List items:\t{list_items}")
     List items:	[1, 2, 3, 4]
 
 
+
+Thank you for reading
+
 ## References
 
 - https://www.aeracode.org/2018/02/19/python-async-simplified/
 - https://e2eml.school/multiprocessing.html
 - https://pyrallel.readthedocs.io/en/latest/parallel_processor.html
+- https://www.aeracode.org/2018/02/19/python-async-simplified/
