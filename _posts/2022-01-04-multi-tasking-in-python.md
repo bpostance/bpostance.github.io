@@ -8,7 +8,7 @@ math: false
 comments: true
 ---
 
-Multitasking is the concept of dividing up resources to work on more than one task at the same time. Within computing systems multi-tasking is the concurrent execution of tasks.
+In computing systems, multitasking is the concurrent execution of tasks and processes. We divide up our resources to work on more than one task at the same time.
 
 In data engineering, analytics, and data science we are often faced with scenarios where it is necessary to optimise the speed of execution. In some cases these problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed data processing on Apache Spark. But in other cases the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls or web-scraping, loading and operating on data in files, returning data to reactive visualisations and dashboards, amongst others. 
 
