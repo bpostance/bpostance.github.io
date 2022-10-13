@@ -10,7 +10,7 @@ comments: true
 
 In computing systems, multitasking is the concurrent execution of tasks and processes. We divide up our resources to work on more than one task at the same time.
 
-In data engineering, analytics, and data science we are often faced with scenarios where it is necessary to optimise the speed of execution. In some cases these problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed data processing on Apache Spark. But in other cases the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls or web-scraping, loading and operating on data in files, returning data to reactive visualisations and dashboards, amongst others. 
+In data engineering, analytics, and data science we are often faced with scenarios where it is necessary to optimize the speed of execution. In some cases these problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed data processing on Apache Spark. But in other cases the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls or web-scraping, loading and operating on data in files, returning data to reactive visualization and dashboards, amongst others. 
 
 In these scenarios you can draw on threading and multi-processing techniques to run tasks concurrently. 
 
@@ -31,7 +31,7 @@ Given the two worlds there are a few different execution patterns with which we 
 
 1. Sync: This is just regular python functions that run sequentially.
 2. Async: Use async functions that can be run as concurrent tasks. 
-3. Async execution of Sync: We don't want to be limited to just using async specific functions. In some cases it is possible to run sync functions asynchronoulsy.
+3. Async execution of Sync: We don't want to be limited to just using async specific functions. In some cases it is possible to run sync functions asynchronously.
 
 We don't need to cover Sync here so lets jump straight to point 2 Async.
 
