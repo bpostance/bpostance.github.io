@@ -8,7 +8,6 @@ vendor
 
 # rubygem
 *.gem
-*.lock
 
 # yard docs
 doc
