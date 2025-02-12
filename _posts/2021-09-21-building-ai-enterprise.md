@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to build an advanced analytics function"
+title:  "How to build an Advanced Analytics function"
 date:   2021-09-21 18:00:00 +0000
 categories: [blog-post,thought-piece]
 tags: [business-strategy,data-driven,enablers]
@@ -9,7 +9,7 @@ comments: true
 ---
 
 
-## Why you should build an advanced analytics function
+## Why?
 
 Advanced Analytics includes the use modern data engineering, data science, machine learning, and AI techniques and technologies in business processes and systems. By 2030, advanced analytics capabilities are projected to deliver an additional \$ 13 trillion in economic activity globally. In the UK, that's equivalent to an annual GDP increase of \$ 310 billion (11 %) in just 10 years [[1,2]](#references). 
 
@@ -27,7 +27,7 @@ Research [[6]](#references) shows that advanced analytics remains an emerging te
 This is despite an explosion during the past decade in the availability of data, open-source technology and software, industry and research networks, commoditisation of cloud computing, the rise of data engineering and data scientist roles, amongst others... So, what's going on?
 
  
-## Why do advanced analytics initiatives fail?
+## How do they fail?
 
 Advanced analytics initiatives generally run into problems of:
 
@@ -43,7 +43,7 @@ Advanced analytics initiatives generally run into problems of:
 [_source_](https://commons.wikimedia.org/w/index.php?%20curid=31679759)
 
  
-## Developing a strategy for success
+## Strategy for success
 
 First things first, take time getting to know and understand your organisations Business Model and Operating Model. The business model defines the strategy for how the company will make money (e.g., selling widgets in jurisdiction X via channel A). The operating model defines how the business is organised around the work necessary to deliver the business model (e.g., resources and investment required to produce widgets and distribute them via channel A). Seek out your companies’ experts to develop an appreciation of the market and industry domain conditions for why these two models are the way they are (e.g., which business areas and platforms are in a phase of growth, decline, maintain mode etc). Put them into context. 
 
@@ -70,16 +70,18 @@ This creates four quadrants in which to categorise your initiatives:
 My advice is to start with the short list of initiatives that fall into the first “LO-LO” quadrant. These will be your quick-wins, low-hanging fruits, path of least resistance etc. 
 
 The final consideration is delivery.
-## Product delivery pathways
+
+## Data Products
+
+A data product is a tool or application that uses data to help businesses make decisions. It can be used internally or sold to customers. 
+
 The two starter questions to ask here are:
-•	What data products do you offer / need to deliver? 
+•	What data products do you offer? 
 •	How do you deliver these data products to your customers?
 
-Data products are products whose primary objective is to use data to facilitate an end goal [[10]](#references). Simon O’Regan wrote this [medium article]( https://towardsdatascience.com/designing-data-products-b6b93edf3d23) that breaks down what data products are and proposal on how to classify them. 
+Achieving a business outcome or goal will typically require a combination of two or more data products. For instance, a real-time decision support dashboard product may be fed by a mixture of derived and raw data products in addition to analysis pipelines and model data products. The specific data-product “range” that you offer is unique to each company and context but will usually include items such as: raw and derived data, analytics and insights, models and algorithms, to decision support and autonomous systems. 
 
-Achieving a business outcome or goal will typically require a combination of two or more data-products. For instance, a real-time decision support dashboard product may be fed by a mixture of derived and raw data products in addition to analysis pipelines and model data products. The specific data-product “range” that you offer is unique to each company and context but will usually include items such as: raw and derived data, analytics and insights, models and algorithms, to decision support and autonomous systems. 
-
-There may be a lot of variation in how data-products are created and delivered – i.e., the business Operating Model. For instance, some data products are “artisan” products, carefully curated with input from various disparate data sources, subject matter experts with system and domain knowledge (e.g., heavily curated datasets, technical analysis, case studies etc). Other data products are generated through scalable and industrialised processes (e.g., automated data pipelines, IOT, API’s). These are heavily automated requiring higher levels of technical and engineering governance, 365 24/7 service level agreements, monitoring, error handling, etc. If need data products that utilise machine learning consider that there is a whole raft of supporting services, data, architecture and governance that need to be put in place to give these any chance of delivering business value.
+There may be a lot of variation in how data products are created and delivered – i.e., the business Operating Model. For instance, some data products are “artisan” products, carefully curated with input from various disparate data sources, subject matter experts with system and domain knowledge (e.g., heavily curated datasets, technical analysis, case studies etc). Other data products are generated through scalable and industrialised processes (e.g., automated data pipelines, IOT, API’s). These are heavily automated requiring higher levels of technical and engineering governance, 365 24/7 service level agreements, monitoring, error handling, etc. If need data products that utilise machine learning consider that there is a whole raft of supporting services, data, architecture and governance that need to be put in place to give these any chance of delivering business value.
 
 Thinking of these in terms of business value levers can be useful. The value potential (load), and the leverage, effort and change required to implement and shift the operating model to get there.
 
@@ -87,7 +89,7 @@ Thinking of these in terms of business value levers can be useful. The value pot
 
 [_source_](https://www.sciencefacts.net/lever.html)
 
-It is essential to continually document and improve your “product delivery pathways”. Each data product has unique requirements in terms how it’s made, the people, processes, and technologies used to develop, maintain and improve the data-product throughout its lifecycle. Aim to have delivery pathways documented from start to finish and make them available to everyone – cast light on the key resources, teams, departments, technologies etc that comprise the supply chain of business value. This will help to speed development, highlight key dependencies, ease identification of improvements and efficiencies, and showcase how multi-disciplinary teams are contributing to the businesses advanced analytics goals. 
+Each data product has unique requirements in terms how it’s made, the people, processes, and technologies used to develop, maintain and improve the data-product throughout its lifecycle. Aim to have delivery pathways documented from start to finish and make them available to everyone – cast light on the key resources, teams, departments, technologies etc that comprise the supply chain of business value. This will help to speed development, highlight key dependencies, ease identification of improvements and efficiencies, and showcase how multi-disciplinary teams are contributing to the businesses advanced analytics goals. 
 
 ## Conclusion
 Following the above framework will provide a catalogue of advanced analytic initiatives focused on business model value. Each initiative is categorised by it’s fit within the current business operating model and broken down into specific data products and delivery pathways that are required to make it real.

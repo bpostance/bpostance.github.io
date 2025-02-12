@@ -1,24 +1,25 @@
 ---
 layout: post
-title:  "Writing Pythonic Airflow DAGs with TaskFlow API "
-date:   2022-07-31 18:00:00 +0000
-categories: [blog-post,engineering]
-tags: [airflow,data-engineering]
+title: "Writing Pythonic Airflow DAGs with the TaskFlow API"
+date: 2022-07-31 18:00:00 +0000
+categories: [blog-post, engineering]
+tags: [airflow, data-engineering]
 math: false
 comments: true
 ---
 
-This post is a brief introduction to Airflow TaskFlow to write more Pythonic DAGs. The [Airflow TaskFlow Tutorial](https://airflow.apache.org/docs/apache-airflow/stable/tutorial_taskflow_api.html) 
-
+This post provides a brief introduction to the Airflow TaskFlow API, demonstrating how to write more Pythonic DAGs. For further details, see the [Airflow TaskFlow Tutorial](https://airflow.apache.org/docs/apache-airflow/stable/tutorial_taskflow_api.html).
 
 ## Background
-I've been using Airflow at work and personal projects for a number of years. This has generally followed the [OOTB configuration for kubernetes with helm](https://airflow.apache.org/docs/helm-chart/stable/index.html), using the Celery executor, and writing DAGs that primarily consist of tasks executed by PythonVirtualEnv operators.
 
-For multi-task DAGs, passing arguments and output variables between task instances can become quite complex using Airflow XCom. XComs are hidden in the Airflow execution layer inside the operator. With PythonVirtualEnv operators this is further complicated given how Airflow handles variable communication between tasks. This involves serialisation of variables using dill or pickle, and adding these to Airflow context. These are described in this [Github Issue](https://github.com/apache/airflow/issues/20974) and it seems Airflow are moving away from the "original" way of writing DAGs and Tasks. 
+I have used Airflow extensively in both professional and personal projects over the years. My setup typically follows the [out-of-the-box configuration for Kubernetes with Helm](https://airflow.apache.org/docs/helm-chart/stable/index.html), utilising the Celery executor, and constructing DAGs primarily composed of tasks executed by Python Virtual Environment operators.
+
+In multi-task DAGs, passing arguments and output variables between task instances can become complex with Airflow XComs, which are embedded within the operator's execution layer. This complexity is further compounded when using Python Virtual Environment operators, as variable communication relies on serialisation (using dill or pickle) before being incorporated into the Airflow context. These challenges are discussed in [this GitHub issue](https://github.com/apache/airflow/issues/20974), and it appears that Airflow is evolving away from the original methods of writing DAGs and tasks.
 
 ## Example TaskFlow
 
-Using taskflow to pass small variables using classic function `return`. The same rules still apply with respect to ony passing small variables between tasks.
+The TaskFlow API simplifies the process of passing small variables between tasks using a classic function `return`. Note that the same best practices apply regarding the size and complexity of variables exchanged between tasks.
+
 
 ```python
 from datetime import datetime

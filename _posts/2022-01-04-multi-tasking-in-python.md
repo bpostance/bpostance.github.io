@@ -8,11 +8,11 @@ math: false
 comments: true
 ---
 
-In computing systems, multitasking is the concurrent execution of tasks and processes. We divide up our resources to work on more than one task at the same time.
+In computing systems, multitasking refers to the concurrent execution of tasks and processes, allowing resources to be allocated to multiple tasks simultaneously.
 
-In data engineering, analytics, and data science we are often faced with scenarios where it is necessary to optimize the speed of execution. In some cases these problems are handled by the data processing and modelling techniques themselves, such as map-reduce or distributed data processing on Apache Spark. But in other cases the time of execution may be driven simply by the volume of tasks. For instance, obtaining data via API calls or web-scraping, loading and operating on data in files, returning data to reactive visualization and dashboards, amongst others. 
+In data engineering, analytics, and data science, we often encounter scenarios where optimising execution speed is essential. Some problems are addressed by data processing and modelling techniques, such as map-reduce or distributed data processing on Apache Spark. However, other tasks may be time-consuming due to the volume of operations, such as obtaining data via API calls or web scraping, loading and processing data in files, or updating reactive visualisations and dashboards.
 
-In these scenarios you can draw on threading and multi-processing techniques to run tasks concurrently. 
+In these situations, threading and multiprocessing techniques can be employed to run tasks concurrently.
 
 ## Synchronous & Asynchronous execution
 
