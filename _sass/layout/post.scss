@@ -1,6 +1,7 @@
 /*
   Post-specific style
 */
+@use "addon/module";
 
 @mixin btn-sharing-color($light-color, $important: false) {
   @if $important {
@@ -45,7 +46,7 @@
 
 .post-content {
   .preview-img {
-    @include align-center;
+    @include module.align-center;
 
     margin-top: 0;
     margin-bottom: 2.5rem !important;
@@ -147,7 +148,7 @@
     top: 6rem;
   }
   > span {
-    @include panel-label;
+    @include module.panel-label;
   }
 }
 
@@ -161,7 +162,7 @@
 
 #related-posts {
   > h3 {
-    @include label(1.1rem, 600);
+    @include module.label(1.1rem, 600);
   }
   .card {
     border-color: var(--card-border-color);
@@ -277,7 +278,7 @@
 } // .share-wrapper
 
 .share-label {
-  @include label(inherit, 400, inherit);
+  @include module.label(inherit, 400, inherit);
 
   &::after {
     content: ":";
@@ -309,7 +310,7 @@
   }
 
   .post-content > div[class^='language-'] {
-    @include ml-mr(-1.25rem);
+    @include module.ml-mr(-1.25rem);
 
     border-radius: 0;
     &::before { // the lang badge

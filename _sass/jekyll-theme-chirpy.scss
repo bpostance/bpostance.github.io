@@ -6,18 +6,20 @@
  * MIT Licensed
  */
 
-@import
-  "colors/light-typography",
-  "colors/dark-typography",
+// Use light and dark typography colors
+@use "colors/light-typography" as lt;
+@use "colors/dark-typography" as dt;
 
-  "addon/module",
-  "addon/variables",
-  "addon/syntax",
-  "addon/commons",
+// Use additional modules and variables
+@use "addon/module" as mod;
+@use "addon/variables" as vars;
+@use "addon/syntax" as syn;
+@use "addon/commons" as com;
 
-  "layout/home",
-  "layout/post",
-  "layout/tags",
-  "layout/archives",
-  "layout/categories",
-  "layout/category-tag";
+// Use layout styles
+@use "layout/home" as home;
+@use "layout/post" as post;
+@use "layout/tags" as tags;
+@use "layout/archives" as archives;
+@use "layout/categories" as categories;
+@use "layout/category-tag" as categoryTag;

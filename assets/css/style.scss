@@ -1,7 +1,11 @@
 ---
 ---
+@use "jekyll-theme-chirpy";
+@use "colors/light-typography";
+@use "colors/dark-typography";
+@use "addon/module";
+@use "addon/variables";
 
 // see: /_sass/addon/commons.scss
 $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
-@import "jekyll-theme-chirpy";

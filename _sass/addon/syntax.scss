@@ -1,29 +1,27 @@
-/*
-* The syntax highlight.
-*/
-
-@import "colors/light-syntax";
-@import "colors/dark-syntax";
+// _sass/addon/syntax.scss
+@use "colors/light-syntax" as light-syntax;
+@use "colors/dark-syntax" as dark-syntax;
 
 html:not([mode]),
 html[mode=light] {
-  @include light-syntax;
+  @include light-syntax.light-syntax;  // Ensure mixin is called with namespace
 }
 
 html[mode=dark] {
-  @include dark-syntax;
+  @include dark-syntax.dark-syntax;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([mode]),
   html[mode=dark] {
-    @include dark-syntax;
+    @include dark-syntax.dark-syntax;
   }
 
   html[mode=light] {
-    @include light-syntax;
+    @include light-syntax.light-syntax;
   }
 }
+
 
 /* -- Codes Snippet -- */
 
