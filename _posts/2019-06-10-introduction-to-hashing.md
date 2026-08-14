@@ -11,7 +11,7 @@ comments: true
 This post is intended to provide a quick introduction to hash functions and to discuss some practical applications of hashes in data mining and machine learning. The aim of this post is to provide a basic level of understanding of the concept and to demonstrate a real world use case.
 
 Want to cut to the chase?<br>
-Heres how to implement a variety of common hash functions using [hashlib](https://docs.python.org/3/library/hashlib.html) in Python.
+Here's how to implement a variety of common hash functions using [hashlib](https://docs.python.org/3/library/hashlib.html) in Python.
 
 
 ```python
@@ -43,8 +43,8 @@ Some important properties of Hash functions are:
  
 ### What are they used for?
 Common hash function [applications](https://en.wikipedia.org/wiki/Hash_function#Uses) include cryptography and creating hash-tables for indexing and searching data.<br><br>
-For instance, when performing a query on a database for the string "Apple Computer", a hash may be used to create a hash-table that can be used to quickly indicate the records that contain the substring "A" or "Apple" or "Computer". Boolean operations are computationally cheap and therefore hash-tables greatly reduce the search space to a subset list of candidate records. Avoiding the need to evaluate every single record in the database. A [hash-table](https://en.wikipedia.org/wiki/Hash_function#Hash_tables) is simply a table of boolean values (True or False) for wether or not a string contains a substring or not - or rather the hash of the string or substring. <br><br>
-In cryptography, a hash function may be used to convert a bank account holders raw password (e.g. "Mittens1998") to a hash value. The banks website and mobile applications each use the same hash function and therefore the bank only needs to keep a record of the password's hash value, never revealing the users password to anyone not even the bank. The login system applies the same hash function to every password entered and so even if someone were to leak the hashed values of the user passwords, these would be converted to another hash value if they were used to login.<br><br>
+For instance, when performing a query on a database for the string "Apple Computer", a hash may be used to create a hash-table that can be used to quickly indicate the records that contain the substring "A" or "Apple" or "Computer". Boolean operations are computationally cheap and therefore hash-tables greatly reduce the search space to a subset list of candidate records. Avoiding the need to evaluate every single record in the database. A [hash-table](https://en.wikipedia.org/wiki/Hash_function#Hash_tables) is simply a table of boolean values (True or False) for whether or not a string contains a substring — or rather the hash of the string or substring. <br><br>
+In cryptography, a hash function may be used to convert a bank account holder's raw password (e.g. "Mittens1998") to a hash value. The bank's website and mobile applications each use the same hash function and therefore the bank only needs to keep a record of the password's hash value, never revealing the user's password to anyone — not even the bank. The login system applies the same hash function to every password entered and so even if someone were to leak the hashed values of user passwords, those leaked values would still be different from the original plaintext passwords.
 Subsequently the Hash functions that are generally suitable for application to information retrieval, text mining and data indexing are  quite different [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function).
 <br><br>
 So let's begin.
@@ -269,7 +269,7 @@ def sha1_birthday_paradox(probability=0.5,hash_length=10,print_out=True):
     d = 16**hash_length #
     collision = np.sqrt(2*d*np.log(1/(1-probability))) # K
     if print_out is True:
-        print(There is {probability*100} % chance of a hash collision using {int(hash_length)} hex digits of SHA1 hash values on a list with {int(collision)} values')
+        print(f'There is {probability*100} % chance of a hash collision using {int(hash_length)} hex digits of SHA1 hash values on a list with {int(collision)} values')
     return collision
     
 for hash_length in range(2,12):

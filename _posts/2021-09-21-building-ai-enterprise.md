@@ -11,7 +11,7 @@ comments: true
 
 ## Why?
 
-Advanced Analytics includes the use modern data engineering, data science, machine learning, and AI techniques and technologies in business processes and systems. By 2030, advanced analytics capabilities are projected to deliver an additional \$ 13 trillion in economic activity globally. In the UK, that's equivalent to an annual GDP increase of \$ 310 billion (11 %) in just 10 years [[1,2]](#references). 
+Advanced Analytics includes the use of modern data engineering, data science, machine learning, and AI techniques and technologies in business processes and systems. By 2030, advanced analytics capabilities are projected to deliver an additional \$ 13 trillion in economic activity globally. In the UK, that's equivalent to an annual GDP increase of \$ 310 billion (11 %) in just 10 years [[1,2]](#references). 
 
 >The National AI Strategy builds on the UK’s strengths but also represents the start of a step-change for AI in the UK, recognizing the power of AI to increase resilience, productivity, growth and innovation across the private and public sectors. <br>*[National AI Strategy, 2021. UK Government](https://www.gov.uk/government/publications/national-ai-strategy)*
 
@@ -35,7 +35,7 @@ Advanced analytics initiatives generally run into problems of:
 
 - High execution and operations risk: Poor strategic planning. The business must be seen to be doing something with advanced analytics. Projects are chosen and prioritised in line with the business strategy - expectations are high. Little regard has been given to the organisations data and analytics maturity. There is a lack of consultation and collaboration with the realities, capabilities, and people of the data, technology, and business operations functions. Subsequently, projects are chosen that have low feasibility of execution – leading to unmet expectations and executive disillusionment. Widely quoted figures from Gartner indicate that between 80-90% of initiatives fail [[7]](#references).
 
-- High business risk: It is possible invest heavily in execution and operations and still fail. Adverse conditions and failures can arise in complex systems and that are hard to predict and control. Semi and fully autonomous advanced analytical systems that make tens of thousands to millions of predictions per day can lead to catastrophic societal and economic impacts. A no    table example was Zillow’s Zestimate “Things started going south once Zillow’s prediction model started degrading. This resulted in the company buying properties at a much higher price than they were able to sell them for.” [[5]](#references).
+- High business risk: It is possible invest heavily in execution and operations and still fail. Adverse conditions and failures can arise in complex systems and that are hard to predict and control. Semi and fully autonomous advanced analytical systems that make tens of thousands to millions of predictions per day can lead to catastrophic societal and economic impacts. A notable example was Zillow’s Zestimate: “Things started going south once Zillow’s prediction model started degrading. This resulted in the company buying properties at a much higher price than they were able to sell them for.” [[5]](#references).
 
  
 ![png](/assets/images/2021-09-21/Swiss_cheese_model_of_accident_causation.png)
