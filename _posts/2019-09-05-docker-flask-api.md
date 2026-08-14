@@ -16,11 +16,11 @@ Containers solve this problem by packaging up all of the software, settings and 
 
 ![png]({{ "/assets/images/2019-09-05-docker-containers-fig1.png" }})
 
-This post demonstrates how to setup a simple Docker container to run an API using Python Flask. The code is avaliable in this [repo](https://github.com/bpostance/deng.learn/tree/master/docker/conda-flask-api).
+This post demonstrates how to set up a simple Docker container to run an API using Python Flask. The code is available in this [repo](https://github.com/bpostance/deng.learn/tree/master/docker/conda-flask-api).
 
 ## Install Docker
 **These instructions are for Windows 10 OS.**
-**See [these instructions for Ubunut/Linux Mint 19 installation](https://computingforgeeks.com/install-docker-and-docker-compose-on-linux-mint-19/).**
+**See [these instructions for Ubuntu/Linux Mint 19 installation](https://computingforgeeks.com/install-docker-and-docker-compose-on-linux-mint-19/).**
 Create an account, download and install Docker Desktop for your operating system following the [official channel](https://www.docker.com/products/docker-desktop).
 Once installed you check some basics using the following commands. See the git repo readme and official docs for more. 
 

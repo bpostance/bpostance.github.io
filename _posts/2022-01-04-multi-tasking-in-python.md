@@ -33,13 +33,13 @@ Given the two worlds there are a few different execution patterns with which we 
 2. Async: Use async functions that can be run as concurrent tasks. 
 3. Async execution of Sync: We don't want to be limited to just using async specific functions. In some cases it is possible to run sync functions asynchronously.
 
-We don't need to cover Sync here so lets jump straight to point 2 Async.
+We don't need to cover Sync here so let's jump straight to point 2 (Async).
 
 ### Async 
 
 Async functions can be used directly with `await/async` functionality. 
 
-Below is a example async task "coroutine" to sleep. Note that instead of using the standard `time.sleep()` it uses the async compatible `asyncio.sleep()` function.
+Below is an example async task "coroutine" to sleep. Note that instead of using the standard `time.sleep()` it uses the async-compatible `asyncio.sleep()` function.
 
 > **NOTE Jupyter Notebooks**: 
 > 

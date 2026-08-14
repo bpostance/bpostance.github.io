@@ -12,7 +12,7 @@ comments: true
 
 **[Jupyter notebook here](https://github.com/bpostance/deng.learn/blob/master/earth.observation/modis/00.ETL-MODIS.ipynb)**
 
-The Moderate Resolution Imaging Spectroradiometer (MODIS) is an imaging sensor built by Santa Barbara Remote Sensing that was launched into Earth orbit by NASA in 1999 on board the Terra (EOS AM) satellite, and in 2002 on board the Aqua (EOS PM) satellite. The instruments capture data in 36 spectral bands and has a 2,330-km-wide viewing swath, seeing every point on earth every 1-2 days.
+The Moderate Resolution Imaging Spectroradiometer (MODIS) is an imaging sensor built by Santa Barbara Remote Sensing that was launched into Earth orbit by NASA in 1999 on board the Terra (EOS AM) satellite, and in 2002 on board the Aqua (EOS PM) satellite. The instruments capture data in 36 spectral bands and have a 2,330-km-wide viewing swath, seeing every point on earth every 1-2 days.
 
 Given its wide spectral band, high frequency and temporal coverage MODIS is used in a variety of applications. From measuring atmospheric variables including: cloud cover, the size of cloud droplets in both liquid water and ice particles, aerosols and pollution from natural and man-made sources like industry emissions, dust storms, volcanic eruptions, and forest fires.
 
@@ -159,7 +159,7 @@ Altering CRS and re-projection is useful for many geospatial analysis. The [OSGE
 
 
 ```python
-# Set desitnation CRS
+# Set destination CRS
 # rio.crs.CRS.from_epsg(4326)
 dst_crs = f"EPSG:{NA.crs.to_epsg()}"
 

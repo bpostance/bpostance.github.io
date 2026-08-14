@@ -16,7 +16,7 @@ comments: true
 **[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/statistics/bayesian-inference/01.0.bayesian-inference-byhand-binomial-Py.ipynb)**
 
 
-Bayesian inference is a statistical method used to update one’s beliefs about a process or system upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting and risk models. In this post I will manually walk through the steps to perform Bayesian Inference. First, lets recap on Bayes' theorem.
+Bayesian inference is a statistical method used to update one’s beliefs about a process or system upon observing data. It has wide reaching applications from optimizing prices to developing probabilistic weather forecasting and risk models. In this post I will manually walk through the steps to perform Bayesian Inference. First, let's recap on Bayes' theorem.
 
 $$ P(A|B) = \frac {P(B|A)P(A)}{P(B)} $$
 
@@ -356,7 +356,7 @@ df
     
 
 
-Comparing the prior and posterior distributions shows very little difference, particularly in where theta is in the range of 0.4 to 0.6 where our prior estimate was "strongest". Examining the posterior distribution we see a peak at 0.5, in line with our prior belief in the triangle distribution. Note also that the likelihood function does not really inform the model given that this sample, or "model evidence", is just a single toss of the coin. In-fact the likelihood function is the straight linear line we saw above.
+Comparing the prior and posterior distributions shows very little difference, particularly in where theta is in the range of 0.4 to 0.6 where our prior estimate was "strongest". Examining the posterior distribution we see a peak at 0.5, in line with our prior belief in the triangle distribution. Note also that the likelihood function does not really inform the model given that this sample, or "model evidence", is just a single toss of the coin. In fact the likelihood function is the straight linear line we saw above.
 
 We can approximate [credible intervals (CI)](https://en.wikipedia.org/wiki/Credible_interval#Choosing_a_credible_interval) to quantify the posterior distribution. For instance we see that:
 - 99 % CI that theta is between 0.2 and 0.8.

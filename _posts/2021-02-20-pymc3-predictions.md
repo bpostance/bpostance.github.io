@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Bayesian Inference with PyMC3: pt 2 making predictions"
+title:  "Bayesian Inference with PyMC3: Part 2 — Making predictions"
 date:   2021-02-20 18:00:00 +0000
 categories: [blog-post,data-analysis]
 tags: [bayesian-inference,bayes-theory,pymc3,glm]
@@ -10,7 +10,7 @@ math: true
 
 **[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/statistics/bayesian-inference/03.1-bayesian-regression-oos-predictions.ipynb)**
 
-In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this, we will build two models using a case study of predicting student grades on a classical dataset. The first model is a classic frequentist normally distributed regression General Linear Model (GLM). While the second is, again A normal GLM, but built using the Bayesian inference method.
+In this post I will show how Bayesian inference is applied to train a model and make predictions on out-of-sample test data. For this, we will build two models using a case study of predicting student grades on a classical dataset. The first model is a classic frequentist normally distributed regression General Linear Model (GLM). The second is a normal GLM built using Bayesian inference.
 
 # Case Study: predicting student grades
 The objective is to develop a model that can predict student grades given several input factors about each student. The publicly available [UCI dataset](https://archive.ics.uci.edu/ml/datasets/student+performance#) contains grades and factors for 649 students taking a Portuguese language course. #
@@ -25,12 +25,12 @@ A subset of numeric and categorical features is used to build the initial model:
 - "internet"  student has internet access at home (binary: yes or no)
 - "failures" is the number of past class failures (cat: n if 1<=n<3, else 4) 
 - "higher" wants to take higher education (binary: yes or no) 
-- "Medu" mother's education (cat: 0 - none, 1 - primary education (4th grade), 2 5th to 9th grade, 3 secondary education or 4 higher education)
--  ""Fedu father's education (cat: 0 - none, 1 - primary education (4th grade), 2 5th to 9th grade, 3 secondary education or 4 higher education)
+- "Medu" mother's education (cat: 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education, or 4 - higher education)
+- "Fedu" father's education (cat: 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education, or 4 - higher education)
 -  "studytime" weekly study time (cat: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours)
 - "absences" number of school absences (numeric: from 0 to 93) 
 
-The final dataset looks like this and here is the distribution of acheived student grades for Portuguese.
+The final dataset looks like this and here is the distribution of achieved student grades for Portuguese.
 
 <div>
 <style scoped>
@@ -169,7 +169,7 @@ glm.summary()
 </table>
 
 <br>
-Some quick observations on the above. Most features have a statistically significant linear relaitonship with grade with the exception of Fathers education. The sign of the regression coefficients also hold with our logic. More absensences and failures is shown to have a negative influence on predicted grade. Whereas studytime and desire to go on to higher education having positive influence on predicted grade.
+Some quick observations on the above. Most features have a statistically significant linear relationship with grade, with the exception of father's education. The signs of the regression coefficients align with our expectations: more absences and failures have a negative influence on predicted grade, whereas studytime and the desire to go on to higher education have a positive influence.
 
 Below we see there is an outlier in the data.
 

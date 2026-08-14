@@ -8,7 +8,7 @@ math: true
 comments: true
 ---
 
-This [notebook](https://github.com/bpostance/deng.learn/blob/master/earth.observation/modis/MCD64A1v061-burned-areas/00.ETL-MODIS.ipynb) demonstrates how to obtain and pre-process satellite data from from NASA LP DAAC - Land Processes Distributed Active Archive Center. I will show how to process LP DAAC datasets into common and easy to use formats for downstream geospatial data processing and scientific analysis. Here we will obtain the [Terra and Aqua combined Burned Area data product MCD64A1](https://lpdaac.usgs.gov/products/mcd64a1v061/). This data is a monthly, global gridded 500 meter (m) product containing per-pixel burned-area and quality information. 
+This [notebook](https://github.com/bpostance/deng.learn/blob/master/earth.observation/modis/MCD64A1v061-burned-areas/00.ETL-MODIS.ipynb) demonstrates how to obtain and pre-process satellite data from NASA LP DAAC - Land Processes Distributed Active Archive Center. I will show how to process LP DAAC datasets into common and easy-to-use formats for downstream geospatial data processing and scientific analysis. Here we will obtain the [Terra and Aqua combined Burned Area data product MCD64A1](https://lpdaac.usgs.gov/products/mcd64a1v061/). This data is a monthly, global gridded 500 meter (m) product containing per-pixel burned-area and quality information. 
 
 
 ```python
@@ -35,7 +35,7 @@ To limit the number of requests we will obtain data for 1 month over the USA.
 
 
 ```python
-# params fo LP DAAC
+# params for LP DAAC
 # you will require an EarthData login
 host = fr'https://e4ftl01.cr.usgs.gov/MOTA/MCD64A1.061'
 login = os.getenv('user')

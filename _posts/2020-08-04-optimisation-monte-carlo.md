@@ -10,7 +10,7 @@ comments: true
 
 **[Jupyter notebook here](https://github.com/bpostance/dsc.learn/blob/main/optimization/investments/00-portfolio-optimisation-monte-carlo-v0.0.ipynb)**
 
-*Given a fixed amount of avliable resources, optimise allocation to maximise returns across a set of products with variable returns.*
+*Given a fixed amount of available resources, optimise allocation to maximise returns across a set of products with variable returns.*
 
 <img src="https://cdn-images-1.medium.com/max/1000/1*QBQXfHZxYzAsbZGqAxa9nw.jpeg" width="500" height="300" />
 
@@ -19,11 +19,11 @@ Following the Modern Portfolio Theory model [(Markowitz 1957)](https://pubsonlin
 *Given a fixed quantity of money (say $1000), how much should we invest in a series of stocks so as to (a) have a one month expected return of at least a given threshold, and (b) minimize the risk (variance) of the portfolio return.*
 
 ### Solution using Monte Carlo
-Monte Carlo (MC) based solutions encompass a wide array of algorithms that exploit repeat random sampling and uncertainty to solve large, complex and generally intractable mathematical problems. MC is akin to exhaustive search type solutions. However in MC framed problems, the input model parameters, initial, boundary and environmental conditions are unknown and or subject to a degree of uncertainty. Therefore a true exahuastive search is not possible. The aim of MC is to conduct repeat random sampling of the input space to generate large numbers (e.g. $n$ = 100,000) of "plausible realities" from which metrics, risk analyses, and further assessments are drawn. Thus one of the most challenging aspects of the monte carlo method is in determining accuracte covariances and probability distributions of the input parameter space.
+Monte Carlo (MC) based solutions encompass a wide array of algorithms that exploit repeat random sampling and uncertainty to solve large, complex and generally intractable mathematical problems. MC is akin to exhaustive search type solutions. However in MC framed problems, the input model parameters, initial, boundary and environmental conditions are unknown and or subject to a degree of uncertainty. Therefore a true exhaustive search is not possible. The aim of MC is to conduct repeated random sampling of the input space to generate large numbers (e.g. $n$ = 100,000) of "plausible realities" from which metrics, risk analyses, and further assessments are drawn. Thus one of the most challenging aspects of the Monte Carlo method is in determining accurate covariances and probability distributions of the input parameter space.
 
-Lets make some simplifying assumptions:
+Let's make some simplifying assumptions:
  - We have \\$1000 to invest $V$.
- - The risk-free rate is 0.03 (3 %). This is the return we can garuntee by instead putting our money in a savings account.
+ - The risk-free rate is 0.03 (3%). This is the return we can guarantee by instead putting our money in a savings account.
  - Stocks have a known and fixed starting price. 
  - The monthly returns of a stock follow a standard normal distribution.
 

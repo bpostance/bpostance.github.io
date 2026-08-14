@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A deep dive on GLM's in frequency severity models"
+title:  "A deep dive on GLMs in frequency-severity models"}
 date:   2020-05-17 18:00:00 +0000
 categories: [blog-post,data-analysis]
 tags: [glm,insurance,monte carlo]
@@ -15,7 +15,7 @@ comments: true
 This notebook is a deep dive into [General Linear Models (GLM's)](https://online.stat.psu.edu/stat504/node/216/) with a focus on the GLM's used in insurance risk modeling and pricing (Yan, J. 2010).I have used GLM's before including: a Logistic Regression for landslide geo-hazards (Postance, 2017), for modeling extreme rainfall and developing catastrophe models (Postance, 2017). The motivation for this post is to develop a deeper knowledge of the assumptions and application of the models and methods used by Insurance Actuaries, and to better understand how these compare to machine learning methods.
 
 
-### Case study dataset: motorcylce insurance
+### Case study dataset: motorcycle insurance
 The [Ohlsson dataset](https://cran.r-project.org/web/packages/insuranceData/insuranceData.pdf#Rfn.dataOhlsson.1) is from a former Swedish insurance company Wasa. The data includes aggregated  customer, policy and claims data for 64,548 motorcycle coverages for the period 1994-1998. The data is used extensively in actuarial training and syllabus worldwide [Ohlsson, (2010)](https://www.springer.com/gp/book/9783642107900#aboutBook).
 
 
